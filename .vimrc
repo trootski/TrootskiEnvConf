@@ -15,7 +15,9 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
-set backupdir=$HOME/.vim/backup
+set clipboard=unnamed
+set nobackup
+set nowritebackup
 
 "
 " Undo
@@ -29,6 +31,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
+colorscheme solarized
 
 set list
 set listchars=tab:▸\ ,eol:¬
@@ -81,10 +84,7 @@ autocmd BufRead,BufNewFile *.pxl setlocal filetype=python
 autocmd BufRead,BufNewFile *.pxlt setlocal filetype=python
 
 " HTML / XML / XSL shouldn't be wrapped - makes it too hard to see indentation
-autocmd FileType html,xml,xslt setlocal nowrap
-
-" Use spaces instead of tabs in python
-autocmd FileType python setlocal expandtab
+autocmd FileType html,xml,xslt,php setlocal nowrap
 
 syntax enable " syntax highlighting
 syntax on
@@ -92,13 +92,6 @@ syntax on
 " ToDo keywords
 syn keyword Todo contained TODO FIX FIXME XXX HACK
 syn keyword pythonTodo contained TODO FIX FIXME XXX HACK
-
-" Python PEP8 checking - requires pep8.py somewhere in the $PATH
-" Control-P to run a PEP8 check on the current file...
-nnoremap <silent> <C-p> :cexpr system("pep8.py --repeat ".expand("%:p"))<CR>
-" Then Control-J and Control-K to move between the 'errors'
-nnoremap <silent> <C-j> :cnext<CR>
-nnoremap <silent> <C-k> :cprevious<CR>
 
 "
 " Function key mappings
@@ -144,3 +137,55 @@ map <F2> :NERDTreeToggle<CR>
 
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 autocmd BufRead *.as set filetype=actionscript
+
+" -------------------------------------------------------------------------------
+"  LESS FUNCS
+" -------------------------------------------------------------------------------
+
+function LessToCss()
+	let current_file = shellescape(expand('%:p'))
+	let filename = shellescape(expand('%:r'))
+	let filenamestub = shellescape(expand('%:r:r'))
+	
+	" Setup the filename check for a bootstrap file
+	let bootstrapstub = expand('%:p:h:h') . "/css/bootstrap.css"
+	let bootstraplessstub = expand('%:p:h') . "/bootstrap.less"
+	
+	" Setup the filename for the same file in a css directory
+	let cssname = expand('%:p:h:h') . '/css/' . expand('%:t:r') . '.css'
+	
+	if filereadable(bootstrapstub) && filereadable(bootstraplessstub)
+		let command = "silent !lessc -x " . bootstraplessstub . " " . bootstrapstub
+	elseif filereadable(cssname)
+		let command = "silent !lessc -x " . current_file . " " . cssname
+	else
+		let command = "silent !lessc -x " . current_file . " " . filename . ".css"
+	endif
+	execute command
+endfunction
+autocmd BufWritePost,FileWritePost *.less call LessToCss()
+
+" -------------------------------------------------------------------------------
+
+" -------------------------------------------------------------------------------
+"  TAB MAPPINGS
+" -------------------------------------------------------------------------------
+map <D-S-]> gt
+map <D-S-[> gT
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> 9gt
+map <D-0> :tablast<CR>
+" -------------------------------------------------------------------------------
+
+" -------------------------------------------------------------------------------
+"  CTRL-P
+" -------------------------------------------------------------------------------
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+" -------------------------------------------------------------------------------

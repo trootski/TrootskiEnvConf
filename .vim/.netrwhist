@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/troot/Applications/Day of Defeat Source.app'
 let g:netrw_dirhist_2='/Applications/MAMP/conf/apache'
 let g:netrw_dirhist_3='/etc'
+let g:netrw_dirhist_4='/home/troot/.vim/indent'
+let g:netrw_dirhist_5='/Users/troot/Sites/smilesforcrumlin/app'
