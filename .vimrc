@@ -1,3 +1,6 @@
+
+set runtimepath^=~/TrootskiEnvConf/.vim/
+
 scriptencoding utf-8
 
 set encoding=utf-8
@@ -31,7 +34,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
-colorscheme solarized
+"colorscheme solarized
 
 set list
 set listchars=tab:▸\ ,eol:¬
