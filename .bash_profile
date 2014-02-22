@@ -20,3 +20,4 @@ export LANG="en_GB"
 if [[ $OSTYPE == darwin* ]]; then 
   complete -W "NSGlobalDomain" defaults
 fi
+

@@ -26,8 +26,11 @@ fi
 export EDITOR='vi'
 
 set syntax on
-PATH="/usr/local/bin:/usr/include:${PATH}:${HOME}/node_modules/less/bin:${HOME}/node_modules/node-dev"
+PATH="/usr/local/bin:/usr/include:${PATH}:${HOME}/node_modules/less/bin:${HOME}/node_modules/node-dev:${HOME}/Documents/flex_sdk/bin"
 export PATH
+
+set -o vi
+set showmode
 
 ############################################
 # You may uncomment the following lines if you want `ls' to be colorized:
@@ -50,6 +53,7 @@ alias work='cd ~/working'
 alias dl='cd /volumes/hd4/" downloads"'
 alias d4='cd /volumes/hd4'
 alias cls='clear'
+alias skyp='env PULSE_LATENCY_MSEC=60 skype %U'
 # alias vi='vim'
 # alias c++='g++'
 # alias cc='gcc'
@@ -78,3 +82,4 @@ then
  alias old='. ~/.bash_styles old'
 fi
 #source /sw/bin/init.sh
+
