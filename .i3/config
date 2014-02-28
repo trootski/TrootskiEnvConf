@@ -171,7 +171,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	i3bar_command /usr/bin/i3bar
-	status_command i3status 
+	status_command i3status --config ~/.i3/i3status.config
 	colors {
 	  background #333333
 	  statusline #ffffff
@@ -202,6 +202,7 @@ assign [class="banshee"] $workspace7
 assign [class="Vlc"] $workspace8
 
 assign [class="Filezilla"] $workspace9
+assign [class="Mysql-workbench-bin"] $workspace9
 
 # Start applications
 exec --no-startup-id ~/.dropbox-dist/dropboxd
