@@ -1,5 +1,11 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# If we are on ubuntu, do the default setup first
+if [ -f ~/TrootskiEnvConf/.ubuntu ];
+then
+	source ~/TrootskiEnvConf/.ubuntu
+fi
+
 export PS1='\u@\h:\w\n> '
 umask 022
 
@@ -21,7 +27,6 @@ then
         . ~/.bash_styles old;
 fi
 
-#export TERM='xterm-color'
 #export NNTPSERVER='news.unina.it'
 export EDITOR='vi'
 
@@ -36,8 +41,8 @@ set showmode
 # You may uncomment the following lines if you want `ls' to be colorized:
 #
 
- export CLICOLOR='true'
- export LSCOLORS="gxfxcxdxbxegedabagacad"
+# export CLICOLOR='true'
+# export LSCOLORS="gxfxcxdxbxegedabagacad"
  
 ###########################################
 # set up aliases
