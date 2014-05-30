@@ -18,7 +18,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nobackup
 set nowritebackup
 
