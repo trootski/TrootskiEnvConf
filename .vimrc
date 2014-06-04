@@ -192,3 +192,8 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 " -------------------------------------------------------------------------------
+
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux"
+	set mouse=
+endif

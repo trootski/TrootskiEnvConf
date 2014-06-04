@@ -6,7 +6,7 @@ then
 	source ~/TrootskiEnvConf/.ubuntu
 fi
 
-export PS1='\u@\h:\w\n> '
+#export PS1='\u@\h:\w\n> '
 umask 022
 
 ##########################################
@@ -15,7 +15,7 @@ umask 022
 
 if [ -f ~/.bash_completion ];
 then
-        . ~/.bash_completion;
+	. ~/.bash_completion;
 fi
 
 ##########################################
@@ -24,14 +24,14 @@ fi
 
 if [ -f ~/.bash_styles ];
 then
-        . ~/.bash_styles old;
+	. ~/.bash_styles old;
 fi
 
 #export NNTPSERVER='news.unina.it'
 export EDITOR='vi'
 
 set syntax on
-PATH="/usr/local/bin:/usr/include:${PATH}:${HOME}/node_modules/less/bin:${HOME}/node_modules/node-dev:${HOME}/Documents/flex_sdk/bin"
+PATH="/usr/local/bin:/usr/include:${PATH}"
 export PATH
 
 set -o vi
@@ -40,14 +40,12 @@ set showmode
 ############################################
 # You may uncomment the following lines if you want `ls' to be colorized:
 #
-
-# export CLICOLOR='true'
-# export LSCOLORS="gxfxcxdxbxegedabagacad"
+export CLICOLOR='true'
+export LSCOLORS="gxfxcxdxbxegedabagacad"
  
 ###########################################
 # set up aliases
 #
- 
 alias ll='ls -lagh'
 alias l='ls -lagh'
 alias grep='grep -n'
@@ -59,14 +57,6 @@ alias dl='cd /volumes/hd4/" downloads"'
 alias d4='cd /volumes/hd4'
 alias cls='clear'
 alias skyp='env PULSE_LATENCY_MSEC=60 skype %U'
-# alias vi='vim'
-# alias c++='g++'
-# alias cc='gcc'
-#
-# Some more alias to avoid making mistakes:
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 
 ############################################
