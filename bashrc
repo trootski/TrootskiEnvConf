@@ -1,10 +1,7 @@
+#!/bin/bash
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# If we are on ubuntu, do the default setup first
-if [ -f ~/TrootskiEnvConf/.ubuntu ];
-then
-	source ~/TrootskiEnvConf/.ubuntu
-fi
 
 #export PS1='\u@\h:\w\n> '
 umask 022
@@ -31,8 +28,6 @@ fi
 export EDITOR='vi'
 
 set syntax on
-PATH="/usr/local/bin:/usr/include:${PATH}"
-export PATH
 
 set -o vi
 set showmode

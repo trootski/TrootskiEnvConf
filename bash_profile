@@ -1,3 +1,16 @@
+
+# Machine specific config files
+if [ "$HOSTNAME" == "lilacer" ];
+then
+	source ~/TrootskiEnvConf/ubuntu.sh
+elif [[ "$HOSTNAME" == "troot" ]]
+then
+	source ~/TrootskiEnvConf/troot.sh
+elif [[ "$HOSTNAME" == "troot-imac" ]]
+then
+	source ~/TrootskiEnvConf/troot-imac.sh
+fi
+
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 for file in ~/TrootskiEnvConf/.{extra,bash_prompt,exports,aliases,functions}; do
