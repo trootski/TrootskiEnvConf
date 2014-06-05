@@ -1,36 +1,40 @@
 #!/bin/bash
 
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
-
-#export PS1='\u@\h:\w\n> '
-umask 022
-
-##########################################
-#setting up file completion
-#
-
-if [ -f ~/.bash_completion ];
-then
-	. ~/.bash_completion;
-fi
-
-##########################################
-# advanced prompt settings
-#
-
-if [ -f ~/.bash_styles ];
-then
-	. ~/.bash_styles old;
-fi
-
-#export NNTPSERVER='news.unina.it'
 export EDITOR='vi'
 
 set syntax on
-
 set -o vi
 set showmode
+
+# Machine specific config files
+if [ "$HOSTNAME" == "lilacer" ];
+then
+	source ~/TrootskiEnvConf/ubuntu.sh
+elif [[ "$HOSTNAME" == "troot" ]]
+then
+	source ~/TrootskiEnvConf/troot.sh
+elif [[ "$HOSTNAME" == "troot-imac" ]]
+then
+	source ~/TrootskiEnvConf/troot-imac.sh
+fi
+
+HOST_OS=$(uname)
+
+if [[ $HOST_OS == "Darwin" ]]
+then
+	# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
+	# ~/.extra can be used for settings you don’t want to commit
+	for file in ~/TrootskiEnvConf/.{extra,bash_prompt,exports,aliases,functions}; do
+		[ -r "$file" ] && source "$file"
+	done
+	unset file
+elif [[ $HOST_OS == "Linux" ]]
+then
+	source ~/TrootskiEnvConf/.bash_prompt
+fi
 
 ############################################
 # You may uncomment the following lines if you want `ls' to be colorized:
@@ -44,15 +48,9 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 alias ll='ls -lagh'
 alias l='ls -lagh'
 alias grep='grep -n'
-alias netconns='netstat -a -f inet'
 alias cd..='cd ..'
 alias ..='cd ..'
-alias work='cd ~/working'
-alias dl='cd /volumes/hd4/" downloads"'
-alias d4='cd /volumes/hd4'
 alias cls='clear'
-alias skyp='env PULSE_LATENCY_MSEC=60 skype %U'
-alias ttop='top -ocpu -R -F -s 2 -n30'
 
 ############################################
 # some aliases to set fancy prompts
@@ -71,5 +69,4 @@ then
  alias testp='. ~/.bash_styles testp'
  alias old='. ~/.bash_styles old'
 fi
-#source /sw/bin/init.sh
 
