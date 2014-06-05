@@ -1,3 +1,5 @@
 .vim/undo/*
 *.swp
 .VimballRecord
+^backups/*
+!backups/empty
