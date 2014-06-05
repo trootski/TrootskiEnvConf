@@ -1,5 +1,9 @@
 .vim/undo/*
 *.swp
 .VimballRecord
+<<<<<<< .merge_file_g0E3Gb
 ^backups/*
 !backups/empty
+=======
+.vim/.netrwhist
+>>>>>>> .merge_file_vElvqC
