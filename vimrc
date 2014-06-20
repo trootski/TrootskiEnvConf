@@ -5,9 +5,15 @@ set runtimepath^=~/TrootskiEnvConf/.vim/
 call pathogen#infect()
 call pathogen#helptags()
 
+" Color Scheme stuff
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+set bg=dark
+colorscheme solarized
+
 set autoindent
 set backspace=indent,eol,start
-set bg=dark
 set bs=2		" allow backspacing over everything
 set clipboard=unnamedplus
 set colorcolumn=85
@@ -71,8 +77,6 @@ set titleold=""
 
 " command line completion
 set wildmode=list:longest,full
-syntax enable " syntax highlighting
-syntax on
 
 
 " Edit/save another file in the same directory as the current file
