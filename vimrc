@@ -6,11 +6,11 @@ call pathogen#infect()
 call pathogen#helptags()
 
 " Color Scheme stuff
-let g:solarized_termcolors=256
+let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
 set bg=dark
-colorscheme solarized
+colorscheme jellybeans
 
 set autoindent
 set backspace=indent,eol,start
