@@ -1,8 +1,10 @@
 
+" tell vim where to find the runtime folder
+set runtimepath^=~/TrootskiEnvConf/.vim/
+
 call pathogen#infect()
 call pathogen#helptags()
 
-"set runtimepath^=~/TrootskiEnvConf/.vim/
 "
 "
 "scriptencoding utf-8
