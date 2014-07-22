@@ -16,7 +16,9 @@ set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
 set clipboard=unnamedplus
-set colorcolumn=85
+if version >= 730
+	set colorcolumn=85
+endif
 set cursorline
 set encoding=utf-8
 set formatoptions=qrn1
@@ -30,7 +32,9 @@ set nobackup
 set nocompatible
 set nowritebackup
 set nu			" line numbering
-set relativenumber
+if version >= 730
+	set relativenumber
+endif
 set ruler
 set ruler		" show current coords of cursor
 set scrolloff=3
@@ -47,10 +51,12 @@ set wrap
 "
 " Undo
 "
-set undofile
-set undodir=$HOME/.vim/undo
 set undolevels=1000
-set undoreload=1000
+if version >= 730
+	set undofile
+	set undodir=$HOME/.vim/undo
+	set undoreload=1000
+endif
 
 
 "
