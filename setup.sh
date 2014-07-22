@@ -4,34 +4,39 @@ set -e
 
 # Setup the script on a new machine
 
-[[ ! -e ~/TrootskiEnvConf/backups ]] && mkdir ~/TrootskiEnvConf/backups
+if [ "$#" -eq 1 ];then
+    user_home_path=$(eval echo ~$user_home_path$1)
+fi
+echo "Setting up:"$user_home_path
 
-if [[ -h ~/.bashrc ]]
+[[ ! -e $user_home_path/backups ]] && mkdir $user_home_path/backups
+
+if [[ -h $user_home_path/.bashrc ]]
 then
-	rm ~/.bashrc
-elif [[ -e ~/.bashrc ]]
+	rm $user_home_path/.bashrc
+elif [[ -e $user_home_path/.bashrc ]]
 then
 	# Move the current bashrc to the backup folder
-	mv ~/.bashrc ~/TrootskiEnvConf/backups/
+	mv $user_home_path/.bashrc $user_home_path/TrootskiEnvConf/backups/
 fi
-ln -s ~/TrootskiEnvConf/bashrc ~/.bashrc
+ln -s $user_home_path/TrootskiEnvConf/bashrc $user_home_path/.bashrc
 
-if [[ -h ~/.bash_profile ]]
+if [[ -h $user_home_path/.bash_profile ]]
 then
-	rm ~/.bash_profile
-elif [[ -e ~/.bash_profile ]]
+	rm $user_home_path/.bash_profile
+elif [[ -e $user_home_path/.bash_profile ]]
 then
 	# Move the current bash_profile to the backup folder
-	mv ~/.bash_profile ~/TrootskiEnvConf/backups/
+	mv $user_home_path/.bash_profile $user_home_path/TrootskiEnvConf/backups/
 fi
-ln -s ~/TrootskiEnvConf/bash_profile ~/.bash_profile
+ln -s $user_home_path/TrootskiEnvConf/bash_profile $user_home_path/.bash_profile
 
-if [[ -h ~/.vimrc ]]
+if [[ -h $user_home_path/.vimrc ]]
 then
-	rm ~/.vimrc
-elif [[ -e ~/.vimrc ]]
+	rm $user_home_path/.vimrc
+elif [[ -e $user_home_path/.vimrc ]]
 then
 	# Move the current bash_profile to the backup folder
-	mv ~/.vimrc ~/TrootskiEnvConf/backups/
+	mv $user_home_path/.vimrc $user_home_path/TrootskiEnvConf/backups/
 fi
-ln -s ~/TrootskiEnvConf/vimrc ~/.vimrc
+ln -s $user_home_path/TrootskiEnvConf/vimrc $user_home_path/.vimrc
