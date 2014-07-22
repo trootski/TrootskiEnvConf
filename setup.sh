@@ -7,7 +7,6 @@ set -e
 if [ "$#" -eq 1 ];then
     user_home_path=$(eval echo ~$user_home_path$1)
 fi
-echo "Setting up:"$user_home_path
 
 [[ ! -e $user_home_path/backups ]] && mkdir $user_home_path/backups
 
