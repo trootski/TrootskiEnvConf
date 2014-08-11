@@ -16,7 +16,7 @@ set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
 set clipboard=unnamedplus
-if version >= 730
+if version >= 703
 	set colorcolumn=85
 endif
 set cursorline
