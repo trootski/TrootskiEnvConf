@@ -3,12 +3,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# If we are on ubuntu, do the default setup first
-if [ "$HOSTNAME" = "lilacer" ];
-then
-	source ~/TrootskiEnvConf/.ubuntu
-fi
-
 export EDITOR='vi'
 
 set syntax on
