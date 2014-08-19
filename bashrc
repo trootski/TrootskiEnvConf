@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # If we are on ubuntu, do the default setup first
-if [ -f ~/TrootskiEnvConf/.ubuntu ];
+if [ "$HOSTNAME" = "lilacer" ];
 then
 	source ~/TrootskiEnvConf/.ubuntu
 fi
@@ -31,7 +31,7 @@ fi
 export EDITOR='vi'
 
 set syntax on
-PATH="/usr/local/bin:/usr/include:${PATH}"
+PATH="${PATH}:${HOME}/Documents/bin"
 export PATH
 
 set -o vi
