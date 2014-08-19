@@ -3,6 +3,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# If we are on ubuntu, do the default setup first
+if [ "$HOSTNAME" = "lilacer" ];
+then
+	source ~/TrootskiEnvConf/.ubuntu
+fi
+
 export EDITOR='vi'
 
 set syntax on
@@ -35,6 +41,15 @@ elif [[ $HOST_OS == "Linux" ]]
 then
 	source ~/TrootskiEnvConf/.bash_prompt
 fi
+
+export EDITOR='vi'
+
+set syntax on
+PATH="${PATH}:${HOME}/Documents/bin"
+export PATH
+
+set -o vi
+set showmode
 
 ############################################
 # You may uncomment the following lines if you want `ls' to be colorized:

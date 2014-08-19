@@ -14,3 +14,4 @@ if [[ $OSTYPE == darwin* ]]; then
   complete -W "NSGlobalDomain" defaults
 fi
 
+[[ -s ~/.bashrc ]] && source ~/.bashrc
