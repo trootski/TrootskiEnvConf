@@ -4,6 +4,7 @@ set runtimepath^=~/TrootskiEnvConf/.vim/
 
 call pathogen#infect()
 call pathogen#helptags()
+set nocompatible
 
 " Color Scheme stuff
 let g:jellybeans_use_lowcolor_black = 0
@@ -31,6 +32,13 @@ set mouse=a		" allow mouse support in console
 set nobackup
 set nocompatible
 set nowritebackup
+" backup to ~/.tmp 
+set backup 
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set backupskip=/tmp/*,/private/tmp/* 
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set writebackup
+
 set nu			" line numbering
 if version >= 730
 	set relativenumber
