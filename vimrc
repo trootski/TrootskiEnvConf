@@ -29,18 +29,18 @@ set list
 set listchars=tab:▸\ ,eol:¬
 set modeline	" enable modelines to be read
 set mouse=a		" allow mouse support in console
-set nobackup
 set nocompatible
-set nowritebackup
 " backup to ~/.tmp 
 set backup 
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set backupskip=/tmp/*,/private/tmp/* 
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
+set nobackup
+set nowritebackup
 
 set nu			" line numbering
-if version >= 730
+if version >= 703
 	set relativenumber
 endif
 set ruler

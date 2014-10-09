@@ -16,8 +16,3 @@ export HISTTIMEFORMAT
 # Make some commands not show up in history
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
-FLEX_HOME="/home/troot/Documents/flex_sdk"
-export FLEX_HOME
-
-FLEX_PATH="/home/troot/Documents/flex_sdk/bin"
-export FLEX_PATH

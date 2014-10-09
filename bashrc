@@ -23,18 +23,12 @@ fi
 
 HOST_OS=$(uname)
 
-if [[ $HOST_OS == "Darwin" ]]
-then
-	# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
-	# ~/.extra can be used for settings you don’t want to commit
-	for file in ~/TrootskiEnvConf/.{extra,bash_prompt,exports,aliases,functions}; do
-		[ -r "$file" ] && source "$file"
-	done
-	unset file
-elif [[ $HOST_OS == "Linux" ]]
-then
-	source ~/TrootskiEnvConf/.bash_prompt
-fi
+# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
+# ~/.extra can be used for settings you don’t want to commit
+for file in ~/TrootskiEnvConf/.{extra,bash_prompt,exports,aliases,functions}; do
+	[ -r "$file" ] && source "$file"
+done
+unset file
 
 export EDITOR='vi'
 
