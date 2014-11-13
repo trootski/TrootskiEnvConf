@@ -4,9 +4,7 @@ set -e
 
 # Setup the script on a new machine
 
-if [ "$#" -eq 1 ];then
-    user_home_path=$(eval echo ~$user_home_path$1)
-fi
+user_home_path=$HOME
 
 [[ ! -e $user_home_path/backups ]] && mkdir $user_home_path/backups
 
