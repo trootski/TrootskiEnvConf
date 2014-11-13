@@ -10,7 +10,7 @@ set -o vi
 set showmode
 
 # Machine specific config files
-if [ "$HOSTNAME" == "lilacer" ];
+if [ "$OSTYPE" == "linux" ];
 then
 	source ~/TrootskiEnvConf/ubuntu.sh
 elif [[ "$HOSTNAME" == "troot" ]]
@@ -30,7 +30,7 @@ for file in ~/TrootskiEnvConf/.{extra,bash_prompt,exports,aliases,functions}; do
 done
 unset file
 
-export EDITOR='vi'
+export EDITOR='vim'
 
 set syntax on
 PATH="${PATH}:${HOME}/Documents/bin"

@@ -1,6 +1,6 @@
 .vim/undo/*
 *.swp
 .VimballRecord
-^backups/*
+backups/*
 !backups/empty
 .vim/.netrwhist
