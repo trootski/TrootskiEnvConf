@@ -37,3 +37,5 @@ then
 	mv $user_home_path/.vimrc $user_home_path/TrootskiEnvConf/backups/
 fi
 ln -s $user_home_path/TrootskiEnvConf/vimrc $user_home_path/.vimrc
+
+git submodule update --init ~/TrootskiEnvConf/
