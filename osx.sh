@@ -5,3 +5,9 @@
 if [[ $OSTYPE == darwin* ]]; then 
   complete -W "NSGlobalDomain" defaults
 fi
+
+# cd into whatever is the forefront Finder window.
+function cdf() {  # short for cdfinder
+  cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
+}
+
