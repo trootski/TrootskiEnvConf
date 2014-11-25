@@ -20,3 +20,4 @@ for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator}; do
 	ln -s ~/TrootskiEnvConf/$(echo $(basename "$file") | sed "s/^\.//") "$file"
 done
 
+git submodule update --init ~/TrootskiEnvConf/

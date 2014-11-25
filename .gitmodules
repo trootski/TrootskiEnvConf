@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/vagrant"]
 	path = .vim/bundle/vagrant
 	url = https://github.com/markcornick/vim-vagrant.git
+[submodule ".vim/bundle/vim-processing"]
+	path = .vim/bundle/vim-processing
+	url = https://github.com/sophacles/vim-processing.git
