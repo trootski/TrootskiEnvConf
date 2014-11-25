@@ -7,7 +7,7 @@ call pathogen#helptags()
 set nocompatible
 
 " Color Scheme stuff
-let g:jellybeans_use_lowcolor_black = 0
+"let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
 set bg=dark
