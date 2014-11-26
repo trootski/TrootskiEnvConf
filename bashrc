@@ -28,7 +28,7 @@ set show-mode-in-prompt on
 # OS specific config files
 if [ "$OSTYPE" == "linux" ];
 then
-	source ~/TrootskiEnvConf/ubuntu.sh
+	source ~/TrootskiEnvConf/linux.sh
 elif [[ "$OSTYPE" == "darwin14" ]]
 then
 	source ~/TrootskiEnvConf/osx.sh
