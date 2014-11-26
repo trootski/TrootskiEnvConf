@@ -3,8 +3,7 @@ These are my personal configuration files, to be shared accross machines.
 They're pretty standard
 
 Installation
-Create symbolic links from your home folder to the git repository:
-ln -s ~/TrootskiEnvConf/.bashrc ~/.bashrc
-ln -s ~/TrootskiEnvConf/.bash_profile ~/.bash_profile
-ln -s ~/TrootskiEnvConf/.vimrc ~/.vimrc
+Run setup.sh
+
+This will create symlinks for the dotfiles in your home directory. It assumes the existence of the folder TrootskiEnvConf in your home folder.
 
