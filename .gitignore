@@ -5,4 +5,4 @@ backups/*
 !backups/empty
 .vim/.netrwhist
 tmuxinator/*
-!tmuxinator/empty
+!/**/.gitkeep
