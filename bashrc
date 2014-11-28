@@ -60,4 +60,4 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 ############################################
 # Adds tmuxinator bash completion support
 #
-source ~/.bin/tmuxinator.bash
+source ~/TrootskiEnvConf/tmuxinator.bash
