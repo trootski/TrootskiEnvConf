@@ -1,3 +1,5 @@
+PATH="${PATH}:${HOME}/.composer/vendor/bin:"
+export PATH
 
 ############################################
 # Setup my PATH (Linux specific)

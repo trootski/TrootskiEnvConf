@@ -27,7 +27,7 @@ set syntax on
 ############################################
 # Setup my PATH
 #
-PATH="${PATH}:${HOME}/Documents/bin"
+PATH="${PATH}:${HOME}/Documents/bin:"
 export PATH
 
 ############################################
@@ -43,7 +43,7 @@ set show-mode-in-prompt on
 ############################################
 # OS specific config files
 #
-if [ "$OSTYPE" == "linux" ];
+if [ "$OSTYPE" == "linux" ] || [ "$OSTYPE" == "linux-gnu" ];
 then
 	source ~/TrootskiEnvConf/linux.sh
 elif [[ "$OSTYPE" == "darwin14" ]]
