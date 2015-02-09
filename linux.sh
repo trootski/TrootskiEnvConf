@@ -1,4 +1,10 @@
 
+############################################
+# Setup my PATH (Linux specific)
+#
+PATH="${PATH}:${HOME}/.composer/vendor/bin"
+export PATH
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

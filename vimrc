@@ -110,6 +110,26 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 autocmd BufRead *.as set filetype=actionscript
 
 " -------------------------------------------------------------------------------
+"  BUFFER RE-MAPPINGS
+" -------------------------------------------------------------------------------
+" Move to the previous buffer with "gp"
+nnoremap gp :bp<CR>
+
+" Move to the next buffer with "gn"
+nnoremap gn :bn<CR>
+
+" List all possible buffers with "gl"
+nnoremap gl :ls<CR>
+
+" List all possible buffers with "gb" and accept a new buffer argument [1]
+nnoremap gb :ls<CR>:b
+
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+\ }
+
+" -------------------------------------------------------------------------------
 "  TAB MAPPINGS
 " -------------------------------------------------------------------------------
 map <D-S-]> gt
@@ -141,6 +161,22 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+" -------------------------------------------------------------------------------
+
+" -------------------------------------------------------------------------------
+"  SYNTASTIC
+" -------------------------------------------------------------------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_quiet_messages = { "type": "syntax" }
+let g:syntastic_php_checkers = ['php']
 " -------------------------------------------------------------------------------
 
 " Disable the mouse on Linux
