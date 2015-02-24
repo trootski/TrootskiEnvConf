@@ -123,6 +123,8 @@ nnoremap gl :ls<CR>
 
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
+" Delete the current buffer but don't close the window
+nnoremap gd :bp\|bd #<CR>
 
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
@@ -157,9 +159,8 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|vendor|components)$',
   \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
   \ }
 " -------------------------------------------------------------------------------
 
@@ -175,9 +176,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" let g:syntastic_quiet_messages = { "type": "syntax" }
+let g:syntastic_quiet_messages = { "type": "syntax" }
 let g:syntastic_php_checkers = ['php']
 " -------------------------------------------------------------------------------
+
+" -------------------------------------------------------------------------------
+"  TAGBAR
+" -------------------------------------------------------------------------------
+autocmd FileType php,blade,javascript nested :TagbarOpen
 
 " Disable the mouse on Linux
 let s:uname = system("echo -n \"$(uname)\"")
