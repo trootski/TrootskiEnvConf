@@ -1,6 +1,6 @@
 alias ll='ls -lagh'
 alias l='ls -lagh'
-alias grep='grep -n'
+#alias grep='grep -n'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias cls='clear'
