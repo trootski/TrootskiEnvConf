@@ -126,11 +126,6 @@ nnoremap gb :ls<CR>:b
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
 
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-\ }
-
 " -------------------------------------------------------------------------------
 "  TAB MAPPINGS
 " -------------------------------------------------------------------------------
@@ -151,17 +146,23 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 "  CTRL-P
 " -------------------------------------------------------------------------------
-set runtimepath^=~/TrootskiEnvConf/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
+if exists("g:ctrl_user_command")
+	unlet g:ctrlp_user_command
+endif
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|vendor|components)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+\ }
+set wildignore+=*/vendor/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/bower_components/*
+set wildignore+=*/components/*
+
 " -------------------------------------------------------------------------------
 
 " -------------------------------------------------------------------------------
