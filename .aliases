@@ -47,8 +47,17 @@ alias ga="git add ."
 # Do a git add absolutely everything
 alias gaa="git add -A"
 
-# Dot git commit with message
+# Do git commit with message
 alias gm="git commit -m "
+
+# Do git push
+alias gp="git push"
+
+# Do git pull
+alias gg="git pull"
+
+# Do git status
+alias gs="git status"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
