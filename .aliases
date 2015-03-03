@@ -140,8 +140,5 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 	alias pumpitup="osascript -e 'set volume 10'"
 	alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
-	# Enhanced WHOIS lookups
-	alias whois="whois -h whois-servers.net"
-
 fi
 
