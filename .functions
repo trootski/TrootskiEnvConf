@@ -108,3 +108,9 @@ gifify() {
   fi
 }
 
+# Remove all .fla, .html files from a folder
+del_flas_and_html() {
+	find . -name "*.fla" -exec rm {} \;
+	find . -name "*.html" -exec rm {} \;
+}
+
