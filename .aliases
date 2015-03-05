@@ -19,7 +19,7 @@ alias gga="git add ."
 alias ggaa="git add -A"
 
 # Do git commit with editor
-alias ggm="git commit -m "
+alias gg="git commit"
 
 # Do git commit with message
 alias ggm="git commit -m "
@@ -120,7 +120,7 @@ fi
 # LS ALIASES
 #
 # Standard list long
-alias ll="ls -lagh ${colorflag}"
+alias ll="ls -lgh ${colorflag}"
 
 # List all files colorized
 alias l="ls -h ${colorflag}"
