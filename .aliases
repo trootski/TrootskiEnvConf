@@ -18,6 +18,9 @@ alias gga="git add ."
 # Do a git add absolutely everything
 alias ggaa="git add -A"
 
+# Do git commit with editor
+alias ggm="git commit -m "
+
 # Do git commit with message
 alias ggm="git commit -m "
 
@@ -41,7 +44,7 @@ alias ggr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup
 #
 
 # be nice
-alias hosts='sudo $EDITOR /etc/hosts'   # yes I occasionally 127.0.0.1 twitter.com ;)
+alias hosts='sudo $EDITOR /etc/hosts'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
