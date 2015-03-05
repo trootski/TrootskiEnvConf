@@ -13,28 +13,28 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 #
 
 # Do a git add everything
-alias ga="git add ."
+alias gga="git add ."
 
 # Do a git add absolutely everything
-alias gaa="git add -A"
+alias ggaa="git add -A"
 
 # Do git commit with message
-alias gm="git commit -m "
+alias ggm="git commit -m "
 
 # Do git push
-alias gp="git push"
+alias ggp="git push"
 
 # Do git pull
-alias gg="git pull"
+alias ggg="git pull"
 
 # Do git status
-alias gs="git status"
+alias ggs="git status"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
 
 # git root
-alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+alias ggr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
 
 ###########################################
 # GLOBAL COMMAND ALIASES
