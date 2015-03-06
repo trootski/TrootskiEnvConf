@@ -19,7 +19,7 @@ alias gga="git add ."
 alias ggaa="git add -A"
 
 # Do git commit with editor
-alias gg="git commit"
+alias ggc="git commit"
 
 # Do git commit with message
 alias ggm="git commit -m "
