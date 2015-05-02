@@ -184,7 +184,7 @@ let g:syntastic_php_checkers = ['php']
 " -------------------------------------------------------------------------------
 "  TAGBAR
 " -------------------------------------------------------------------------------
-autocmd FileType php,blade,javascript nested :TagbarOpen
+" autocmd FileType php,blade,javascript nested :TagbarOpen
 
 " Disable the mouse on Linux
 let s:uname = system("echo -n \"$(uname)\"")
