@@ -2,6 +2,10 @@
 " tell vim where to find the runtime folder
 set runtimepath^=~/TrootskiEnvConf/.vim/
 
+" Remap jj to be the escape keys
+ino jj <esc>
+cno jj <c-c>
+
 call pathogen#infect()
 call pathogen#helptags()
 set nocompatible
