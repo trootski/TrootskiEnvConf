@@ -152,7 +152,7 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'r'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 if exists("g:ctrl_user_command")
@@ -166,6 +166,11 @@ set wildignore+=*/vendor/*
 set wildignore+=*/node_modules/*
 set wildignore+=*/bower_components/*
 set wildignore+=*/components/*
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
 
 " -------------------------------------------------------------------------------
 
@@ -184,6 +189,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_quiet_messages = { "type": "syntax" }
 let g:syntastic_php_checkers = ['php']
 " -------------------------------------------------------------------------------
+
+" -------------------------------------------------------------------------------
+"  AIRLINE
+" -------------------------------------------------------------------------------
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " -------------------------------------------------------------------------------
 "  TAGBAR
