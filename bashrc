@@ -9,7 +9,11 @@
 ############################################
 # Use the vim editor by default
 #
-export EDITOR='vim'
+if hash nvim 2>/dev/null; then
+	export EDITOR='nvim'
+else
+	export EDITOR='vim'
+fi
 
 ############################################
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions

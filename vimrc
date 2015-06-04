@@ -1,4 +1,3 @@
-
 " tell vim where to find the runtime folder
 set runtimepath^=~/TrootskiEnvConf/.vim/
 
@@ -20,7 +19,8 @@ colorscheme jellybeans
 set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
-set clipboard=unnamedplus
+"set clipboard=unnamed
+set clipboard+=unnamed
 if version >= 703
 	set colorcolumn=85
 endif
@@ -54,7 +54,6 @@ set showcmd
 set showmode
 set textwidth=79
 set ttyfast
-set ttymouse=xterm2		" allows mouse to work in screen sessions
 set visualbell
 set wildmenu
 set wildmode=list:longest
