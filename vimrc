@@ -19,8 +19,7 @@ colorscheme jellybeans
 set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
-"set clipboard=unnamed
-set clipboard+=unnamed
+set clipboard=unnamed
 if version >= 703
 	set colorcolumn=85
 endif
