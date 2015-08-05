@@ -5,6 +5,10 @@ set runtimepath^=~/TrootskiEnvConf/.vim/
 ino jj <esc>
 cno jj <c-c>
 
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+set showmode
+
 call pathogen#infect()
 call pathogen#helptags()
 set nocompatible
