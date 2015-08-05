@@ -40,3 +40,9 @@
 [submodule ".vim/bundle/vim-twig"]
 	path = .vim/bundle/vim-twig
 	url = https://github.com/evidens/vim-twig.git
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule ".vim/bundle/vim-addon-mw-utils"]
+	path = .vim/bundle/vim-addon-mw-utils
+	url = https://github.com/marcweber/vim-addon-mw-utils
