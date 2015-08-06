@@ -1,5 +1,5 @@
 " tell vim where to find the runtime folder
-set runtimepath^=~/TrootskiEnvConf/.vim/
+set runtimepath^=~/TrootskiEnvConf/.vim
 
 " Remap jj to be the escape keys
 ino jj <esc>
