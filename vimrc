@@ -45,6 +45,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 set nobackup
 set nowritebackup
+set showbreak=↪
 
 set nu			" line numbering
 if version >= 703
@@ -68,7 +69,7 @@ set wrap
 set undolevels=1000
 if version >= 730
 	set undofile
-	set undodir=$HOME/.vim/undo
+	set undodir=$HOME/.vim/undo//
 	set undoreload=1000
 endif
 
@@ -115,6 +116,18 @@ vnoremap K k
 " -------------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc$', '\~$']
 map <F2> :NERDTreeToggle<CR>
+
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
 
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 autocmd BufRead *.as set filetype=actionscript
