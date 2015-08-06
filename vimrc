@@ -98,7 +98,6 @@ set titleold=""
 " command line completion
 set wildmode=list:longest,full
 
-
 " Edit/save another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -108,7 +107,12 @@ map ,w :w <C-R>=expand("%:p:h") . "/" <CR>
 map ,sav :sav <C-R>=expand("%:p:h") . "/" <CR>
 map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" NERD_tree should ignore .pyc files
+" Stop the exit to CLI when hitting up accidentally
+vnoremap K k
+
+" -------------------------------------------------------------------------------
+"  NERD TREE STUFF
+" -------------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc$', '\~$']
 map <F2> :NERDTreeToggle<CR>
 
