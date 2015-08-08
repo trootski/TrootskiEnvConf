@@ -1,6 +1,10 @@
 " tell vim where to find the runtime folder
 set runtimepath^=~/TrootskiEnvConf/.vim
 
+call pathogen#infect()
+call pathogen#helptags()
+set nocompatible
+
 " Remap jj to be the escape keys
 ino jj <esc>
 cno jj <c-c>
@@ -9,9 +13,6 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 set showmode
 
-call pathogen#infect()
-call pathogen#helptags()
-set nocompatible
 
 " Color Scheme stuff
 "let g:jellybeans_use_lowcolor_black = 0
