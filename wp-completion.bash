@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash">redirected</a>.</body></html>

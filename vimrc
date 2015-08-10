@@ -31,6 +31,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'sophacles/vim-processing'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
 
