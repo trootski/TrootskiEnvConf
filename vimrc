@@ -216,9 +216,10 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_clear_cache_on_exit = 1
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.jpeg,*.png,*.gif  " MacOSX/Linux
 if exists("g:ctrl_user_command")
 	unlet g:ctrlp_user_command
 endif
