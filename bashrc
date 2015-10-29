@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################################
-# If not running interactively, don't do 
+# If not running interactively, don't do
 # anything
 #
 [ -z "$PS1" ] && return
@@ -18,7 +18,7 @@ fi
 ############################################
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 #
-for file in ~/TrootskiEnvConf/.{bash_prompt,exports,aliases,functions,wp-completion.bash}; do
+for file in ~/TrootskiEnvConf/bash/{bash_prompt,exports,aliases,functions}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
@@ -49,10 +49,10 @@ set show-mode-in-prompt on
 #
 if [ "$OSTYPE" == "linux" ] || [ "$OSTYPE" == "linux-gnu" ];
 then
-	source ~/TrootskiEnvConf/linux.sh
+	source ~/TrootskiEnvConf/bash/linux.sh
 elif [[ "$OSTYPE" == "darwin14" ]]
 then
-	source ~/TrootskiEnvConf/osx.sh
+	source ~/TrootskiEnvConf/bash/osx.sh
 fi
 
 ############################################
@@ -60,7 +60,7 @@ fi
 #
 export CLICOLOR='true'
 export LSCOLORS="gxfxcxdxbxegedabagacad"
- 
+
 ############################################
 # Adds tmuxinator bash completion support
 #
