@@ -11,4 +11,12 @@ function t_vlc_conv_snapshot {
 	rm "$1"
 }
 
+# TextEdit
+# Use Plain Text Mode as Default
+#defaults write com.apple.TextEdit RichText -int 0
+
+# Expand Save Panel by Default
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true && \
+#defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
 
