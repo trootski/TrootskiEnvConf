@@ -55,7 +55,7 @@ then
 
 	# Only show username/host if not default
 	function usernamehost() {
-		if [ $USER = $default_username ]; then echo "${MAGENTA}$USER${WHITE}@${ORANGE}$HOSTNAME $WHITEin "; fi
+		echo "${MAGENTA}$USER${WHITE}@${ORANGE}$HOSTNAME $WHITEin "
 	}
 
 	# iTerm Tab and Title Customization and prompt customization
