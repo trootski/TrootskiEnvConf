@@ -108,7 +108,7 @@ function t_ffmpeg_bitrate {
 	echo "Creating ""$MP4_OUT"
 
 	# MP4 @ provided bit rate (default: 550)
-	ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 1 -movflags +faststart -profile:v baseline -level 4.0 -c:a libfdk_aac -b:a 128k -f mp4 /dev/null && ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 2 -movflags +faststart -profile:v baseline -level 4.0 -c:a libfdk_aac -b:a 128k "$MP4_OUT"
+	ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 1 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k -f mp4 /dev/null && ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 2 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k "$MP4_OUT"
 #
 }
 
@@ -118,19 +118,19 @@ function t_html5_video_suite {
 	ORIG_MP4_FNAME="${ORIG_MP4_FNAME_FULL%.*}"
 
 	# DASH FILES
-	t_ffmpeg_bitrate "$1" "350" "320" "240"
-	t_ffmpeg_bitrate "$1" "550" "480" "360"
+	#t_ffmpeg_bitrate "$1" "350" "320" "240"
+	#t_ffmpeg_bitrate "$1" "550" "480" "360"
 	t_ffmpeg_bitrate "$1" "900" "720" "480"
-	t_ffmpeg_bitrate "$1" "1600" "1280" "720"
+	#t_ffmpeg_bitrate "$1" "1600" "1280" "720"
 
-	MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
-	MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
+	#MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
+	#MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
 	MP4_OUT_Q3="$ORIG_MP4_FNAME""-b-900k-720x480.mp4"
-	MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
+	#MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
 
 	OUT_FILE="dash-""$ORIG_MP4_FNAME"".mpd"
 
-	MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
+	#MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
 
 	# HLS segmented file
 	ffmpeg -y -i "$MP4_OUT_Q3" -map 0 -codec:v libx264 -codec:a libfdk_aac -f ssegment -segment_list "$ORIG_MP4_FNAME".m3u8 -segment_list_flags +live -segment_time 10 "hls-""$ORIG_MP4_FNAME"%03d.ts
