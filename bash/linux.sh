@@ -133,7 +133,7 @@ function t_html5_video_suite {
 	#MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
 
 	# HLS segmented file
-	ffmpeg -y -i "$MP4_OUT_Q3" -map 0 -codec:v libx264 -codec:a libfdk_aac -f ssegment -segment_list "$ORIG_MP4_FNAME".m3u8 -segment_list_flags +live -segment_time 10 "hls-""$ORIG_MP4_FNAME"%03d.ts
+	ffmpeg -y -i "$MP4_OUT_Q3" -map 0 -codec:v libx264 -acodec aac -strict experimental -f ssegment -segment_list "$ORIG_MP4_FNAME".m3u8 -segment_list_flags +live -segment_time 10 "hls-""$ORIG_MP4_FNAME"%03d.ts
 
 }
 
@@ -150,5 +150,15 @@ function t_convert_all {
 		cd "$(dirname "$f")"
 		t_html5_video_suite "$MP4_FNAME_FULL"
 	done
+}
+
+function t_a {
+	if [ "$#" -eq 1 ]; then
+		SESS="$1"
+	else
+		SESS=0
+	fi
+
+	tmux attach -t "$SESS"
 }
 

@@ -24,6 +24,7 @@ Plugin 'bling/vim-airline'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'xsbeats/vim-blade'
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -35,6 +36,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'dsawardekar/wordpress.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,15 +69,18 @@ set background=dark
 set bg=dark
 colorscheme jellybeans
 
+set clipboard=unnamedplus
+set paste
+set go+=a
+
 set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
-set clipboard=unnamed
 if version >= 703
 	set colorcolumn=85
 endif
 set cursorline
-set encoding=utf-8
+"set encoding=utf-8
 set formatoptions=qrn1
 set hidden
 set laststatus=2
@@ -119,6 +125,19 @@ if version >= 730
 	set undoreload=1000
 endif
 
+"
+" Simple Copy/Paste
+"
+function! CopyRange() range
+	:'<,'>w! /tmp/tmp.txt<cr>
+endfunction
+
+function! PasteRange()
+	:r /tmp/tmp.txt<cr>
+endfunction
+
+vmap <F9> :call CopyRange()<cr>
+nmap <F9> :call PasteRange()<cr>
 
 "
 " Searching
