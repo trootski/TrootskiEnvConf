@@ -70,7 +70,7 @@ set bg=dark
 colorscheme jellybeans
 
 set clipboard=unnamedplus
-set paste
+set nopaste
 set go+=a
 
 set autoindent
