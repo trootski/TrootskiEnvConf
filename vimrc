@@ -36,7 +36,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'dsawardekar/wordpress.vim'
 
 " All of your Plugins must be added before the following line
