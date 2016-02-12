@@ -1,3 +1,4 @@
+set shell=/bin/bash
 "set runtimepath^=/home/troot/TrootskiEnvConf/.vim
 
 set nocompatible              " be iMproved, required
@@ -36,7 +37,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'dsawardekar/wordpress.vim'
 
 " All of your Plugins must be added before the following line
@@ -272,7 +272,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_quiet_messages = { "type": "syntax" }
-let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_checkers = ['phpcs']
+
 " -------------------------------------------------------------------------------
 
 " -------------------------------------------------------------------------------
