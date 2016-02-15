@@ -162,3 +162,7 @@ function t_a {
 	tmux attach -t "$SESS"
 }
 
+t_apache_logs() {
+	sudo tail -f /var/log/apache2/error.log
+}
+

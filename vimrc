@@ -36,7 +36,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'dsawardekar/wordpress.vim'
 
 " All of your Plugins must be added before the following line
@@ -70,7 +70,7 @@ set bg=dark
 colorscheme jellybeans
 
 set clipboard=unnamedplus
-set paste
+set nopaste
 set go+=a
 
 set autoindent
@@ -239,7 +239,7 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_clear_cache_on_exit = 1
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.jpeg,*.png,*.gif  " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.jpeg,*.png,*.gif,node_modules/**,bower_components/**,.git/**  " MacOSX/Linux
 if exists("g:ctrl_user_command")
 	unlet g:ctrlp_user_command
 endif

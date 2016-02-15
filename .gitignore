@@ -6,3 +6,5 @@ backups/*
 .vim/.netrwhist
 tmuxinator/*
 !/**/.gitkeep
+.vim/bundle/*
+!.vim/bundle/Vundle
