@@ -288,8 +288,7 @@ let g:airline#extensions#tabline#enabled = 1
 " this algorithm works well with programming styles that use tabs for
 " indentation and spaces for alignment
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline#php#whitespace#mixed_indent_algo = 1
-let g:airline#html#whitespace#mixed_indent_algo = 1
+let g:airline#extensions#c_like_langs = [ 'html', 'php', 'vim' ]
 
 " indent: mixed indent within a line
 " long:   overlong lines
@@ -297,15 +296,9 @@ let g:airline#html#whitespace#mixed_indent_algo = 1
 " mixed-indent-file: different indentation in different lines
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
 
-let g:airline#extensions#tabline#enabled = 1
-
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
 " -------------------------------------------------------------------------------
 "  TAGBAR
 " -------------------------------------------------------------------------------
