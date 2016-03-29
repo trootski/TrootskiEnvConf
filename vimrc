@@ -21,7 +21,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'powerline/powerline'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'xsbeats/vim-blade'
@@ -89,11 +91,11 @@ set listchars=tab:▸\ ,eol:¬
 set modeline	" enable modelines to be read
 set mouse=a		" allow mouse support in console
 set nocompatible
-" backup to ~/.tmp 
-set backup 
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
-set backupskip=/tmp/*,/private/tmp/* 
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+" backup to ~/.tmp
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 set nobackup
 set nowritebackup
@@ -282,9 +284,28 @@ let g:syntastic_php_checkers = ['phpcs']
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
+" spaces are allowed after tabs, but not in between
+" this algorithm works well with programming styles that use tabs for
+" indentation and spaces for alignment
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+let g:airline#php#whitespace#mixed_indent_algo = 1
+let g:airline#html#whitespace#mixed_indent_algo = 1
+
+" indent: mixed indent within a line
+" long:   overlong lines
+" trailing: trailing whitespace
+" mixed-indent-file: different indentation in different lines
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+
+let g:airline#extensions#tabline#enabled = 1
+
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 " -------------------------------------------------------------------------------
 "  TAGBAR
 " -------------------------------------------------------------------------------
