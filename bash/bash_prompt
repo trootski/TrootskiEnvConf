@@ -5,11 +5,10 @@ function _update_ps1() {
 	PS1="$(~/Documents/bin/powerline-shell.py $? 2> /dev/null)"
 }
 
-if [ "$TERM" != "linux" ]; then
+if [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 else
-	if [ -t 1 ];
-	then
+	if [ -t 1 ]; then
 
 		if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 			export TERM=gnome-256color
