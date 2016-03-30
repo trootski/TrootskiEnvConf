@@ -31,7 +31,7 @@ set syntax on
 ############################################
 # Setup my PATH
 #
-PATH="${PATH}:${HOME}/Documents/bin:"
+PATH="${PATH}:${HOME}/Documents/bin:${HOME}/.local/bin:"
 export PATH
 
 ############################################

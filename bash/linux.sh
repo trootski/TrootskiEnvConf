@@ -7,6 +7,8 @@ export PATH
 PATH="${PATH}:${HOME}/.composer/vendor/bin"
 export PATH
 
+POWERLINE_CONFIG_COMMAND=${HOME}"/.local/bin/powerline-config"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

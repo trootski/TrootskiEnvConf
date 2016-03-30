@@ -6,6 +6,11 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -98,6 +103,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
 set nobackup
+
 set nowritebackup
 set showbreak=↪
 
@@ -288,7 +294,7 @@ let g:airline#extensions#tabline#enabled = 1
 " this algorithm works well with programming styles that use tabs for
 " indentation and spaces for alignment
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline#extensions#c_like_langs = [ 'html', 'php', 'vim' ]
+let g:airline#extensions#c_like_langs = [ 'html', 'php.wordpress', 'php', 'vim' ]
 
 " indent: mixed indent within a line
 " long:   overlong lines
@@ -298,6 +304,10 @@ let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mi
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_powerline_fonts = 1
+
+let g:airline_theme='bubblegum'
 
 " -------------------------------------------------------------------------------
 "  TAGBAR
