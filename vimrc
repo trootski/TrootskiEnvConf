@@ -245,9 +245,13 @@ map <D-0> :tablast<CR>
 "  CTRL-P
 " -------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-" let g:ctrlp_working_path_mode = 'rw'
-" let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_clear_cache_on_exit = 1
+
+set wildignore+=*/bower_components/*,
+set wildignore+=*/node_modules/*,
+set wildignore+=*/vendor/*,
 
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/]\.(git|hg|svn|bower_components|node_modules|vendor|components)$',
