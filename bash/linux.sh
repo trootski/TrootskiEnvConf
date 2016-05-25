@@ -5,9 +5,6 @@ if $(command -v karma >/dev/null 2>&1) ; then
 	export DISPLAY=:99.0
 	export CHROME_BIN=/usr/bin/chromium-browser
 	test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
-	echo "Starting Chrome display"
-else
-	echo "Not starting Chrome display"
 fi
 
 ############################################
