@@ -18,7 +18,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlp/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
@@ -85,7 +85,7 @@ set autoindent
 set backspace=indent,eol,start
 set bs=2		" allow backspacing over everything
 if version >= 703
-	set colorcolumn=85
+	set colorcolumn=80
 endif
 set cursorline
 "set encoding=utf-8
@@ -123,6 +123,7 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 set wrap
+let mapleader=","
 
 "
 " Undo
@@ -245,21 +246,13 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_clear_cache_on_exit = 1
+" let g:ctrlp_working_path_mode = 'rw'
+" let g:ctrlp_clear_cache_on_exit = 1
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.jpeg,*.png,*.gif,node_modules/**,bower_components/**,.git/**  " MacOSX/Linux
-if exists("g:ctrl_user_command")
-	unlet g:ctrlp_user_command
-endif
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'dir':  '\v[\/]\.(git|hg|svn|bower_components|node_modules|vendor|components)$',
+	\ 'file': '\v\.(exe|so|dll|swp|so|zip|jpg|jpeg|png|gif)$',
 \ }
-set wildignore+=*/vendor/*
-set wildignore+=*/node_modules/*
-set wildignore+=*/bower_components/*
-set wildignore+=*/components/*
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
