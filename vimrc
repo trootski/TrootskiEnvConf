@@ -18,7 +18,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
@@ -145,6 +145,8 @@ function! PasteRange()
 	:r /tmp/tmp.txt<cr>
 endfunction
 
+let mapleader = ","
+
 vmap <F9> :call CopyRange()<cr>
 nmap <F9> :call PasteRange()<cr>
 
@@ -245,21 +247,18 @@ map <D-0> :tablast<CR>
 " -------------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_clear_cache_on_exit = 1
+" let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.jpeg,*.png,*.gif,node_modules/**,bower_components/**,.git/**  " MacOSX/Linux
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
 if exists("g:ctrl_user_command")
 	unlet g:ctrlp_user_command
 endif
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|bower_components|vendor|components)$',
+	\ 'file': '\v\.(exe|so|dll|so|swp|zip|jpg|jpeg|png|gif)$',
 \ }
-set wildignore+=*/vendor/*
-set wildignore+=*/node_modules/*
-set wildignore+=*/bower_components/*
-set wildignore+=*/components/*
 
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>

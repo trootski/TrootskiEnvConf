@@ -28,7 +28,7 @@ alias ggaa="git add -A"
 alias ggc="git commit"
 
 # Do git commit with message
-alias ggm="git commit -m "
+alias ggm="git commit -a -m "
 
 # Do git push
 alias ggp="git push"

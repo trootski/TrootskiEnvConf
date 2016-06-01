@@ -1,6 +1,3 @@
-PATH="${PATH}:${HOME}/.composer/vendor/bin:"
-export PATH
-
 ############################################
 # Setup my PATH (Linux specific)
 #
@@ -8,6 +5,13 @@ PATH="${PATH}:${HOME}/.composer/vendor/bin"
 export PATH
 
 POWERLINE_CONFIG_COMMAND=${HOME}"/.local/bin/powerline-config"
+
+if [ -f `which powerline-daemon` ]; then
+	powerline-daemon -q
+	POWERLINE_BASH_CONTINUATION=1
+	POWERLINE_BASH_SELECT=1
+	source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
 
 # If not running interactively, don't do anything
 case $- in

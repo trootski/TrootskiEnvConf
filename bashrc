@@ -31,7 +31,11 @@ set syntax on
 ############################################
 # Setup my PATH
 #
-PATH="${PATH}:${HOME}/Documents/bin:${HOME}/.local/bin:"
+PATH="${PATH}:${HOME}/Documents/bin:${HOME}/.local/bin"
+
+if [ -d "~/.composer/vendor/bin/" ]; then
+	PATH="${PATH}:${HOME}/.composer/vendor/bin"
+fi
 export PATH
 
 ############################################
