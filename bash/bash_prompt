@@ -5,7 +5,7 @@ function _update_ps1() {
 	PS1="$(~/Documents/bin/powerline-shell.py $? 2> /dev/null)"
 }
 
-if [ "$OSTYPE" == "linux" ] || [ "$OSTYPE" == "linux-gnu" ]; then
+if [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 
 	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 

@@ -1,10 +1,3 @@
-
-if $(command -v karma >/dev/null 2>&1) ; then
-	export DISPLAY=:99.0
-	export CHROME_BIN=/usr/bin/chromium-browser
-	test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
-fi
-
 ############################################
 # Setup my PATH (Linux specific)
 #
@@ -177,5 +170,13 @@ function t_a {
 
 t_apache_logs() {
 	sudo tail -f /var/log/apache2/error.log
+}
+
+function t_karma_init_headless_display() {
+	if $(command -v karma >/dev/null 2>&1) ; then
+		export DISPLAY=:99.0
+		export CHROME_BIN=/usr/bin/chromium-browser
+		test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
+	fi
 }
 
