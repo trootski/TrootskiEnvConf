@@ -13,6 +13,7 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 #	alias vim='nvim'
 #	alias vi='nvim'
 #fi
+alias vi='vim'
 
 ###########################################
 # GIT STUFF
