@@ -46,6 +46,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'burnettk/vim-angular'
+Plugin 'claco/jasmine.vim'
+Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -145,8 +148,6 @@ endfunction
 function! PasteRange()
 	:r /tmp/tmp.txt<cr>
 endfunction
-
-let mapleader = ","
 
 vmap <F9> :call CopyRange()<cr>
 nmap <F9> :call PasteRange()<cr>
