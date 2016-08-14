@@ -1,0 +1,18 @@
+{
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"font_face": "Liberation Mono for Powerline",
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"rulers":
+	[
+		80
+	],
+	"theme": "Material-Theme.sublime-theme",
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true
+}
