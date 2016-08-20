@@ -164,7 +164,6 @@ nmap <F9> :call PasteRange()<cr>
 set ignorecase	" case insensitive searching
 set incsearch	" search as you type
 
-
 "
 " Tabbing
 "
@@ -194,6 +193,9 @@ map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Stop the exit to CLI when hitting up accidentally
 vnoremap K k
+
+" Spell check git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " -------------------------------------------------------------------------------
 "  NERD TREE STUFF
