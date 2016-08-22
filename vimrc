@@ -49,6 +49,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 Plugin 'ternjs/tern_for_vim'
+Plugin 'maksimr/vim-jsbeautify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
