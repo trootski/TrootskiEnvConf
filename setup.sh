@@ -2,6 +2,10 @@
 
 set -e
 
+############################################
+# Make the default linkages for the dot
+# files
+#
 [[ ! -e ~/TrootskiEnvConf/backups ]] && mkdir ~/TrootskiEnvConf/backups
 
 for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf}; do
@@ -20,4 +24,28 @@ for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf}; do
 	ln -s ~/TrootskiEnvConf/$(echo $(basename "$file") | sed "s/^\.//") "$file"
 done
 
-git submodule update --init ~/TrootskiEnvConf/
+
+############################################
+# On OSX check if we need to install
+# brew packages
+#
+if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
+	which -s brew
+	if [[ $? = 0 ]] ; then
+		# Install the default packages
+		for pkg in ~/.{bash-completion,git,tmux,node,vim,python}; do
+			brew install 
+		done
+	fi
+fi
+
+############################################
+# Setup the .vim directory
+#
+ln -s ~/TrootskiEnvConf/.vim ~/.vim
+
+############################################
+# Make sure all the submodules are checkout
+# out
+#
+git submodule update --init --recursive

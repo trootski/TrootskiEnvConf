@@ -19,12 +19,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
 Plugin 'mattn/emmet-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -122,12 +122,18 @@ set scrolloff=3
 set showcmd
 set showmode
 set textwidth=79
-set ttyfast
 set visualbell
 set wildmenu
 set wildmode=list:longest
 set wrap
 let mapleader=","
+
+" Only have to type a semi-colon to get into command mode
+noremap ; :
+
+" Keep seection selected while indenting
+vmap < <gv
+vmap > >gv
 
 "
 " Undo
@@ -159,7 +165,6 @@ nmap <F9> :call PasteRange()<cr>
 set ignorecase	" case insensitive searching
 set incsearch	" search as you type
 
-
 "
 " Tabbing
 "
@@ -189,6 +194,9 @@ map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Stop the exit to CLI when hitting up accidentally
 vnoremap K k
+
+" Spell check git commit messages
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " -------------------------------------------------------------------------------
 "  NERD TREE STUFF
@@ -285,35 +293,33 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_quiet_messages = { "type": "syntax" }
-let g:syntastic_php_checkers = ['phpcs']
+let g:syntastic_javascript_checkers = ['eslint']
+augroup syntastic_config
+  autocmd!
+  let g:syntastic_error_symbol = '✗'
+  let g:syntastic_warning_symbol = '⚠'
+  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  let g:syntastic_html_tidy_exec = 'tidy5'
+augroup END
 
 " -------------------------------------------------------------------------------
 
 " -------------------------------------------------------------------------------
 "  AIRLINE
 " -------------------------------------------------------------------------------
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" spaces are allowed after tabs, but not in between
-" this algorithm works well with programming styles that use tabs for
-" indentation and spaces for alignment
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline#extensions#c_like_langs = [ 'html', 'php.wordpress', 'php', 'vim' ]
-
-" indent: mixed indent within a line
-" long:   overlong lines
-" trailing: trailing whitespace
-" mixed-indent-file: different indentation in different lines
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:airline_powerline_fonts = 1
-
-let g:airline_theme='bubblegum'
+augroup airline_config
+  autocmd!
+  let g:airline_powerline_fonts = 1
+  let g:airline_enable_syntastic = 1
+  let g:airline#extensions#tabline#buffer_nr_format = '%s '
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+  let g:airline_detect_whitespace=0
+  let g:airline_section_warning=""
+augroup END
 
 " -------------------------------------------------------------------------------
 "  TAGBAR
@@ -326,3 +332,7 @@ if !v:shell_error && s:uname == "Linux"
 	set mouse=
 endif
 
+" -------------------------------------------------------------------------------
+"  VIM-JAVASCRIPT
+" -------------------------------------------------------------------------------
+let g:javascript_plugin_jsdoc = 1
