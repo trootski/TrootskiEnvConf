@@ -18,52 +18,50 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" ---------------------------------------------------------------------------
+"  INTERFACE STUFF
+" ---------------------------------------------------------------------------
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'mattn/emmet-vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/powerline'
-Plugin 'mhinz/vim-signify'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'xsbeats/vim-blade'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
+" ---------------------------------------------------------------------------
+"  THEMES
+" ---------------------------------------------------------------------------
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
+
+" ---------------------------------------------------------------------------
+"  UTILITIES
+" ---------------------------------------------------------------------------
+Plugin 'mattn/emmet-vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'marcweber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
+" ---------------------------------------------------------------------------
+"  SYNTAX/LANGUAGE SUPPORT
+" ---------------------------------------------------------------------------
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
 Plugin 'sophacles/vim-processing'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'evidens/vim-twig'
 Plugin 'markcornick/vim-vagrant'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
-Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " Remap jj to be the escape keys
 ino jj <esc>
@@ -197,9 +195,12 @@ vnoremap K k
 " Spell check git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
-" -------------------------------------------------------------------------------
+" Execute command on this line and replace with results of command
+noremap Q !!sh<CR>
+
+" ---------------------------------------------------------------------------
 "  NERD TREE STUFF
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc$', '\~$']
 map <F2> :NERDTreeToggle<CR>
 
@@ -218,9 +219,9 @@ vnoremap L g_
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 autocmd BufRead *.as set filetype=actionscript
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  BUFFER RE-MAPPINGS
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 " Move to the previous buffer with "gp"
 nnoremap gp :bp<CR>
 
@@ -235,9 +236,9 @@ nnoremap gb :ls<CR>:b
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  TAB MAPPINGS
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 map <D-S-]> gt
 map <D-S-[> gT
 map <D-1> 1gt
@@ -250,11 +251,11 @@ map <D-7> 7gt
 map <D-8> 8gt
 map <D-9> 9gt
 map <D-0> :tablast<CR>
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  CTRL-P
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -278,11 +279,11 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  SYNTASTIC
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -301,11 +302,11 @@ augroup syntastic_config
   let g:syntastic_html_tidy_exec = 'tidy5'
 augroup END
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  AIRLINE
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
   let g:airline_powerline_fonts = 1
@@ -320,10 +321,9 @@ augroup airline_config
   let g:airline_section_warning=""
 augroup END
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  TAGBAR
-" -------------------------------------------------------------------------------
-" autocmd FileType php,blade,javascript nested :TagbarOpen
+" ---------------------------------------------------------------------------
 
 " Disable the mouse on Linux
 let s:uname = system("echo -n \"$(uname)\"")
@@ -331,7 +331,18 @@ if !v:shell_error && s:uname == "Linux"
 	set mouse=
 endif
 
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 "  VIM-JAVASCRIPT
-" -------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 let g:javascript_plugin_jsdoc = 1
+
+" ---------------------------------------------------------------------------
+"  FUNCTION: TmuxRepeat
+" ---------------------------------------------------------------------------
+" Repeat last command in the next tmux pane.
+nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
+
+function! s:TmuxRepeat()
+  silent! exec "!tmux select-pane -D  && tmux send up enter && tmux select-pane -l"
+  redraw!
+endfunction
