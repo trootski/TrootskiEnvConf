@@ -346,3 +346,19 @@ function! s:TmuxRepeat()
   silent! exec "!tmux select-pane -D  && tmux send up enter && tmux select-pane -l"
   redraw!
 endfunction
+
+" -------------------------------------------------------------------------------
+"  OPEN CSI ISSUE
+" -------------------------------------------------------------------------------
+function! OpenJIRATicket()
+	let s:uri = matchstr(getline("."), '[a-Z]*-[0-9]*')
+	echo s:uri
+	if s:uri != ""
+		silent exec "!open 'https://jira.hmhco.com/browse/".s:uri."'"
+		redraw!
+	else
+		echo "No URI found in line."
+	endif
+endfunction
+map <leader>o :call OpenJIRATicket()<cr>
+
