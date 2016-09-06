@@ -3,6 +3,7 @@
 ############################################
 # Adds tmuxinator bash completion support
 #
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 	. $(brew --prefix)/etc/bash_completion
 fi
