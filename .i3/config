@@ -9,8 +9,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-#xsetroot -solid "#333333"
-
 set $mod Mod4
 
 # thin borders
@@ -31,7 +29,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-  	status_command i3blocks -c ~/.config/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.config/.i3/i3blocks.conf
+	font pango:Liberation Mono Powerline 10
 	colors {
 		background $bg-color
 	    	separator #757575
@@ -45,7 +44,7 @@ bar {
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:Liberation Mono Powerline 11
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
