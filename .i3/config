@@ -29,7 +29,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-	status_command i3blocks -c ~/.config/.i3/i3blocks.conf
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	font pango:Liberation Mono Powerline 10
 	colors {
 		background $bg-color
