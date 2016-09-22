@@ -46,6 +46,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
