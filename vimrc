@@ -59,6 +59,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -79,7 +81,7 @@ set background=dark
 set bg=dark
 colorscheme jellybeans
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 set nopaste
 set go+=a
 
@@ -363,3 +365,9 @@ function! OpenJIRATicket()
 endfunction
 map <leader>o :call OpenJIRATicket()<cr>
 
+" -------------------------------------------------------------------------------
+"  TERN
+" -------------------------------------------------------------------------------
+let g:tern_show_argument_hints='on_hold'
+
+let g:tern_map_keys=1
