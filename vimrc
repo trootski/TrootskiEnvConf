@@ -92,6 +92,7 @@ if version >= 703
 	set colorcolumn=80
 endif
 set cursorline
+set linebreak " Break lines on words, not characters
 "set encoding=utf-8
 set formatoptions=qrn1
 set hidden
