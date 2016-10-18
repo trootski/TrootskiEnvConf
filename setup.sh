@@ -8,7 +8,7 @@ set -e
 #
 [[ ! -e ~/TrootskiEnvConf/backups ]] && mkdir ~/TrootskiEnvConf/backups
 
-for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf}; do
+for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf,ideavimrc}; do
 	if [[ -h "$file" ]]
 	then
 		# File is a symbolic link
