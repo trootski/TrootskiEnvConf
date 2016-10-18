@@ -48,4 +48,4 @@ ln -s ~/TrootskiEnvConf/.vim ~/.vim
 # Make sure all the submodules are checkout
 # out
 #
-git submodule update --init --recursive
+git submodule foreach git pull origin master
