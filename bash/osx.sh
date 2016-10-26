@@ -52,10 +52,10 @@ function t_ffmpeg_bitrate {
 function t_ffmpeg_split {
 
 	MP4_FNAME_FULL=$(basename "$1")
+	MP4_FNAME_BASE="${MP4_FNAME_FULL%.*}"
+	MP4_FNAME_EXT=${MP4_FNAME_FULL##*.}
 
-	#DURATION=$(ffmpeg -i "$MP4_FNAME_FULL" 2>&1 | sed -n 's/Duration: \(.*\), start.*/\1/gp')
 	DURATION=$(ffprobe -i "$MP4_FNAME_FULL" -show_entries format=duration -v quiet -of csv="p=0")
-	echo $DURATION
 
 	PARTS=1
 	if [ "$#" -gt 1 ]; then
@@ -67,10 +67,14 @@ function t_ffmpeg_split {
 	else
 		TIME_PER_PART=$(awk -v duration="$DURATION" -v parts="$PARTS" 'BEGIN { rounded = sprintf("%.0f", duration/parts); print rounded }')
 		COUNTER=1
-		NEW_FNAME=
-		ffmpeg -i "$MP4_FNAME_FULL" -ss 0 -t $TIME_PER_PART "$COUNTER$MP4_FNAME_FULL"
+		printf -v COUNTER_LEADING_ZEROS "%05d\n" $COUNTER
+		MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
+		ffmpeg -y -i "$MP4_FNAME_FULL" -ss 0 -t $TIME_PER_PART "$MOVIE_PART_FNAME"
 		while [[ $COUNTER -lt $PARTS ]]; do
-			echo $TIME_PER_PART
+			NEXT_COUNTER=$(($COUNTER+1))
+			printf -v COUNTER_LEADING_ZEROS "%05d\n" $NEXT_COUNTER
+			MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
+			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $(($TIME_PER_PART*$COUNTER)) -t $(($TIME_PER_PART*$NEXT_COUNTER)) "$MOVIE_PART_FNAME"
 			let COUNTER=( COUNTER + 1 )
 		done
 	fi
