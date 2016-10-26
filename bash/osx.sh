@@ -65,16 +65,28 @@ function t_ffmpeg_split {
 	if [ "$PARTS" -eq 1 ]; then
 		echo "Parts must be higher than 1"
 	else
+		# Time per section is taken as the floored value of the nuber duration
+		# divided by the number of parts
 		TIME_PER_PART=$(awk -v duration="$DURATION" -v parts="$PARTS" 'BEGIN { rounded = sprintf("%.0f", duration/parts); print rounded }')
 		COUNTER=1
-		printf -v COUNTER_LEADING_ZEROS "%05d\n" $COUNTER
-		MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
-		ffmpeg -y -i "$MP4_FNAME_FULL" -ss 0 -t $TIME_PER_PART "$MOVIE_PART_FNAME"
-		while [[ $COUNTER -lt $PARTS ]]; do
+		while [[ $COUNTER -le $PARTS ]]; do
 			NEXT_COUNTER=$(($COUNTER+1))
-			printf -v COUNTER_LEADING_ZEROS "%05d\n" $NEXT_COUNTER
+			PREV_COUNTER=$(($COUNTER-1))
+			# Pad the COUNTER with zeros for the filename
+			printf -v COUNTER_LEADING_ZEROS "%05d\n" $COUNTER
+
+			# Create the next filename
 			MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
-			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $(($TIME_PER_PART*$COUNTER)) -t $(($TIME_PER_PART*$NEXT_COUNTER)) "$MOVIE_PART_FNAME"
+
+			if [[ $COUNTER -eq 1 ]]; then
+				START_TIME=0
+			else
+				START_TIME=$(($TIME_PER_PART*$PREV_COUNTER))
+			fi
+
+			# Do the actual split
+			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $START_TIME -t $TIME_PER_PART "$MOVIE_PART_FNAME"
+
 			let COUNTER=( COUNTER + 1 )
 		done
 	fi
