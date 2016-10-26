@@ -49,6 +49,34 @@ function t_ffmpeg_bitrate {
 #
 }
 
+function t_ffmpeg_split {
+
+	MP4_FNAME_FULL=$(basename "$1")
+
+	#DURATION=$(ffmpeg -i "$MP4_FNAME_FULL" 2>&1 | sed -n 's/Duration: \(.*\), start.*/\1/gp')
+	DURATION=$(ffprobe -i "$MP4_FNAME_FULL" -show_entries format=duration -v quiet -of csv="p=0")
+	echo $DURATION
+
+	PARTS=1
+	if [ "$#" -gt 1 ]; then
+		PARTS="$2"
+	fi
+
+	if [ "$PARTS" -eq 1 ]; then
+		echo "Parts must be higher than 1"
+	else
+		TIME_PER_PART=$(awk -v duration="$DURATION" -v parts="$PARTS" 'BEGIN { rounded = sprintf("%.0f", duration/parts); print rounded }')
+		COUNTER=1
+		NEW_FNAME=
+		ffmpeg -i "$MP4_FNAME_FULL" -ss 0 -t $TIME_PER_PART "$COUNTER$MP4_FNAME_FULL"
+		while [[ $COUNTER -lt $PARTS ]]; do
+			echo $TIME_PER_PART
+			let COUNTER=( COUNTER + 1 )
+		done
+	fi
+
+}
+
 # TextEdit
 # Use Plain Text Mode as Default
 #defaults write com.apple.TextEdit RichText -int 0

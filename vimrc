@@ -59,8 +59,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -92,6 +90,7 @@ if version >= 703
 	set colorcolumn=80
 endif
 set cursorline
+set linebreak " Break lines on words, not characters
 "set encoding=utf-8
 set formatoptions=qrn1
 set hidden

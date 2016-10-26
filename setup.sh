@@ -8,7 +8,7 @@ set -e
 #
 [[ ! -e ~/TrootskiEnvConf/backups ]] && mkdir ~/TrootskiEnvConf/backups
 
-for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf}; do
+for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf,ideavimrc}; do
 	if [[ -h "$file" ]]
 	then
 		# File is a symbolic link
@@ -48,4 +48,4 @@ ln -s ~/TrootskiEnvConf/.vim ~/.vim
 # Make sure all the submodules are checkout
 # out
 #
-git submodule update --init --recursive
+git submodule foreach git pull origin master
