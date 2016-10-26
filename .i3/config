@@ -230,6 +230,9 @@ exec --no-startup-id gnome-terminal -name scratchterm
 for_window [class="Gnome-terminal" instance="scratchterm"] move scratchpad;
 for_window [class="Gnome-terminal" instance="scratchterm"] scratchpad show;
 
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # key-bindings
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
