@@ -49,6 +49,50 @@ function t_ffmpeg_bitrate {
 #
 }
 
+function t_ffmpeg_split {
+
+	MP4_FNAME_FULL=$(basename "$1")
+	MP4_FNAME_BASE="${MP4_FNAME_FULL%.*}"
+	MP4_FNAME_EXT=${MP4_FNAME_FULL##*.}
+
+	DURATION=$(ffprobe -i "$MP4_FNAME_FULL" -show_entries format=duration -v quiet -of csv="p=0")
+
+	PARTS=1
+	if [ "$#" -gt 1 ]; then
+		PARTS="$2"
+	fi
+
+	if [ "$PARTS" -eq 1 ]; then
+		echo "Parts must be higher than 1"
+	else
+		# Time per section is taken as the floored value of the nuber duration
+		# divided by the number of parts
+		TIME_PER_PART=$(awk -v duration="$DURATION" -v parts="$PARTS" 'BEGIN { rounded = sprintf("%.0f", duration/parts); print rounded }')
+		COUNTER=1
+		while [[ $COUNTER -le $PARTS ]]; do
+			NEXT_COUNTER=$(($COUNTER+1))
+			PREV_COUNTER=$(($COUNTER-1))
+			# Pad the COUNTER with zeros for the filename
+			printf -v COUNTER_LEADING_ZEROS "%05d\n" $COUNTER
+
+			# Create the next filename
+			MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
+
+			if [[ $COUNTER -eq 1 ]]; then
+				START_TIME=0
+			else
+				START_TIME=$(($TIME_PER_PART*$PREV_COUNTER))
+			fi
+
+			# Do the actual split
+			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $START_TIME -t $TIME_PER_PART "$MOVIE_PART_FNAME"
+
+			let COUNTER=( COUNTER + 1 )
+		done
+	fi
+
+}
+
 # TextEdit
 # Use Plain Text Mode as Default
 #defaults write com.apple.TextEdit RichText -int 0
