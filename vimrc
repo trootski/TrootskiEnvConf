@@ -343,12 +343,7 @@ let g:javascript_plugin_jsdoc = 1
 "  FUNCTION: Run NodeJS
 " ---------------------------------------------------------------------------
 " Repeat last command in the next tmux pane.
-nnoremap <Leader>r :VimuxRunCommand "@%"<CR>
-
-function! s:TmuxRepeat()
-  silent! exec "!tmux select-pane -D  && tmux send up enter && tmux select-pane -l"
-  redraw!
-endfunction
+nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
 
 " -------------------------------------------------------------------------------
 "  OPEN CSI ISSUE
