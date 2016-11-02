@@ -47,6 +47,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'benmills/vimux'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
@@ -339,10 +340,10 @@ endif
 let g:javascript_plugin_jsdoc = 1
 
 " ---------------------------------------------------------------------------
-"  FUNCTION: TmuxRepeat
+"  FUNCTION: Run NodeJS
 " ---------------------------------------------------------------------------
 " Repeat last command in the next tmux pane.
-nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
+nnoremap <Leader>r :VimuxRunCommand "@%"<CR>
 
 function! s:TmuxRepeat()
   silent! exec "!tmux select-pane -D  && tmux send up enter && tmux select-pane -l"
