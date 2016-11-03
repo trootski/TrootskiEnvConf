@@ -18,7 +18,7 @@ fi
 ############################################
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 #
-for file in ~/TrootskiEnvConf/bash/{bash_prompt,exports,aliases,functions}; do
+for file in ~/TrootskiEnvConf/bash/{bash_prompt,exports,aliases,functions}.sh; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
