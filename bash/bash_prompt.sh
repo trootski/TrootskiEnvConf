@@ -1,13 +1,9 @@
 # @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
 # Shamelessly copied from https://github.com/gf3/dotfiles
 
-function _update_ps1() {
-	PS1="$(~/Documents/bin/powerline-shell.py $? 2> /dev/null)"
-}
-
 if [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 
-	PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+	PROMPT_COMMAND="$PROMPT_COMMAND"
 
 else
 
