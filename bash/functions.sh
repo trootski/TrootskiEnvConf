@@ -109,7 +109,7 @@ function lazygit() {
 	git push
 }
 
-function t_TrootskiConf() {
+function t_UpdateTrootskiConf() {
 	CURRENT_DIR=$(pwd)
 	cd ~/TrootskiEnvConf/
 	# Update any submodules
