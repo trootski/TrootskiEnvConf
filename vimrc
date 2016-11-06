@@ -71,7 +71,6 @@ cno jj <c-c>
 
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
-set showmode
 
 " Color Scheme stuff
 "let g:jellybeans_use_lowcolor_black = 0
@@ -120,7 +119,16 @@ set ruler
 set ruler		" show current coords of cursor
 set scrolloff=3
 set showcmd
-set showmode
+
+" Always display the tabline, even if there is only one tab
+set showtabline=2
+
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
+
+" Always display the statusline in all windows
+set laststatus=2
+
 set textwidth=79
 set visualbell
 set wildmenu
