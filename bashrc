@@ -69,6 +69,11 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 source ~/TrootskiEnvConf/tmuxinator.bash
 
 ############################################
+# Adds tmuxinator bash completion support
+#
+export MANWIDTH=120
+
+############################################
 # Add powerline support
 #
 POWERLINE_CONFIG_COMMAND="/usr/local/bin/powerline-config"
