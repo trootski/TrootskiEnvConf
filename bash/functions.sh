@@ -13,17 +13,6 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-# Syntax-highlight JSON strings or files
-function json() {
-	if [ -p /dev/stdin ]; then
-		# piping, e.g. `echo '{"foo":42}' | json`
-		python -mjson.tool | pygmentize -l javascript
-	else
-		# e.g. `json '{"foo":42}'`
-		python -mjson.tool <<< "$*" | pygmentize -l javascript
-	fi
-}
-
 # take this repo and copy it to somewhere else minus the .git stuff.
 function gitexport(){
 	mkdir -p "$1"
@@ -118,5 +107,16 @@ function lazygit() {
 	git add .
 	git commit -a -m "$1"
 	git push
+}
+
+function t_UpdateTrootskiConf() {
+	CURRENT_DIR=$(pwd)
+	cd ~/TrootskiEnvConf/
+	# Update any submodules
+	git submodule foreach git pull origin master
+	vim -c VundleInstall -c quitall
+	vim -c VundleUpdate -c quitall
+	vim -c VundleClean -c quitall
+	cd "$CURRENT_DIR"
 }
 

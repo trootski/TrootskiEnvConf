@@ -47,6 +47,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'benmills/vimux'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
@@ -70,7 +71,6 @@ cno jj <c-c>
 
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
-set showmode
 
 " Color Scheme stuff
 "let g:jellybeans_use_lowcolor_black = 0
@@ -119,7 +119,16 @@ set ruler
 set ruler		" show current coords of cursor
 set scrolloff=3
 set showcmd
-set showmode
+
+" Always display the tabline, even if there is only one tab
+set showtabline=2
+
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
+
+" Always display the statusline in all windows
+set laststatus=2
+
 set textwidth=79
 set visualbell
 set wildmenu
@@ -342,15 +351,10 @@ endif
 let g:javascript_plugin_jsdoc = 1
 
 " ---------------------------------------------------------------------------
-"  FUNCTION: TmuxRepeat
+"  FUNCTION: Run NodeJS
 " ---------------------------------------------------------------------------
 " Repeat last command in the next tmux pane.
-nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
-
-function! s:TmuxRepeat()
-  silent! exec "!tmux select-pane -D  && tmux send up enter && tmux select-pane -l"
-  redraw!
-endfunction
+nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
 
 " -------------------------------------------------------------------------------
 "  OPEN CSI ISSUE
