@@ -73,7 +73,7 @@ function t_ffmpeg_split {
 			NEXT_COUNTER=$(($COUNTER+1))
 			PREV_COUNTER=$(($COUNTER-1))
 			# Pad the COUNTER with zeros for the filename
-			printf -v COUNTER_LEADING_ZEROS "%05d\n" $COUNTER
+			printf -v COUNTER_LEADING_ZEROS "%05d" $COUNTER
 
 			# Create the next filename
 			MOVIE_PART_FNAME="$MP4_FNAME_BASE-$COUNTER_LEADING_ZEROS.$MP4_FNAME_EXT"
