@@ -247,6 +247,9 @@ nnoremap gb :ls<CR>:b
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
 
+" In vimdiff ignore whitespace difference
+set diffopt+=iwhite
+
 " ---------------------------------------------------------------------------
 "  TAB MAPPINGS
 " ---------------------------------------------------------------------------
