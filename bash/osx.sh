@@ -85,7 +85,7 @@ function t_ffmpeg_split {
 			fi
 
 			# Do the actual split
-			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $START_TIME -t $TIME_PER_PART "$MOVIE_PART_FNAME"
+			ffmpeg -y -i "$MP4_FNAME_FULL" -ss $START_TIME -t $TIME_PER_PART -preset slow -b:v 450k -pass 1 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k -f mp4 /dev/null && ffmpeg -y -i "$MP4_FNAME_FULL" -ss $START_TIME -t $TIME_PER_PART -c:v libx264 -preset slow -b:v 450k -pass 2 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k "$MOVIE_PART_FNAME"
 
 			let COUNTER=( COUNTER + 1 )
 		done
