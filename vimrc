@@ -47,7 +47,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'benmills/vimux'
+Plugin 'trootski/vimux'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
@@ -367,6 +367,12 @@ function! OpenJIRATicket()
 	endif
 endfunction
 map <leader>o :call OpenJIRATicket()<cr>
+"
+" -------------------------------------------------------------------------------
+"  Vimux
+" -------------------------------------------------------------------------------
+let g:VimuxUseNearest = 0
+let g:VimuxRunnerType = 'pane'
 
 " -------------------------------------------------------------------------------
 "  TERN
