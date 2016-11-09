@@ -47,7 +47,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'trootski/vimux'
+Plugin 'benmills/vimux'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
