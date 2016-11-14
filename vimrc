@@ -61,7 +61,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
-Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
