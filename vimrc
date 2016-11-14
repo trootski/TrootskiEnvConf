@@ -61,6 +61,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
+Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -355,7 +356,8 @@ let g:javascript_plugin_jsdoc = 1
 "  FUNCTION: Run NodeJS
 " ---------------------------------------------------------------------------
 " Repeat last command in the next tmux pane.
-nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
+" nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
+autocmd Filetype jasmine.javascript nnoremap <Leader>r :Dispatch! npm run test<CR>
 
 " -------------------------------------------------------------------------------
 "  OPEN CSI ISSUE
@@ -371,6 +373,13 @@ function! OpenJIRATicket()
 	endif
 endfunction
 map <leader>o :call OpenJIRATicket()<cr>
+
+"
+" -------------------------------------------------------------------------------
+"  Vimux
+" -------------------------------------------------------------------------------
+let g:VimuxUseNearest = 0
+let g:VimuxRunnerType = 'pane'
 
 " -------------------------------------------------------------------------------
 "  TERN
