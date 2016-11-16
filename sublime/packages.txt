@@ -1,7 +1,0 @@
-Emmet
-Git
-GitGutter
-LESS
-Material Theme
-Package Control
-SublimeGit

@@ -48,6 +48,7 @@ Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'benmills/vimux'
+Plugin 'tpope/vim-dispatch'
 
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
@@ -60,7 +61,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
-Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

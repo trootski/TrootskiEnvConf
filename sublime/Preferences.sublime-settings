@@ -1,19 +1,26 @@
 {
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
-	"font_face": "Liberation Mono for Powerline",
-	"font_size": 14,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"fade_fold_buttons": false,
+	"font_options":
 	[
 		"gray_antialias",
 		"subpixel_antialias"
 	],
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 	],
-	"line_padding_bottom": 2,
-	"line_padding_top": 2,
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 4,
+	"line_padding_top": 4,
+	"overlay_scroll_bars": "enabled",
 	"rulers":
 	[
 		80
@@ -22,9 +29,9 @@
 	"show_full_path": false,
 	"tab_completion": false,
 	"tab_size": 4,
-	"theme": "Material-Theme.sublime-theme",
-	"vintage_ctrl_keys": true,
-	"vintage_start_in_command_mode": true
+	"theme": "Default.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
 	"word_wrap": true
 }
