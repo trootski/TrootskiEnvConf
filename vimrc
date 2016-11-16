@@ -356,7 +356,10 @@ let g:javascript_plugin_jsdoc = 1
 " ---------------------------------------------------------------------------
 " Repeat last command in the next tmux pane.
 " nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
-autocmd Filetype jasmine.javascript nnoremap <Leader>r :Dispatch! npm run test<CR>
+autocmd Filetype javascript nnoremap <Leader>t :Make <CR>
+autocmd Filetype javascript nnoremap <Leader>r :Dispatch npm run start<CR>
+autocmd Filetype jasmine.javascript nnoremap <Leader>r :Dispatch npm run test<CR>
+autocmd FileType javascript silent! compiler node | setlocal makeprg=node\ %
 
 " -------------------------------------------------------------------------------
 "  OPEN CSI ISSUE
