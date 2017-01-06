@@ -59,6 +59,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'sophacles/vim-processing'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'markcornick/vim-vagrant'
+Plugin 'rodjek/vim-puppet'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 
