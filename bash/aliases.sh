@@ -121,6 +121,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 	alias pumpitup="osascript -e 'set volume 10'"
 	alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
+	# Alias for Sublime Text 3
+	alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
 fi
 
 ###########################################
