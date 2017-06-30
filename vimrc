@@ -6,7 +6,6 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
@@ -23,11 +22,12 @@ Plugin 'gmarik/Vundle.vim'
 " ---------------------------------------------------------------------------
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'jnurmine/Zenburn'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'powerline/powerline'
+Plugin 'ajmwagar/vim-deus'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
@@ -78,8 +78,7 @@ set pastetoggle=<F3>
 "let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
-set bg=dark
-colorscheme jellybeans
+colorscheme deus
 
 " yank to clipboard
 if has("clipboard")
@@ -220,6 +219,13 @@ noremap Q !!sh<CR>
 
 vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
 
+if !has("gui_running")
+	set term=xterm
+	set t_Co=256
+	let &t_AB="\e[48;5;%dm"
+	let &t_AF="\e[38;5;%dm"
+" 	colorscheme zenburn
+endif
 " ---------------------------------------------------------------------------
 "  NERD TREE STUFF
 " ---------------------------------------------------------------------------
@@ -334,7 +340,6 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_powerline_fonts = 1
   let g:airline_enable_syntastic = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
