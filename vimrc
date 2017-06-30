@@ -22,20 +22,19 @@ Plugin 'gmarik/Vundle.vim'
 " ---------------------------------------------------------------------------
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'jnurmine/Zenburn'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ajmwagar/vim-deus'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " ---------------------------------------------------------------------------
 "  THEMES
 " ---------------------------------------------------------------------------
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'nanotech/jellybeans.vim'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'ajmwagar/vim-deus'
 
 " ---------------------------------------------------------------------------
 "  UTILITIES
@@ -340,6 +339,7 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
+  let g:airline_theme='monochrome'
   let g:airline_enable_syntastic = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
