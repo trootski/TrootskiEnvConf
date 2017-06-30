@@ -53,6 +53,7 @@ Plugin 'tpope/vim-dispatch'
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
 " ---------------------------------------------------------------------------
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
