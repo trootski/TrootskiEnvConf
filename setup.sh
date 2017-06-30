@@ -48,14 +48,6 @@ fi
 ln -s ~/TrootskiEnvConf/.vim ~/.vim
 
 ############################################
-# Soft link the powerline directory
-#
-if [ ! -f ~/.config/powerline ]; then
-	mkdir -p ~/.config/
-	ln -s ~/TrootskiEnvConf/powerline ~/.config/powerline
-fi
-
-############################################
 # Make sure all the submodules are checkout
 # out
 #

@@ -73,22 +73,4 @@ source ~/TrootskiEnvConf/tmuxinator.bash
 #
 export MANWIDTH=120
 
-############################################
-# Add powerline support
-#
-POWERLINE_CONFIG_COMMAND="/usr/local/bin/powerline-config"
-
-if [ -f `which powerline-daemon` ]; then
-	powerline-daemon -q
-	if [[ `which powerline-daemon` =~ ^\/usr\/local\/bin.* ]]; then
-		if [ -d '/usr/local/lib/python2.7/site-packages/powerline/' ]; then
-			export POWERLINE_LIB_DIR='/usr/local/lib/python2.7/site-packages/powerline/'
-		elif [ -d '/usr/local/lib/python2.7/dist-packages/powerline/' ]; then
-			export POWERLINE_LIB_DIR='/usr/local/lib/python2.7/dist-packages/powerline/'
-		fi
-	fi
-	POWERLINE_BASH_CONTINUATION=1
-	POWERLINE_BASH_SELECT=1
-	source $POWERLINE_LIB_DIR'bindings/bash/powerline.sh'
-fi
 
