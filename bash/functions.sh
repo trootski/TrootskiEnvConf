@@ -120,3 +120,7 @@ function t_UpdateTrootskiConf() {
 	cd "$CURRENT_DIR"
 }
 
+function t_RGBtoHex() {
+	printf \#%02X%02X%02X"\n" "$1" "$2" "$2"
+}
+
