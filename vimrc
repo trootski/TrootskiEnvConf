@@ -32,9 +32,7 @@ Plugin 'airblade/vim-gitgutter'
 " ---------------------------------------------------------------------------
 "  THEMES
 " ---------------------------------------------------------------------------
-" Plugin 'nanotech/jellybeans.vim'
-" Plugin 'altercation/vim-colors-solarized'
-Plugin 'ajmwagar/vim-deus'
+Plugin 'nanotech/jellybeans.vim'
 
 " ---------------------------------------------------------------------------
 "  UTILITIES
@@ -78,7 +76,7 @@ set pastetoggle=<F3>
 "let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
-colorscheme deus
+colorscheme jellybeans
 
 " yank to clipboard
 if has("clipboard")
@@ -340,7 +338,7 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_theme='monochrome'
+  let g:airline_theme='jellybeans'
   let g:airline_enable_syntastic = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
