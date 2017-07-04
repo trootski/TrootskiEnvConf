@@ -124,3 +124,7 @@ function t_FindProcessUsingPort() {
 	lsof -n -i4TCP:$1 | grep LISTEN
 }
 
+function t_RGBtoHex() {
+	printf \#%02X%02X%02X"\n" "$1" "$2" "$2"
+}
+

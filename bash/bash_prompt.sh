@@ -18,11 +18,11 @@ else
 		if tput setaf 1 &> /dev/null; then
 			tput sgr0
 			if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-				MAGENTA=$(tput setaf 9)
-				ORANGE=$(tput setaf 172)
-				GREEN=$(tput setaf 190)
-				PURPLE=$(tput setaf 141)
-				WHITE=$(tput setaf 9)
+				MAGENTA=$(tput setaf 235) # USERNAME
+				ORANGE=$(tput setaf 235) # HOST
+				GREEN=$(tput setaf 130) # DUNNO
+				PURPLE=$(tput setaf 25) # GIT & PWD
+				WHITE=$(tput setaf 245) # @, on and >
 			else
 				MAGENTA=$(tput setaf 5)
 				ORANGE=$(tput setaf 4)

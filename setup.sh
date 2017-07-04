@@ -33,9 +33,12 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
 	which -s brew
 	if [[ $? = 0 ]] ; then
 		# Install the default packages
-		for pkg in ~/.{bash-completion,git,tmux,node,vim,python}; do
+		for pkg in ~/.{bash-completion,git,tmux,node,python,reattach-to-user-namespace,tig}; do
 			brew install 
 		done
+		brew install ffmpeg --with-fdk-aac
+		brew install vim --wth-override-system-vi --with-python3
+		brew install disk-inventory-x
 	fi
 fi
 
@@ -43,14 +46,6 @@ fi
 # Setup the .vim directory
 #
 ln -s ~/TrootskiEnvConf/.vim ~/.vim
-
-############################################
-# Soft link the powerline directory
-#
-if [ ! -f ~/.config/powerline ]; then
-	mkdir -p ~/.config/
-	ln -s ~/TrootskiEnvConf/powerline ~/.config/powerline
-fi
 
 ############################################
 # Make sure all the submodules are checkout

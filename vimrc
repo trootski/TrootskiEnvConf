@@ -6,7 +6,6 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
@@ -27,7 +26,6 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'powerline/powerline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
@@ -35,7 +33,6 @@ Plugin 'airblade/vim-gitgutter'
 "  THEMES
 " ---------------------------------------------------------------------------
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'altercation/vim-colors-solarized'
 
 " ---------------------------------------------------------------------------
 "  UTILITIES
@@ -53,6 +50,7 @@ Plugin 'tpope/vim-dispatch'
 " ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
 " ---------------------------------------------------------------------------
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
@@ -79,10 +77,16 @@ set pastetoggle=<F3>
 "let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
-set bg=dark
 colorscheme jellybeans
 
-set clipboard=unnamed
+" yank to clipboard
+if has("clipboard")
+  set clipboard^=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 set nopaste
 set go+=a
 
@@ -214,6 +218,13 @@ noremap Q !!sh<CR>
 
 vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
 
+if !has("gui_running")
+	set term=xterm
+	set t_Co=256
+	let &t_AB="\e[48;5;%dm"
+	let &t_AF="\e[38;5;%dm"
+" 	colorscheme zenburn
+endif
 " ---------------------------------------------------------------------------
 "  NERD TREE STUFF
 " ---------------------------------------------------------------------------
@@ -328,7 +339,7 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_powerline_fonts = 1
+  let g:airline_theme='jellybeans'
   let g:airline_enable_syntastic = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
