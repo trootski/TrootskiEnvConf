@@ -120,3 +120,7 @@ function t_UpdateTrootskiConf() {
 	cd "$CURRENT_DIR"
 }
 
+function t_FindProcessUsingPort() {
+	lsof -n -i4TCP:$1 | grep LISTEN
+}
+
