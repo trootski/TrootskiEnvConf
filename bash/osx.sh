@@ -101,4 +101,7 @@ function t_ffmpeg_split {
 #defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true && \
 #defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+t_decode () {
+  echo "$1" | base64 --decode --noerrcheck ; echo
+}
 

@@ -60,6 +60,7 @@ Plugin 'markcornick/vim-vagrant'
 Plugin 'rodjek/vim-puppet'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
