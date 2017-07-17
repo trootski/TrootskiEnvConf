@@ -105,7 +105,7 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,eol:¬
 set modeline	" enable modelines to be read
-set mouse=a		" allow mouse support in console
+set mouse=		" allow mouse support in console
 set nocompatible
 " backup to ~/.tmp
 set backup
