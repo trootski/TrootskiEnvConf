@@ -10,9 +10,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
 
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -68,11 +65,14 @@ cno jj <c-c>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
-" Color Scheme stuff
-"let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
+set term=xterm
+set t_ut=
 colorscheme jellybeans
+let g:jellybeans_overrides = {
+\    'background': { 'guibg': '000000' },
+\}
 
 " yank to clipboard
 if has("clipboard")
@@ -212,9 +212,10 @@ noremap Q !!sh<CR>
 
 vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
 
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
 if !has("gui_running")
-	set term=xterm
-	set t_Co=256
 	let &t_AB="\e[48;5;%dm"
 	let &t_AF="\e[38;5;%dm"
 " 	colorscheme zenburn
