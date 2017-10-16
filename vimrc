@@ -72,6 +72,7 @@ set t_ut=
 colorscheme jellybeans
 let g:jellybeans_overrides = {
 \    'background': { 'guibg': '000000' },
+\    'colorcolumn': { 'guibg': '333333', 'ctermbg': '234' },
 \}
 
 " yank to clipboard
