@@ -1,3 +1,6 @@
+
+" PLUGINS -------------------------------------------------------------------
+
 set shell=/bin/bash
 "set runtimepath^=/home/troot/TrootskiEnvConf/.vim
 
@@ -11,15 +14,11 @@ set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
 set t_Co=256
 
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" ---------------------------------------------------------------------------
 "  INTERFACE STUFF
-" ---------------------------------------------------------------------------
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -29,14 +28,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" ---------------------------------------------------------------------------
 "  THEMES
-" ---------------------------------------------------------------------------
 Plugin 'nanotech/jellybeans.vim'
 
-" ---------------------------------------------------------------------------
 "  UTILITIES
-" ---------------------------------------------------------------------------
 Plugin 'mattn/emmet-vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
@@ -47,9 +42,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-dispatch'
 
-" ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
-" ---------------------------------------------------------------------------
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
@@ -60,10 +53,13 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" GENERAL -------------------------------------------------------------------
 
 " Remap jj to be the escape keys
 ino jj <esc>
