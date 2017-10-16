@@ -7,12 +7,7 @@
 [ -z "$PS1" ] && return
 
 ############################################
-# Use the vim editor by default
 #
-if hash nvim 2>/dev/null; then
-	export EDITOR='nvim'
-else
-	export EDITOR='vim'
 fi
 
 ############################################
