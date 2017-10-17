@@ -15,6 +15,9 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 #fi
 alias vi='vim'
 
+# Get info to use vim key bindings
+alias info='info --vi-keys'
+
 ###########################################
 # GIT STUFF
 #
