@@ -79,6 +79,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Encode a mp4 file at a particular bit rate and screen dimensions
 function t_ffmpeg_bitrate {
 
 	MP4_FNAME_FULL=$(basename "$1")
@@ -109,58 +110,30 @@ function t_ffmpeg_bitrate {
 #
 }
 
+# Take an mp4 and convert it to DASH and HLS
 function t_html5_video_suite {
 
 	ORIG_MP4_FNAME_FULL=$(basename "$1")
 	ORIG_MP4_FNAME="${ORIG_MP4_FNAME_FULL%.*}"
 
 	# DASH FILES
-	#t_ffmpeg_bitrate "$1" "350" "320" "240"
-	#t_ffmpeg_bitrate "$1" "550" "480" "360"
+	t_ffmpeg_bitrate "$1" "350" "320" "240"
+	t_ffmpeg_bitrate "$1" "550" "480" "360"
 	t_ffmpeg_bitrate "$1" "900" "720" "480"
-	#t_ffmpeg_bitrate "$1" "1600" "1280" "720"
+	t_ffmpeg_bitrate "$1" "1600" "1280" "720"
 
-	#MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
-	#MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
+	MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
+	MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
 	MP4_OUT_Q3="$ORIG_MP4_FNAME""-b-900k-720x480.mp4"
-	#MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
+	MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
 
 	OUT_FILE="dash-""$ORIG_MP4_FNAME"".mpd"
 
-	#MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
+	MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
 
 	# HLS segmented file
 	ffmpeg -y -i "$MP4_OUT_Q3" -map 0 -codec:v libx264 -acodec aac -strict experimental -f ssegment -segment_list "$ORIG_MP4_FNAME".m3u8 -segment_list_flags +live -segment_time 10 "hls-""$ORIG_MP4_FNAME"%03d.ts
 
-}
-
-function t_convert_all {
-	unset a i
-	while IFS= read -r -d $'\0' file; do
-		echo "$file"
-		a[i++]="$file"
-	done < <(find /media/sf_Sites/showcase.brando.ie/htdocs -type f -name '*.mp4' -print0)
-
-	for f in "${a[@]}"; do
-		MP4_FNAME_FULL=$(basename "$f")
-		MP4_FNAME="${MP4_FNAME_FULL%.*}"
-		cd "$(dirname "$f")"
-		t_html5_video_suite "$MP4_FNAME_FULL"
-	done
-}
-
-function t_a {
-	if [ "$#" -eq 1 ]; then
-		SESS="$1"
-	else
-		SESS=0
-	fi
-
-	tmux attach -t "$SESS"
-}
-
-t_apache_logs() {
-	sudo tail -f /var/log/apache2/error.log
 }
 
 function t_karma_init_headless_display() {
@@ -171,3 +144,5 @@ function t_karma_init_headless_display() {
 	fi
 }
 
+# Send the desktop to apple tv via airplay
+alias airplay="java -jar ~/Documents/airplay/airplay.jar -h 192.168.0.2 -d"
