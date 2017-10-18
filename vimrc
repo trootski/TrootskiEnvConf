@@ -1,3 +1,6 @@
+
+" PLUGINS -------------------------------------------------------------------
+
 set shell=/bin/bash
 "set runtimepath^=/home/troot/TrootskiEnvConf/.vim
 
@@ -7,19 +10,12 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
 
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" ---------------------------------------------------------------------------
 "  INTERFACE STUFF
-" ---------------------------------------------------------------------------
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -29,14 +25,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" ---------------------------------------------------------------------------
 "  THEMES
-" ---------------------------------------------------------------------------
 Plugin 'nanotech/jellybeans.vim'
 
-" ---------------------------------------------------------------------------
 "  UTILITIES
-" ---------------------------------------------------------------------------
 Plugin 'mattn/emmet-vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
@@ -47,9 +39,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-dispatch'
 
-" ---------------------------------------------------------------------------
 "  SYNTAX/LANGUAGE SUPPORT
-" ---------------------------------------------------------------------------
 Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
@@ -60,10 +50,13 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" GENERAL -------------------------------------------------------------------
 
 " Remap jj to be the escape keys
 ino jj <esc>
@@ -72,11 +65,15 @@ cno jj <c-c>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
-" Color Scheme stuff
-"let g:jellybeans_use_lowcolor_black = 0
 syntax enable
 set background=dark
+set term=xterm
+set t_ut=
 colorscheme jellybeans
+let g:jellybeans_overrides = {
+\    'background': { 'guibg': '000000' },
+\    'colorcolumn': { 'guibg': '333333', 'ctermbg': '234' },
+\}
 
 " yank to clipboard
 if has("clipboard")
@@ -214,11 +211,14 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Execute command on this line and replace with results of command
 noremap Q !!sh<CR>
 
-vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
+" vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
+
+vmap <Leader>x :%!python -m json.tool
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 if !has("gui_running")
-	set term=xterm
-	set t_Co=256
 	let &t_AB="\e[48;5;%dm"
 	let &t_AF="\e[38;5;%dm"
 " 	colorscheme zenburn
@@ -306,6 +306,16 @@ let g:ctrlp_custom_ignore = {
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
+set foldcolumn=0 " Column to show folds
+set foldenable " Enable folding
+set foldlevel=0 " Close all folds by default
+set foldmethod=syntax " Syntax are used to specify folds
+set foldminlines=0 " Allow folding single lines
+set foldnestmax=5 " Set max fold nesting level
+set foldlevelstart=2
+
+let javaScript_fold=1         " JavaScript
 
 " ---------------------------------------------------------------------------
 

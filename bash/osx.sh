@@ -105,3 +105,7 @@ t_decode () {
   echo "$1" | base64 --decode --noerrcheck ; echo
 }
 
+t_encode () {
+  echo "$1" | base64 --decode --noerrcheck ; echo
+}
+

@@ -7,13 +7,18 @@
 [ -z "$PS1" ] && return
 
 ############################################
-# Use the vim editor by default
+# Suppress new mail messages
 #
-if hash nvim 2>/dev/null; then
-	export EDITOR='nvim'
-else
-	export EDITOR='vim'
+unset MAILCHECK
+
+############################################
+# Configure settings for terminal colour
+#
+if [ "$TERM" = "xterm" ]; then
+  export TERM=xterm-256color
 fi
+alias tmux='tmux -2'  # for 256color
+alias tmux='tmux -u'  # to get rid of unicode rendering problem
 
 ############################################
 # Load ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
@@ -73,4 +78,9 @@ source ~/TrootskiEnvConf/tmuxinator.bash
 #
 export MANWIDTH=120
 
+############################################
+# Setup NVM home directory
+#
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
