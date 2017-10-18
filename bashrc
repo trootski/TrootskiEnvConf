@@ -7,6 +7,11 @@
 [ -z "$PS1" ] && return
 
 ############################################
+# Suppress new mail messages
+#
+unset MAILCHECK
+
+############################################
 # Configure settings for terminal colour
 #
 if [ "$TERM" = "xterm" ]; then
