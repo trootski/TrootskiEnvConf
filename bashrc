@@ -73,4 +73,9 @@ source ~/TrootskiEnvConf/tmuxinator.bash
 #
 export MANWIDTH=120
 
+############################################
+# Setup NVM home directory
+#
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
