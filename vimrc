@@ -213,7 +213,7 @@ noremap Q !!sh<CR>
 
 " vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
 
-vmap <Leader>x :%!python -m json.tool
+nnoremap <Leader>x :%!python -m json.tool
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
