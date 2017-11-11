@@ -15,7 +15,7 @@ setw -g status-left-fg white
 setw -g status-left-bg "colour25"
 
 set -g status-right-length "100"
-set -g status-right "#[bg=colour239] %a %B %-d, %Y ⌚ #[fg=white]%H:%M #[fg=white,bg="colour25"] #h "
+set -g status-right "#[bg=colour239] %a %B %-d, %Y #[fg=white]%H:%M #[fg=white,bg="colour25"] #h "
 
 setw -g window-status-format " #I: #W "
 setw -g window-status-separator ""
