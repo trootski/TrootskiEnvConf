@@ -261,6 +261,10 @@ nnoremap gl :ls<CR>
 
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
+
+" Jump to buffer number
+nnoremap gj :buffer
+
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
 
