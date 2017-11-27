@@ -215,6 +215,9 @@ noremap Q !!sh<CR>
 
 nnoremap <Leader>x :%!python -m json.tool
 
+" In vimdiff ignore whitespace difference
+set diffopt+=iwhite
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
@@ -258,11 +261,12 @@ nnoremap gl :ls<CR>
 
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
+
+" Jump to buffer number
+nnoremap gj :buffer
+
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
-
-" In vimdiff ignore whitespace difference
-set diffopt+=iwhite
 
 " ---------------------------------------------------------------------------
 "  TAB MAPPINGS
