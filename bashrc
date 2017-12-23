@@ -81,8 +81,14 @@ export MANWIDTH=120
 ############################################
 # Setup NVM home directory
 #
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 if [ -f /usr/local/opt/nvm/nvm.sh ]; then
     export NVM_DIR="$HOME/.nvm"
     . "/usr/local/opt/nvm/nvm.sh"
 fi
+
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
 
