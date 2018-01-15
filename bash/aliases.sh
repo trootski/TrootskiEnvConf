@@ -165,3 +165,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
 alias ..='cd ..'
+
+###########################################
+# DOCKER
+#
+alias dl='docker ps -l -q'
+alias dlc='dl | pbcopy'
+
