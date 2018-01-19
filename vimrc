@@ -311,6 +311,9 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 
+" ---------------------------------------------------------------------------
+"  FOLDING
+" ---------------------------------------------------------------------------
 set foldcolumn=0 " Column to show folds
 set foldenable " Enable folding
 set foldlevel=0 " Close all folds by default
@@ -320,6 +323,10 @@ set foldnestmax=5 " Set max fold nesting level
 set foldlevelstart=2
 
 let javaScript_fold=1         " JavaScript
+
+autocmd FileType text setlocal foldmethod=marker foldlevelstart=0 foldlevel=0
+
+autocmd FileType text  map <leader>ccf zO$vi{V"+yzC
 
 " ---------------------------------------------------------------------------
 
