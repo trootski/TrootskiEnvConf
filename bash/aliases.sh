@@ -172,3 +172,8 @@ alias ..='cd ..'
 alias dl='docker ps -l -q'
 alias dlc='dl | pbcopy'
 
+###########################################
+# TREE
+#
+alias tree='tree -C'
+
