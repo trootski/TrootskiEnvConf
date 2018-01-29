@@ -44,11 +44,6 @@ fi
 export PATH
 
 ############################################
-# Use vi mode on the command line
-#
-set -o vi
-
-############################################
 # From bash 4.3 this should display a different prompt in edit mode
 #
 set show-mode-in-prompt on
