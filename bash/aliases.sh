@@ -177,3 +177,8 @@ alias dlc='dl | pbcopy'
 #
 alias tree='tree -C'
 
+###########################################
+# TMUX
+#
+alias mux='tmuxinator'
+
