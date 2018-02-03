@@ -51,6 +51,7 @@ Plugin 'burnettk/vim-angular'
 Plugin 'claco/jasmine.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
