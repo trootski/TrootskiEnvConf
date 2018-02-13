@@ -3,16 +3,6 @@
 #
 
 alias cls='clear'
-
-# `cat` with beautiful colors. requires Pygments installed.
-# 							   sudo easy_install Pygments
-alias c='pygmentize -O style=monokai -f console256 -g'
-
-# If nvim exists, make it the default shell
-#if hash nvim 2>/dev/null; then
-#	alias vim='nvim'
-#	alias vi='nvim'
-#fi
 alias vi='vim'
 
 # Get info to use vim key bindings
