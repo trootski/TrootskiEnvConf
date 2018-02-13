@@ -359,12 +359,12 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_theme='jellybeans'
-  let g:airline_enable_syntastic = 1
+  let g:airline_theme='cool'
+  let g:airline_enable_syntastic = 0
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#fnamecollapse = 1
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
   let g:airline_detect_whitespace=0
