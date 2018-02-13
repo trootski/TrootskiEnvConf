@@ -27,6 +27,7 @@ Plugin 'airblade/vim-gitgutter'
 
 "  THEMES
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'rafi/awesome-vim-colorschemes'
 
 "  UTILITIES
 Plugin 'mattn/emmet-vim'
@@ -70,11 +71,7 @@ syntax enable
 set background=dark
 set term=xterm
 set t_ut=
-colorscheme jellybeans
-let g:jellybeans_overrides = {
-\    'background': { 'guibg': '000000' },
-\    'colorcolumn': { 'guibg': '333333', 'ctermbg': '234' },
-\}
+colorscheme gruvbox
 
 " yank to clipboard
 if has("clipboard")
@@ -359,7 +356,7 @@ augroup END
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_theme='cool'
+  let g:airline_theme='gruvbox'
   let g:airline_enable_syntastic = 0
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
