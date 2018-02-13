@@ -212,9 +212,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Execute command on this line and replace with results of command
 noremap Q !!sh<CR>
 
-" vmap <Leader>x :!tidy -q -i --show-errors 0<CR>
 
-nnoremap <Leader>x :%!python -m json.tool
+autocmd Filetype javascript nnoremap <Leader>x :%!python -m json.tool
+autocmd Filetype html nnoremap <Leader>x :%!tidy -mi -wrap 0 2>/dev/null<CR>
 
 " In vimdiff ignore whitespace difference
 set diffopt+=iwhite

@@ -74,6 +74,11 @@ source ~/TrootskiEnvConf/tmuxinator.bash
 export MANWIDTH=120
 
 ############################################
+# Set default settings for HTML tidy
+#
+export HTML_TIDY=~/TrootskiEnvConf/html-tidy-config.txt
+
+############################################
 # Setup NVM home directory
 #
 export NVM_DIR="$HOME/.nvm"
