@@ -18,11 +18,14 @@ else
 		if tput setaf 1 &> /dev/null; then
 			tput sgr0
 			if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-				MAGENTA=$(tput setaf 235) # USERNAME
-				ORANGE=$(tput setaf 235) # HOST
-				GREEN=$(tput setaf 130) # DUNNO
-				PURPLE=$(tput setaf 25) # GIT & PWD
-				WHITE=$(tput setaf 245) # @, on and >
+				# A nice lookup table of the colours is here:
+				# https://i.stack.imgur.com/a2S4s.png
+				MAGENTA=$(tput setaf 235)
+				ORANGE=$(tput setaf 235)
+				GREEN=$(tput setaf 130)
+				PURPLE=$(tput setaf 25)
+				GRAY=$(tput setaf 238)
+				WHITE=$(tput setaf 245)
 			else
 				MAGENTA=$(tput setaf 5)
 				ORANGE=$(tput setaf 4)
@@ -38,6 +41,7 @@ else
 			GREEN="\033[1;32m"
 			PURPLE="\033[1;35m"
 			WHITE="\033[1;31m"
+			GRAY="\033[1;90m"
 			BOLD=""
 			RESET="\033[m"
 		fi
@@ -59,7 +63,7 @@ else
 
 		# Only show username/host if not default
 		function usernamehost() {
-			echo "${MAGENTA}$USER${WHITE}@${ORANGE}$HOSTNAME $WHITEin "
+			echo "${GRAY}$USER${WHITE}@${GRAY}$HOSTNAME $WHITEin "
 		}
 
 		if [[ $EUID -ne 0 ]]; then
