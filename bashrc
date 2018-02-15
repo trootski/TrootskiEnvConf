@@ -36,12 +36,7 @@ set syntax on
 ############################################
 # Setup my PATH
 #
-PATH="${PATH}:${HOME}/Documents/bin:${HOME}/.local/bin"
-
-if [ -d "~/.composer/vendor/bin/" ]; then
-	PATH="${PATH}:${HOME}/.composer/vendor/bin"
-fi
-export PATH
+export PATH="/usr/local/bin:${HOME}/Documents/bin:$(getconf PATH)"
 
 ############################################
 # From bash 4.3 this should display a different prompt in edit mode
