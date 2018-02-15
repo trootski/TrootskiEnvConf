@@ -421,3 +421,10 @@ let g:VimuxRunnerType = 'pane'
 let g:tern_show_argument_hints='on_hold'
 
 let g:tern_map_keys=1
+
+" -------------------------------------------------------------------------------
+"  LaTex
+" -------------------------------------------------------------------------------
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
+
