@@ -19,9 +19,9 @@ if [ "$TERM" = "xterm" ]; then
 fi
 
 ############################################
-# Load ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
+# Load ~/.prompt, ~/.exports, ~/.aliases and ~/.functions
 #
-for file in ~/TrootskiEnvConf/bash/{bash_prompt,exports,aliases,functions}.sh; do
+for file in ~/TrootskiEnvConf/bash/{prompt,exports,aliases,functions}.sh; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
