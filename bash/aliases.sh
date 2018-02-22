@@ -170,6 +170,7 @@ alias tree='tree -C'
 ###########################################
 # TMUX
 #
+alias tmux='tmux -2u'  # for 256 color and get rid of unicode rendering problem
 alias mux='tmuxinator'
 alias attach='tmux attach -t '
 
