@@ -4,6 +4,12 @@
 PATH="${PATH}:${HOME}/.composer/vendor/bin"
 export PATH
 
+############################################
+# ls
+#
+alias ls="command ls --color"
+export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -79,70 +85,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Encode a mp4 file at a particular bit rate and screen dimensions
-function t_ffmpeg_bitrate {
-
-	MP4_FNAME_FULL=$(basename "$1")
-	MP4_FNAME="${MP4_FNAME_FULL%.*}"
-
-	BITRATE=550
-	if [ "$#" -gt 1 ]; then
-		BITRATE="$2"
-	fi
-
-	MP4_WIDTH=1280
-	if [ "$#" -gt 2 ]; then
-		MP4_WIDTH="$3"
-	fi
-
-	MP4_HEIGHT=720
-	if [ "$#" -gt 3 ]; then
-		MP4_HEIGHT="$4"
-	fi
-
-	MP4_OUT="$MP4_FNAME""-b-""$BITRATE""k-""$MP4_WIDTH""x""$MP4_HEIGHT"".mp4"
-
-	#echo "Encoding ""$MP4_FNAME"". Dimensions: ""$MP4_WIDTH"":""$MP4_HEIGHT"". Bitrate (""$BITRATE"")"
-	echo "Creating ""$MP4_OUT"
-
-	# MP4 @ provided bit rate (default: 550)
-	ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 1 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k -f mp4 /dev/null && ffmpeg -y -i "$MP4_FNAME_FULL" -c:v libx264 -s "$MP4_WIDTH":"$MP4_HEIGHT" -preset slow -b:v "$BITRATE"k -pass 2 -movflags +faststart -profile:v baseline -level 4.0 -acodec aac -strict experimental -b:a 128k "$MP4_OUT"
-#
-}
-
-# Take an mp4 and convert it to DASH and HLS
-function t_html5_video_suite {
-
-	ORIG_MP4_FNAME_FULL=$(basename "$1")
-	ORIG_MP4_FNAME="${ORIG_MP4_FNAME_FULL%.*}"
-
-	# DASH FILES
-	t_ffmpeg_bitrate "$1" "350" "320" "240"
-	t_ffmpeg_bitrate "$1" "550" "480" "360"
-	t_ffmpeg_bitrate "$1" "900" "720" "480"
-	t_ffmpeg_bitrate "$1" "1600" "1280" "720"
-
-	MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
-	MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
-	MP4_OUT_Q3="$ORIG_MP4_FNAME""-b-900k-720x480.mp4"
-	MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
-
-	OUT_FILE="dash-""$ORIG_MP4_FNAME"".mpd"
-
-	MP4Box -dash 200 -rap -frag-rap -profile onDemand -out "$OUT_FILE" "$MP4_OUT_Q1" "$MP4_OUT_Q2" "$MP4_OUT_Q3" "$MP4_OUT_Q4"
-
-	# HLS segmented file
-	ffmpeg -y -i "$MP4_OUT_Q3" -map 0 -codec:v libx264 -acodec aac -strict experimental -f ssegment -segment_list "$ORIG_MP4_FNAME".m3u8 -segment_list_flags +live -segment_time 10 "hls-""$ORIG_MP4_FNAME"%03d.ts
-
-}
-
-function t_karma_init_headless_display() {
-	if $(command -v karma >/dev/null 2>&1) ; then
-		export DISPLAY=:99.0
-		export CHROME_BIN=/usr/bin/chromium-browser
-		test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
-	fi
-}
-
-# Send the desktop to apple tv via airplay
-alias airplay="java -jar ~/Documents/airplay/airplay.jar -h 192.168.0.2 -d"
