@@ -17,7 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 
 "  INTERFACE STUFF
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
