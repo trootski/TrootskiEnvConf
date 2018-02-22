@@ -51,12 +51,6 @@ elif [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
 fi
 
 ############################################
-# Colour mode for ls
-#
-export CLICOLOR='true'
-export LSCOLORS="gxfxcxdxbxegedabagacad"
-
-############################################
 # Set shell options
 #
 
@@ -71,16 +65,6 @@ shopt -s checkwinsize
 # Adds tmuxinator bash completion support
 #
 source ~/TrootskiEnvConf/tmuxinator.bash
-
-############################################
-# Adds tmuxinator bash completion support
-#
-export MANWIDTH=120
-
-############################################
-# Set default settings for HTML tidy
-#
-export HTML_TIDY=~/TrootskiEnvConf/html-tidy-config.txt
 
 ############################################
 # Setup NVM home directory
