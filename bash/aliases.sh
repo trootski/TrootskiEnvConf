@@ -171,4 +171,5 @@ alias tree='tree -C'
 # TMUX
 #
 alias mux='tmuxinator'
+alias attach='tmux attach -t '
 
