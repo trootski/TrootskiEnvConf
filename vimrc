@@ -328,35 +328,11 @@ autocmd FileType text  map <leader>ccf zO$vi{V"+yzC
 " ---------------------------------------------------------------------------
 
 " ---------------------------------------------------------------------------
-"  SYNTASTIC
-" ---------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-augroup syntastic_config
-  autocmd!
-  let g:syntastic_error_symbol = '✗'
-  let g:syntastic_warning_symbol = '⚠'
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-  let g:syntastic_html_tidy_exec = 'tidy5'
-augroup END
-
-" ---------------------------------------------------------------------------
-
-" ---------------------------------------------------------------------------
 "  AIRLINE
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
   let g:airline_theme='gruvbox'
-  let g:airline_enable_syntastic = 0
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#enabled = 1
