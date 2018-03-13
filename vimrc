@@ -403,3 +403,10 @@ let g:tern_map_keys=1
 imap <C-g> <Plug>IMAP_JumpForward
 nmap <C-g> <Plug>IMAP_JumpForward
 
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_contrast_dark = 'medium'
+
+let NERDTreeMinimalUI = 1
+
