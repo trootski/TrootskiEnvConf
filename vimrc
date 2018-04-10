@@ -209,7 +209,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 noremap Q !!sh<CR>
 
 
-autocmd Filetype javascript nnoremap <Leader>x :%!python -m json.tool
+autocmd Filetype javascript,json nnoremap <Leader>x :%!python -m json.tool
 autocmd Filetype html nnoremap <Leader>x :%!tidy -mi -wrap 0 2>/dev/null<CR>
 
 " In vimdiff ignore whitespace difference
