@@ -33,12 +33,15 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
 	which -s brew
 	if [[ $? = 0 ]] ; then
 		# Install the default packages
-		for pkg in ~/.{bash-completion,git,tmux,node,python,reattach-to-user-namespace,tig}; do
+		for pkg in ~/.{awscli,bash-completion,figlet,git,jq,nvm,pv,tidy-html5,tmuxinator-completion,tree,ttygif,watch,tmux,node,python,reattach-to-user-namespace,tig}; do
 			brew install 
 		done
 		brew install ffmpeg --with-fdk-aac
 		brew install vim --wth-override-system-vi --with-python3
-		brew install disk-inventory-x
+		brew cask install disk-inventory-x
+		brew cask install graphiql
+		brew cask install java
+		brew cask install vlc
 	fi
 fi
 
