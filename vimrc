@@ -25,7 +25,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 "  THEMES
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 
 "  UTILITIES
@@ -67,7 +66,7 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 syntax enable
-set background=dark
+set background=light
 set term=xterm
 set t_ut=
 colorscheme gruvbox
@@ -409,4 +408,6 @@ let g:gruvbox_italicize_comments = 1
 let g:gruvbox_contrast_dark = 'medium'
 
 let NERDTreeMinimalUI = 1
+
+highlight Normal ctermbg=230 guibg=#ffffd7
 
