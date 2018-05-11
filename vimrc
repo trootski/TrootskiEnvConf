@@ -71,6 +71,7 @@ set background=dark
 set term=xterm
 set t_ut=
 colorscheme gruvbox
+let g:gruvbox_contrast_light = 'hard'
 
 " yank to clipboard
 if has("clipboard")
