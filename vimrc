@@ -170,7 +170,7 @@ nmap <F9> :call PasteRange()<cr>
 " Searching
 "
 set ignorecase	" case insensitive searching
-set incsearch	" search as you type
+set noincsearch	" search as you type
 
 "
 " Tabbing
