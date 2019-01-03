@@ -300,9 +300,11 @@ endif
 set wildignore+=*/bower_components/*,
 set wildignore+=*/node_modules/*,
 set wildignore+=*/vendor/*,
+set wildignore+=*/app_deploy/*,
+set wildignore+=*/dist/*,
 
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|bower_components|vendor|components)$',
+	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist|app_deploy|bower_components|vendor|components)$',
 	\ 'file': '\v\.(exe|so|dll|so|swp|zip|jpg|jpeg|png|gif)$',
 \ }
 
