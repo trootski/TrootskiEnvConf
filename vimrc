@@ -51,6 +51,8 @@ Plugin 'claco/jasmine.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+Plugin 'jparise/vim-graphql'
+Plugin 'tpope/vim-cucumber'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -211,6 +213,7 @@ noremap Q !!sh<CR>
 
 autocmd Filetype javascript,json nnoremap <Leader>x :%!python -m json.tool
 autocmd Filetype html nnoremap <Leader>x :%!tidy -mi -wrap 0 2>/dev/null<CR>
+autocmd BufNewFile,BufRead *.aurora set syntax=python
 
 " In vimdiff ignore whitespace difference
 set diffopt+=iwhite
