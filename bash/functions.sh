@@ -19,6 +19,10 @@ function gitexport(){
 	git archive master | tar -x -C "$1"
 }
 
+function t_PrintPRLogs() {
+  git --no-pager log -"$1" --pretty=format:'[`%h`] -%d %s %n' --abbrev-commit --date=relative | sed -E "s/- ([A-z]+)*:/- **\1**:/p" | sed '/^$/d' | sed 's/ (.*)//'
+}
+
 # get gzipped size
 function gz() {
 	echo "orig size    (bytes): "
