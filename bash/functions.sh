@@ -20,7 +20,11 @@ function gitexport(){
 }
 
 function t_PrintPRLogs() {
-  git --no-pager log -"$1" --pretty=format:'[`%h`] -%d %s %n' --abbrev-commit --date=relative | sed -E "s/- ([A-z]+)*:/- **\1**:/p" | sed '/^$/d' | sed 's/ (.*)//'
+  NUM_RECORDS_TO_DISPLAY=100
+  if [ "$#" -gt 0 ] ; then
+    NUM_RECORDS_TO_DISPLAY="$1"
+  fi
+  git --no-pager log -"$NUM_RECORDS_TO_DISPLAY" --pretty=format:'[`%h`](https://github.com/hmhco/io.hmheng.planner-api/commit/%H) -%d %s %n' --abbrev-commit --date=relative | sed -E "s/- ([A-z]+)*:/- **\1**:/p" | sed '/^$/d' | sed 's/ (.*)//'
 }
 
 # get gzipped size
