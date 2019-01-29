@@ -19,12 +19,17 @@ function gitexport(){
 	git archive master | tar -x -C "$1"
 }
 
+function t_DockerStopAll() {
+  docker stop $(docker ps -a -q)
+}
+
 function t_PrintPRLogs() {
-  NUM_RECORDS_TO_DISPLAY=100
-  if [ "$#" -gt 0 ] ; then
-    NUM_RECORDS_TO_DISPLAY="$1"
-  fi
-  git --no-pager log -"$NUM_RECORDS_TO_DISPLAY" --pretty=format:'[`%h`](https://github.com/hmhco/io.hmheng.planner-api/commit/%H) -%d %s %n' --abbrev-commit --date=relative | sed -E "s/- ([A-z]+)*:/- **\1**:/p" | sed '/^$/d' | sed 's/ (.*)//'
+  local CONFIG_URL=~/.config/printprs/config.json
+  local NUM_RECORDS_TO_DISPLAY=$(jq '.NUM_RECORDS_TO_DISPLAY' "$CONFIG_URL" | tr -d '"')
+  local PROJECT_FOLDER_DIR=$(jq '.PROJECT_FOLDER_DIR'  "$CONFIG_URL" | tr -d '"')
+  local GITHUB_AUTH_TOKEN=$(jq '.GITHUB_AUTH_TOKEN'  "$CONFIG_URL" | tr -d '"')
+
+  ~/TrootskiEnvConf/scripts/hmh-prs.py "$PROJECT_FOLDER_DIR" "$NUM_RECORDS_TO_DISPLAY" "$GITHUB_AUTH_TOKEN"
 }
 
 # get gzipped size
