@@ -20,7 +20,7 @@ def getAllPRs():
   }
 
   r = requests.get(url, params=params, headers=headers)
-  print url
+
   if(r.ok):
     repoItem = json.loads(r.text or r.content)
     return r.json()
