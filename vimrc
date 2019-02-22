@@ -58,6 +58,8 @@ Plugin 'tpope/vim-cucumber'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let s:uname = system("echo -n \"$(uname)\"")
+
 " GENERAL -------------------------------------------------------------------
 
 " Remap jj to be the escape keys
@@ -68,7 +70,14 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 syntax enable
-set background=light
+
+if s:uname == "Linux"
+  set background=dark
+else
+  set background=light
+  highlight Normal ctermbg=230 guibg=#ffffd7
+endif
+
 set term=xterm
 set t_ut=
 colorscheme gruvbox
@@ -226,6 +235,7 @@ if !has("gui_running")
 	let &t_AF="\e[38;5;%dm"
 " 	colorscheme zenburn
 endif
+
 " ---------------------------------------------------------------------------
 "  NERD TREE STUFF
 " ---------------------------------------------------------------------------
@@ -353,7 +363,6 @@ augroup END
 " ---------------------------------------------------------------------------
 
 " Disable the mouse on Linux
-let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname == "Linux"
 	set mouse=
 endif
@@ -415,5 +424,4 @@ let g:gruvbox_contrast_dark = 'medium'
 
 let NERDTreeMinimalUI = 1
 
-highlight Normal ctermbg=230 guibg=#ffffd7
 
