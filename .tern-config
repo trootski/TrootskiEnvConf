@@ -1,15 +1,21 @@
 {
-	"libs": [
-		"browser",
-		"angular",
-		"jquery"
-	],
-	"loadEagerly": [
-	],
-	"plugins": {
-		"requirejs": {
-			"baseURL": "./",
-			"paths": {}
-		}
-	}
+  "compilerOptions": {
+    "target": "ES6"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "libs": [
+    "browser",
+    "angular",
+    "jquery"
+  ],
+  "loadEagerly": [
+  ],
+  "plugins": {
+    "node": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
 }

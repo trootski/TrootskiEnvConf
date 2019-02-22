@@ -54,6 +54,12 @@ Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'jparise/vim-graphql'
 Plugin 'tpope/vim-cucumber'
 
+"  CODE COMPLETION
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'deoplete-plugins/deoplete-jedi'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -405,11 +411,24 @@ let g:VimuxUseNearest = 0
 let g:VimuxRunnerType = 'pane'
 
 " -------------------------------------------------------------------------------
-"  TERN
+"  DEOPLETE
 " -------------------------------------------------------------------------------
-let g:tern_show_argument_hints='on_hold'
+let g:deoplete#enable_at_startup = 1
 
-let g:tern_map_keys=1
+if has('pythonx')
+  let s:py = 'pythonx'
+  let s:pyeval = function('pyxeval')
+elseif has('python3')
+  let s:py = 'python3'
+  let s:pyeval = function('py3eval')
+else
+  let s:py = 'python'
+  let s:pyeval = function('pyeval')
+endif
+
+call deoplete#custom#option('max_list', 10)
+
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " -------------------------------------------------------------------------------
 "  LaTex
