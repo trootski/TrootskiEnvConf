@@ -78,7 +78,8 @@ set pastetoggle=<F3>
 syntax enable
 
 if s:uname == "Linux"
-  set background=dark
+  highlight Normal ctermbg=230 guibg=#ffffdc
+  set background=light
 else
   set background=light
   highlight Normal ctermbg=230 guibg=#ffffd7
