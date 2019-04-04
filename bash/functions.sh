@@ -151,24 +151,18 @@ function t_ffmpeg_bitrate {
 	MP4_FNAME_FULL=$(basename "$1")
 	MP4_FNAME="${MP4_FNAME_FULL%.*}"
 
-	BITRATE=550
-	if [ "$#" -gt 1 ]; then
-		BITRATE="$2"
-	fi
-
 	MP4_WIDTH=1280
-	if [ "$#" -gt 2 ]; then
-		MP4_WIDTH="$3"
+	if [ "$#" -gt 1 ]; then
+		MP4_WIDTH="$2"
 	fi
 
 	MP4_HEIGHT=720
-	if [ "$#" -gt 3 ]; then
-		MP4_HEIGHT="$4"
+	if [ "$#" -gt 2 ]; then
+		MP4_HEIGHT="$3"
 	fi
 
-	MP4_OUT="$MP4_FNAME""-b-""$BITRATE""k-""$MP4_WIDTH""x""$MP4_HEIGHT"".mp4"
+	MP4_OUT="$MP4_FNAME""-""$MP4_WIDTH""x""$MP4_HEIGHT"".mp4"
 
-	#echo "Encoding ""$MP4_FNAME"". Dimensions: ""$MP4_WIDTH"":""$MP4_HEIGHT"". Bitrate (""$BITRATE"")"
 	echo "Creating ""$MP4_OUT"
 
 	# MP4 @ provided bit rate (default: 550)
@@ -183,15 +177,15 @@ function t_html5_video_suite {
 	ORIG_MP4_FNAME="${ORIG_MP4_FNAME_FULL%.*}"
 
 	# DASH FILES
-	t_ffmpeg_bitrate "$1" "350" "320" "240"
-	t_ffmpeg_bitrate "$1" "550" "480" "360"
-	t_ffmpeg_bitrate "$1" "900" "720" "480"
-	t_ffmpeg_bitrate "$1" "1600" "1280" "720"
+	t_ffmpeg_bitrate "$1" "320" "240"
+	t_ffmpeg_bitrate "$1" "480" "360"
+	t_ffmpeg_bitrate "$1" "720" "480"
+	t_ffmpeg_bitrate "$1" "1280" "720"
 
-	MP4_OUT_Q1="$ORIG_MP4_FNAME""-b-350k-320x240.mp4"
-	MP4_OUT_Q2="$ORIG_MP4_FNAME""-b-550k-480x360.mp4"
-	MP4_OUT_Q3="$ORIG_MP4_FNAME""-b-900k-720x480.mp4"
-	MP4_OUT_Q4="$ORIG_MP4_FNAME""-b-1600k-1280x720.mp4"
+	MP4_OUT_Q1="$ORIG_MP4_FNAME""-320x240.mp4"
+	MP4_OUT_Q2="$ORIG_MP4_FNAME""-480x360.mp4"
+	MP4_OUT_Q3="$ORIG_MP4_FNAME""-720x480.mp4"
+	MP4_OUT_Q4="$ORIG_MP4_FNAME""-1280x720.mp4"
 
 	OUT_FILE="dash-""$ORIG_MP4_FNAME"".mpd"
 
