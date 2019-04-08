@@ -4,7 +4,6 @@
 backups/*
 !backups/empty
 .vim/.netrwhist
-tmuxinator/*
 !/**/.gitkeep
 .vim/bundle/*
 !.vim/bundle/Vundle
