@@ -196,4 +196,21 @@ function t_html5_video_suite {
 
 }
 
+function t_RAMDisk_create() {
+  local deviceName=$(diskutil info tmpRAMDisk | grep 'Device Node:' | awk '{ print $3 }')
+  if [ -z "$deviceName" ]; then
+    diskutil erasevolume HFS+ tmpRAMDisk `hdiutil attach -nomount ram://4194304`
+  else
+    diskutil mount "$deviceName"
+  fi
+}
+
+function t_RAMDisk_destroy() {
+  local deviceName=$(diskutil info tmpRAMDisk | grep 'Device Node:' | awk '{ print $3 }')
+  if [ -n "$deviceName" ]; then
+    diskutil unmountDisk "$deviceName"
+  fi
+}
+
+
 
