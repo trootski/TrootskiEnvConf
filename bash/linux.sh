@@ -23,3 +23,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH="/snap/bin:$(getconf PATH)"
