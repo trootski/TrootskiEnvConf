@@ -24,3 +24,6 @@ if ! shopt -oq posix; then
 fi
 
 export PATH="/snap/bin:$(getconf PATH)"
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
