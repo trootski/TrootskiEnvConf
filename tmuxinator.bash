@@ -18,4 +18,7 @@ _tmuxinator() {
     fi
 }
 
-complete -F _tmuxinator tmuxinator mux
+shell_pat="zsh$"
+if [ "$SHELL" =~ "$shell_pat" ]; then
+  complete -F _tmuxinator tmuxinator mux
+fi

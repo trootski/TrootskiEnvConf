@@ -1,12 +1,28 @@
 # @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
 # Shamelessly copied from https://github.com/gf3/dotfiles
 
-if [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
+function git_info() {
+  # Check if git is installed
+  git --version 2>&1 >/dev/null # improvement by tripleee
+  GIT_IS_AVAILABLE=$?
+  if [ $GIT_IS_AVAILABLE -eq 0 ]; then
+    # check if we're in a git repo
+    git rev-parse --is-inside-work-tree &>/dev/null || return
+    # quickest check for what branch we're on
+    branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+    # check if it's dirty (via github.com/sindresorhus/pure)
+    dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
+    echo " %F{234}on %F{025}"$branch$dirty
+  fi
+}
 
+zsh_pattern="zsh$"
+if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
+  PS1="%B%F{238}%n%F{234}@%F{238}%M %F{025}%/%F{238}%F{025}$(git_info)"$'\n'"> %F{234}"
+  PS2=
+elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="$PROMPT_COMMAND"
-
 else
-
 	if [ -t 1 ]; then
 
 		if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -46,20 +62,6 @@ else
 			RESET="\033[m"
 		fi
 
-		function git_info() {
-			# Check if git is installed
-			git --version 2>&1 >/dev/null # improvement by tripleee
-			GIT_IS_AVAILABLE=$?
-			if [ $GIT_IS_AVAILABLE -eq 0 ]; then
-				# check if we're in a git repo
-				git rev-parse --is-inside-work-tree &>/dev/null || return
-				# quickest check for what branch we're on
-				branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
-				# check if it's dirty (via github.com/sindresorhus/pure)
-				dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
-				echo $WHITE" on "$PURPLE$branch$dirty
-			fi
-		}
 
 		# Only show username/host if not default
 		function usernamehost() {
