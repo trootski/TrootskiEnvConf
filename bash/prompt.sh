@@ -9,16 +9,16 @@ function git_info() {
     # check if we're in a git repo
     git rev-parse --is-inside-work-tree &>/dev/null || return
     # quickest check for what branch we're on
-    branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+    local branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
     # check if it's dirty (via github.com/sindresorhus/pure)
-    dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
+    local dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
     echo " %F{234}on %F{025}"$branch$dirty
   fi
 }
 
 zsh_pattern="zsh$"
 if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
-  PS1="%B%F{238}%n%F{234}@%F{238}%M %F{025}%/%F{238}%F{025}$(git_info)"$'\n'"> %F{234}"
+  PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%/%F{238}%F{025}$(git_info)"$'\n'"> %B%F{234}"
   PS2=
 elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="$PROMPT_COMMAND"
