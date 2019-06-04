@@ -145,9 +145,11 @@ function t_RGBtoHex() {
 # Video encoding stuff
 #
 
-# Encode a mp4 file at a particular bit rate and screen dimensions
-function t_ffmpeg_bitrate {
+function t_ffmpeg_copy_mkvs_to_mp4 {
+  for f in ~/Downloads/ToConvert/*.mkv; do ffmpeg -n -i "$f" -codec copy "$(echo "$f" | sed -E 's/\.mkv$/\.mp4/')"; done
+}
 
+function t_ffmpeg_bitrate {
 	MP4_FNAME_FULL=$(basename "$1")
 	MP4_FNAME="${MP4_FNAME_FULL%.*}"
 
