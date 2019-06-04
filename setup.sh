@@ -8,7 +8,7 @@ set -e
 #
 [[ ! -e ~/TrootskiEnvConf/backups ]] && mkdir ~/TrootskiEnvConf/backups
 
-for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf,ideavimrc,inputrc}; do
+for file in ~/.{bashrc,bash_profile,vimrc,tmuxinator,tmux.conf,ideavimrc,inputrc,zshrc}; do
   if [[ -h "$file" ]]
   then
     # File is a symbolic link
@@ -34,7 +34,7 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
   if [[ $? = 0 ]] ; then
     # Install the default packages
     for pkg in ~/.{awscli,bash-completion,figlet,git,jq,nvm,pv,tidy-html5,tmuxinator-completion,tree,ttygif,watch,tmux,node,python,reattach-to-user-namespace,tig}; do
-      brew install 
+      brew install
     done
     brew install ffmpeg --with-fdk-aac
     brew install vim --wth-override-system-vi --with-python3
