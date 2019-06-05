@@ -19,7 +19,7 @@ function git_info() {
 zsh_pattern="zsh$"
 if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
   local git_info_str='$(git_info)'
-  PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%/%F{238}%F{025}${git_info_str}"$'\n'"> %B%F{234}"
+  PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"> %B%F{234}"
   PS2=
 elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="$PROMPT_COMMAND"
