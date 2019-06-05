@@ -33,7 +33,7 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
   which -s brew
   if [[ $? = 0 ]] ; then
     # Install the default packages
-    for pkg in ~/.{awscli,bash-completion,figlet,git,jq,nvm,pv,tidy-html5,tmuxinator-completion,tree,ttygif,watch,tmux,node,python,reattach-to-user-namespace,tig}; do
+    for pkg in ~/.{awscli,bash-completion,figlet,git,jq,nvm,pv,tidy-html5,tmuxinator-completion,tree,ttygif,watch,tmux,node,python,reattach-to-user-namespace,tig,rbenv}; do
       brew install
     done
     brew install ffmpeg --with-fdk-aac
