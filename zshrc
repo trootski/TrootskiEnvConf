@@ -1,9 +1,18 @@
+
 autoload -Uz compinit promptinit
 compinit
 
 setopt promptsubst
 
-source $(brew --prefix)/share/antigen/antigen.zsh
+
+case `uname` in
+  Darwin)
+    source $(brew --prefix)/share/antigen/antigen.zsh
+  ;;
+  Linux)
+    source /usr/share/zsh-antigen/antigen.zsh
+ ;;
+esac
 
 antigen use oh-my-zsh
 antigen bundle git
