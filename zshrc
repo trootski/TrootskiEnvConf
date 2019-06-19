@@ -15,9 +15,10 @@ case `uname` in
 esac
 
 antigen use oh-my-zsh
+antigen bundle command-not-found
 antigen bundle git
 antigen bundle npm
-antigen bundle command-not-found
+antigen bundle tmuxinator
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you're done.
@@ -26,6 +27,7 @@ antigen apply
 plugins=(
   git
   npm
+  tmuxinator
   z
 )
 
