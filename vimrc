@@ -335,13 +335,11 @@ nmap <leader>bs :CtrlPMRU<cr>
 " ---------------------------------------------------------------------------
 set foldcolumn=0 " Column to show folds
 set foldenable " Enable folding
-set foldlevel=0 " Close all folds by default
 set foldmethod=syntax " Syntax are used to specify folds
 set foldminlines=0 " Allow folding single lines
 set foldnestmax=5 " Set max fold nesting level
-set foldlevelstart=2
-
-let javaScript_fold=1         " JavaScript
+set foldlevel=20 " Close all folds by default
+set foldlevelstart=20
 
 autocmd FileType text setlocal foldmethod=marker foldlevelstart=0 foldlevel=0
 
