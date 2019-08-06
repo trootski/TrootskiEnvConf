@@ -21,8 +21,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 
 "  THEMES
 Plugin 'rafi/awesome-vim-colorschemes'
@@ -442,4 +441,7 @@ let g:gruvbox_contrast_dark = 'medium'
 
 let NERDTreeMinimalUI = 1
 
-
+" -------------------------------------------------------------------------------
+"  VIM-SIGNIFY
+" -------------------------------------------------------------------------------
+let g:signify_vcs_list = [ 'git' ]
