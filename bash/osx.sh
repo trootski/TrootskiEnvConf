@@ -4,6 +4,7 @@
 # ls
 #
 alias ls="command ls -G"
+export PATH="/Library/TeX/texbin/:$PATH"
 
 ############################################
 # General macOS stuff
