@@ -80,15 +80,17 @@ if s:uname == "Linux"
   highlight Normal ctermbg=230 guibg=#ffffdc
   set background=light
 else
-  set background=light
-  highlight Normal ctermbg=230 guibg=#ffffd7
+  if $TERMINAL_EMULATOR != "JetBrains-JediTerm"
+    set background=light
+    highlight Normal ctermbg=230 guibg=#ffffd7
+    colorscheme gruvbox
+  endif
 endif
 
 set term=xterm
 set t_ut=
-colorscheme gruvbox
-let g:gruvbox_contrast_light = 'hard'
 
+let g:gruvbox_contrast_light = 'hard'
 " yank to clipboard
 if has("clipboard")
   set clipboard^=unnamed " copy to the system clipboard

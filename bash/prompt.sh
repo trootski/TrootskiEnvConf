@@ -12,15 +12,24 @@ function git_info() {
     local branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
     # check if it's dirty (via github.com/sindresorhus/pure)
     local dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
-    echo " %F{234}on %F{025}"$branch$dirty
+    if [[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]]; then
+      echo " %F{094}on %F{025}"$branch$dirty
+    else
+      echo " %F{234}on %F{025}"$branch$dirty
+    fi
   fi
 }
 
 zsh_pattern="zsh$"
 if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
   local git_info_str='$(git_info)'
-  PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"> %B%F{234}"
-  PS2=
+  if [[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]]; then
+    PS1="%B%F{238}%n%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"> %B%F{250}"
+    PS2=
+  else
+    PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"> %B%F{234}"
+    PS2=
+  fi
 elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="$PROMPT_COMMAND"
 else

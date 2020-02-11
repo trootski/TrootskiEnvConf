@@ -29,11 +29,19 @@ antigen apply
 plugins=(
   git
   npm
+  nvm
   tmuxinator
   z
 )
 
 source ~/.antigen/bundles/robbyrussell/oh-my-zsh/oh-my-zsh.sh
+
+# fix for navigation keys in JetBrains terminal
+if [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]; then
+  bindkey "∫" backward-word # Option-b
+  bindkey "ƒ" forward-word # Option-f
+  bindkey "∂" delete-word # Option-d
+fi
 
 # Edit the current command line in $EDITOR
 autoload -U edit-command-line
