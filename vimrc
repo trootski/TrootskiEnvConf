@@ -95,9 +95,11 @@ set t_ut=
 " let g:gruvbox_contrast_light = 'hard'
 " yank to clipboard
 if has("clipboard")
-  set clipboard^=unnamed " copy to the system clipboard
+  " copy to the system clipboard
+  set clipboard^=unnamed
 
-  if has("unnamedplus") " X11 support
+  " X11 support
+  if has("unnamedplus")
     set clipboard+=unnamedplus
   endif
 endif
@@ -106,21 +108,31 @@ set go+=a
 
 set autoindent
 set backspace=indent,eol,start
-set bs=2		" allow backspacing over everything
+
+" allow backspacing over everything
+set bs=2
+
 if version >= 703
-	set colorcolumn=80
+  set colorcolumn=80
 endif
+
 set cursorline
-set linebreak " Break lines on words, not characters
-"set encoding=utf-8
+
+" Break lines on words, not characters
+set linebreak
 set formatoptions=qrn1
 set hidden
 set laststatus=2
 set list
 set listchars=tab:▸\ ,eol:¬
-set modeline	" enable modelines to be read
-set mouse=		" allow mouse support in console
+
+" enable modelines to be read
+set modeline
+
+" allow mouse support in console
+set mouse=
 set nocompatible
+
 " backup to ~/.tmp
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -132,12 +144,15 @@ set nobackup
 set nowritebackup
 set showbreak=↪
 
-set nu			" line numbering
+" line numbering
+set nu
+
 if version >= 703
-	set relativenumber
+  set relativenumber
 endif
+
+" show current coords of cursor
 set ruler
-set ruler		" show current coords of cursor
 set scrolloff=3
 set showcmd
 
@@ -167,21 +182,22 @@ vmap > >gv
 " Undo
 "
 set undolevels=1000
+
 if version >= 730
-	set undofile
-	set undodir=$HOME/.vim/undo//
-	set undoreload=1000
+  set undofile
+  set undodir=$HOME/.vim/undo//
+  set undoreload=1000
 endif
 
 "
 " Simple Copy/Paste
 "
 function! CopyRange() range
-	:'<,'>w! /tmp/tmp.txt<cr>
+  :'<,'>w! /tmp/tmp.txt<cr>
 endfunction
 
 function! PasteRange()
-	:r /tmp/tmp.txt<cr>
+  :r /tmp/tmp.txt<cr>
 endfunction
 
 vmap <F9> :call CopyRange()<cr>
@@ -189,20 +205,27 @@ nmap <F9> :call PasteRange()<cr>
 
 "
 " Searching
-"
-set ignorecase	" case insensitive searching
-set noincsearch	" search as you type
+
+" case insensitive searching"
+set ignorecase
+
+" search as you type
+set noincsearch
 
 "
 " Tabbing
-"
-set autoindent      " auto indent on new line
+
+" auto indent on new line"
+set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab       " use spaces by default
 
-set formatoptions=ro " Enable automatic comment leaders
+" use spaces by default
+set expandtab
+
+" Enable automatic comment leaders
+set formatoptions=ro
 
 " set the title of the terminal to the name of the file you are editing
 set title
@@ -229,7 +252,6 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Execute command on this line and replace with results of command
 noremap Q !!sh<CR>
 
-
 autocmd Filetype javascript,json nnoremap <Leader>x :%!python -m json.tool
 autocmd Filetype html nnoremap <Leader>x :%!tidy -mi -wrap 0 2>/dev/null<CR>
 autocmd BufNewFile,BufRead *.aurora set syntax=python
@@ -237,13 +259,9 @@ autocmd BufNewFile,BufRead *.aurora set syntax=python
 " In vimdiff ignore whitespace difference
 set diffopt+=iwhite
 
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
-
 if !has("gui_running")
-	let &t_AB="\e[48;5;%dm"
-	let &t_AF="\e[38;5;%dm"
-" 	colorscheme zenburn
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
 endif
 
 " ---------------------------------------------------------------------------
@@ -317,7 +335,7 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 map <leader>C :CtrlPClearCache<cr>
 
 if exists("g:ctrl_user_command")
-	unlet g:ctrlp_user_command
+  unlet g:ctrlp_user_command
 endif
 
 set wildignore+=*/bower_components/*,
@@ -327,8 +345,8 @@ set wildignore+=*/app_deploy/*,
 set wildignore+=*/dist/*,
 
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist|app_deploy|bower_components|vendor|components)$',
-	\ 'file': '\v\.(exe|so|dll|so|swp|zip|jpg|jpeg|png|gif)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist|app_deploy|bower_components|vendor|components)$',
+  \ 'file': '\v\.(exe|so|dll|so|swp|zip|jpg|jpeg|png|gif)$',
 \ }
 
 " Easy bindings for its various modes
@@ -375,7 +393,7 @@ augroup END
 
 " Disable the mouse on Linux
 if !v:shell_error && s:uname == "Linux"
-	set mouse=
+  set mouse=
 endif
 
 " ---------------------------------------------------------------------------
@@ -397,14 +415,14 @@ autocmd FileType javascript silent! compiler node | setlocal makeprg=node\ %
 "  OPEN CSI ISSUE
 " -------------------------------------------------------------------------------
 function! OpenJIRATicket()
-	let s:uri = matchstr(getline("."), '[a-Z]*-[0-9]*')
-	echo s:uri
-	if s:uri != ""
-		silent exec "!open 'https://jira.hmhco.com/browse/".s:uri."'"
-		redraw!
-	else
-		echo "No URI found in line."
-	endif
+  let s:uri = matchstr(getline("."), '[a-Z]*-[0-9]*')
+  echo s:uri
+  if s:uri != ""
+    silent exec "!open 'https://jira.hmhco.com/browse/".s:uri."'"
+    redraw!
+  else
+    echo "No URI found in line."
+  endif
 endfunction
 map <leader>o :call OpenJIRATicket()<cr>
 
