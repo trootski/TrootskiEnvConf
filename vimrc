@@ -1,3 +1,5 @@
+" Define the leader before the plugins are loaded
+let mapleader=","
 
 " PLUGINS -------------------------------------------------------------------
 
@@ -71,8 +73,7 @@ let s:uname = system("echo -n \"$(uname)\"")
 ino jj <esc>
 cno jj <c-c>
 
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
+set pastetoggle=<Leader>o
 
 syntax enable
 
@@ -169,7 +170,6 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 set wrap
-let mapleader=","
 
 " Only have to type a semi-colon to get into command mode
 noremap ; :
@@ -236,12 +236,12 @@ set wildmode=list:longest,full
 
 " Edit/save another file in the same directory as the current file
 " uses expression to extract path from current file's path
-map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
-map ,sp :sp <C-R>=expand("%:p:h") . "/" <CR>
-map ,vsp :vsp <C-R>=expand("%:p:h") . "/" <CR>
-map ,w :w <C-R>=expand("%:p:h") . "/" <CR>
-map ,sav :sav <C-R>=expand("%:p:h") . "/" <CR>
-map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>sp :sp <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>vsp :vsp <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>w :w <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>sav :sav <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Stop the exit to CLI when hitting up accidentally
 vnoremap K k
@@ -264,11 +264,12 @@ if !has("gui_running")
   let &t_AF="\e[38;5;%dm"
 endif
 
+
 " ---------------------------------------------------------------------------
 "  NERD TREE STUFF
 " ---------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc$', '\~$']
-map <F2> :NERDTreeToggle<CR>
+map <Leader>f :NERDTreeToggle<CR>
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
@@ -411,21 +412,6 @@ autocmd Filetype javascript nnoremap <Leader>r :Dispatch npm run start<CR>
 autocmd Filetype jasmine.javascript nnoremap <Leader>r :Dispatch npm run test<CR>
 autocmd FileType javascript silent! compiler node | setlocal makeprg=node\ %
 
-" -------------------------------------------------------------------------------
-"  OPEN CSI ISSUE
-" -------------------------------------------------------------------------------
-function! OpenJIRATicket()
-  let s:uri = matchstr(getline("."), '[a-Z]*-[0-9]*')
-  echo s:uri
-  if s:uri != ""
-    silent exec "!open 'https://jira.hmhco.com/browse/".s:uri."'"
-    redraw!
-  else
-    echo "No URI found in line."
-  endif
-endfunction
-map <leader>o :call OpenJIRATicket()<cr>
-
 "
 " -------------------------------------------------------------------------------
 "  Vimux
@@ -470,3 +456,9 @@ let NERDTreeMinimalUI = 1
 "  VIM-SIGNIFY
 " -------------------------------------------------------------------------------
 let g:signify_vcs_list = [ 'git' ]
+
+" -------------------------------------------------------------------------------
+"  NETRW
+" -------------------------------------------------------------------------------
+let g:netrw_banner = 0
+
