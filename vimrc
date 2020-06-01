@@ -85,7 +85,7 @@ else
   if $TERMINAL_EMULATOR != "JetBrains-JediTerm"
     set background=light
     highlight Normal ctermbg=230 guibg=#ffffd7
-  else 
+  else
     set bg=dark
   endif
 endif
@@ -354,6 +354,8 @@ let g:ctrlp_custom_ignore = {
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
+map <leader>R :CtrlPClearCache<cr>
 
 " ---------------------------------------------------------------------------
 "  FOLDING
