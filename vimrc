@@ -36,6 +36,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-dispatch'
 
