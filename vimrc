@@ -379,7 +379,7 @@ autocmd FileType text  map <leader>ccf zO$vi{V"+yzC
 " ---------------------------------------------------------------------------
 augroup airline_config
   autocmd!
-  let g:airline_theme='gruvbox'
+  let g:airline_theme='sol'
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#enabled = 1
