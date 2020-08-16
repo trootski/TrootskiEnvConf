@@ -13,9 +13,9 @@ function git_info() {
     # check if it's dirty (via github.com/sindresorhus/pure)
     local dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
     if [[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]]; then
-      echo " %F{094}on %F{025}"$branch$dirty
+      echo " on "$branch$dirty
     else
-      echo " %F{234}on %F{025}"$branch$dirty
+      echo " on "$branch$dirty
     fi
   fi
 }
