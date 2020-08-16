@@ -1,24 +1,24 @@
 set -g pane-active-border-style fg="colour26"
 set -g pane-border-style fg="colour239"
 
-set -g message-style fg=white,bg="colour25"
+set -g message-style fg=#ffffff,bg="colour25"
 
-set -g status-style bg="colour236",fg=white
+set -g status-style bg="colour236",fg=#ffffff
 
 setw -g clock-mode-colour "colour25"
 
 setw -g status-left " #S "
-setw -g status-left-style fg=white,bg="colour25"
+setw -g status-left-style fg=#ffffff,bg="colour25"
 
 set -g status-right-length "100"
-set -g status-right "#[bg=colour239] %a %B %-d, %Y #[fg=white]%H:%M #[fg=white,bg="colour25"] #h "
+set -g status-right "#[bg=colour239] %a %B %-d, %Y #[fg=#ffffff]%H:%M #[fg=#ffffff,bg="colour25"] #h "
 
 setw -g window-status-format " #I: #W "
 setw -g window-status-separator ""
-setw -g window-status-style fg=white
+setw -g window-status-style fg=#ffffff
 
 setw -g window-status-current-format " #I: #W "
-setw -g window-status-current-style fg=white,bg="colour239"
+setw -g window-status-current-style fg=#ffffff,bg="colour239"
 
 setw -g window-status-bell-style fg="colour9"
 setw -g window-status-activity-style fg=yellow
