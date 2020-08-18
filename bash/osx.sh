@@ -6,6 +6,8 @@
 alias ls="command ls -G"
 export PATH="/Library/TeX/texbin/:$PATH"
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
 ############################################
 # General macOS stuff
 
