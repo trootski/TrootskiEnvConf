@@ -55,6 +55,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'jparise/vim-graphql'
 Plugin 'tpope/vim-cucumber'
+Plugin 'pylint.vim'
 
 "  CODE COMPLETION
 Plugin 'Shougo/deoplete.nvim'
