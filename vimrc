@@ -79,9 +79,16 @@ set pastetoggle=<Leader>o
 
 syntax enable
 
+let g:airline_solarized_bg='light'
 if s:uname == "Linux"
-  highlight Normal ctermbg=230 guibg=#ffffdc
-  set background=light
+  let lines = readfile("/proc/version")
+  if lines[0] =~ "microsoft"
+    let g:airline_solarized_bg='dark'
+    set background=dark
+  else
+    highlight Normal ctermbg=230 guibg=#ffffdc
+    set background=light
+  endif
 else
   colorscheme gruvbox
   if $TERMINAL_EMULATOR != "JetBrains-JediTerm"
