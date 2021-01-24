@@ -30,7 +30,6 @@ Plugin 'rafi/awesome-vim-colorschemes'
 
 "  UTILITIES
 Plugin 'mattn/emmet-vim'
-Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'marcweber/vim-addon-mw-utils'
