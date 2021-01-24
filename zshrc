@@ -50,4 +50,10 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 bindkey \^U backward-kill-line
 
+case "$OSTYPE" in
+  darwin*)
+    path+=("/Library/TeX/texbin")
+  ;;
+esac
+
 export PATH="/usr/local/opt/libpq/bin:$PATH"
