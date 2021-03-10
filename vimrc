@@ -270,9 +270,6 @@ autocmd Filetype javascript,json nnoremap <Leader>x :%!python -m json.tool
 autocmd Filetype html nnoremap <Leader>x :%!tidy -mi -wrap 0 2>/dev/null<CR>
 autocmd BufNewFile,BufRead *.aurora set syntax=python
 
-" In vimdiff ignore whitespace difference
-set diffopt+=iwhite
-
 if !has("gui_running")
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
