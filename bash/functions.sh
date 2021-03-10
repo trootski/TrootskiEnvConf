@@ -126,7 +126,7 @@ function t_UpdateTrootskiConf() {
 	CURRENT_DIR=$(pwd)
 	cd ~/TrootskiEnvConf/
 	# Update any submodules
-	git submodule update --init --recursive
+	git submodule update --remote --rebase --recursive
 	vim -c VundleInstall -c quitall
 	vim -c VundleUpdate -c quitall
 	vim -c VundleClean -c quitall
