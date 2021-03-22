@@ -19,6 +19,7 @@ esac
 antigen use oh-my-zsh
 antigen bundle command-not-found
 antigen bundle git
+antigen bundle mvn
 antigen bundle npm
 antigen bundle tmuxinator
 antigen bundle zsh-users/zsh-syntax-highlighting
