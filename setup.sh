@@ -24,15 +24,14 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
     # brew packages
     #
     PACKAGE_LIST=$(brew list -1)
-    for pkg in {awscli,figlet,git,jq,tidy-html5,tmuxinator-completion,tree,ttygif,watch,tmux,python,reattach-to-user-namespace,tig,rbenv}; do
+    for pkg in {antigen,awscli,figlet,git,jq,tidy-html5,tmuxinator,tmuxinator-completion,tree,ttygif,watch,tmux,python,reattach-to-user-namespace,tig,rbenv,vim,ffmpeg,redis}; do
       brew list "$pkg" || brew install "$pkg"
     done
 
-    brew list ffmpeg || brew install ffmpeg -- --with-fdk-aac --with-freetype --with-libass --with-libvpx
-    brew list vim || brew install vim -- --wth-override-system-vi --with-python3
+    brew tap AdoptOpenJDK/openjdk
 
-    for pkg in {java8,vlc,mactex,sequel-pro,transmit,visual-studio-code,keepassx}; do
-      brew cask list "$pkg" || brew cask install "$pkg"
+    for pkg in {adoptopenjdk8,mactex,insomnia,intellij-idea-ce,vlc,sequel-pro,transmit,visual-studio-code,keepassx}; do
+      brew list --cask "$pkg" || brew install --cask "$pkg"
     done
   fi
 elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:]' | tr -d '"') == "ubuntu" ]]; then
@@ -71,11 +70,12 @@ elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:
       pip3 install neovim
   fi
 
-  ############################################
-  # Install NVM
-  #
-  command -v nvm >/dev/null 2>&1 && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 fi
+
+############################################
+# Install NVM
+#
+command -v nvm >/dev/null 2>&1 && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 ############################################
 # Setup the .vim directory
@@ -83,6 +83,13 @@ fi
 # Remove the ~/.vim folder if it exists and is not a symbolic link
 [[ -d ~/.vim ]] && ! [[ -h ~/.vim ]] && rm -rf ~/.vim
 ln -sfv ~/TrootskiEnvConf/.vim ~
+
+############################################
+# Setup the .tmuxinator directory
+#
+# Remove the ~/.vim folder if it exists and is not a symbolic link
+[[ -d ~/.tmuxinator ]] && ! [[ -h ~/.tmuxinator ]] && rm -rf ~/.tmuxinator
+ln -sfv ~/TrootskiEnvConf/tmuxinator ~/.tmuxinator
 
 ############################################
 # Make sure all the submodules are checked
