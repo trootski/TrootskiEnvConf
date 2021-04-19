@@ -24,13 +24,13 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
     # brew packages
     #
     PACKAGE_LIST=$(brew list -1)
-    for pkg in {antigen,awscli,figlet,git,jq,tidy-html5,tmuxinator,tmuxinator-completion,tree,ttygif,watch,tmux,python,reattach-to-user-namespace,tig,rbenv,vim,ffmpeg,redis}; do
+    for pkg in {antigen,awscli,ffmpeg,figlet,git,jq,python,rbenv,reattach-to-user-namespace,redis,tidy-html5,tig,tmux,tmuxinator,tmuxinator-completion,tree,ttygif,vim,watch}; do
       brew list "$pkg" || brew install "$pkg"
     done
 
     brew tap AdoptOpenJDK/openjdk
 
-    for pkg in {adoptopenjdk8,mactex,insomnia,intellij-idea-ce,vlc,sequel-pro,transmit,visual-studio-code,keepassx}; do
+    for pkg in {adoptopenjdk8,insomnia,intellij-idea-ce,keepassx,mactex,sequel-pro,transmit,visual-studio-code,vlc}; do
       brew list --cask "$pkg" || brew install --cask "$pkg"
     done
   fi
