@@ -128,7 +128,7 @@ set backspace=indent,eol,start
 set bs=2
 
 if version >= 703
-  set colorcolumn=80
+  set colorcolumn=120
 endif
 
 set cursorline

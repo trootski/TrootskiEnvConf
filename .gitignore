@@ -7,3 +7,12 @@ backups/*
 !/**/.gitkeep
 .vim/bundle/*
 !.vim/bundle/Vundle
+
+/bash/*
+!/bash/aliases.sh
+!/bash/completion.sh
+!/bash/exports.sh
+!/bash/functions.sh
+!/bash/linux.sh
+!/bash/osx.sh
+!/bash/prompt.sh
