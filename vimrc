@@ -57,8 +57,6 @@ Plugin 'tpope/vim-cucumber'
 Plugin 'pylint.vim'
 
 "  CODE COMPLETION
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'deoplete-plugins/deoplete-jedi'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 
@@ -431,26 +429,6 @@ autocmd FileType javascript silent! compiler node | setlocal makeprg=node\ %
 " -------------------------------------------------------------------------------
 let g:VimuxUseNearest = 0
 let g:VimuxRunnerType = 'pane'
-
-" -------------------------------------------------------------------------------
-"  DEOPLETE
-" -------------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-
-if has('pythonx')
-  let s:py = 'pythonx'
-  let s:pyeval = function('pyxeval')
-elseif has('python3')
-  let s:py = 'python3'
-  let s:pyeval = function('py3eval')
-else
-  let s:py = 'python'
-  let s:pyeval = function('pyeval')
-endif
-
-call deoplete#custom#option('max_list', 10)
-
-let g:deoplete#sources#jedi#show_docstring = 1
 
 " -------------------------------------------------------------------------------
 "  LaTex
