@@ -79,15 +79,13 @@ syntax enable
 let g:airline_solarized_bg='light'
 if s:uname == "Linux"
   let lines = readfile("/proc/version")
+  highlight Normal ctermbg=NONE guibg=NONE
+  set background=light
   if lines[0] =~ "microsoft"
     " WSL2
     colorscheme gruvbox
-    set background=light
-    highlight Normal guibg=NONE ctermbg=NONE
   else
     " Normal Linux
-    highlight Normal ctermbg=230 guibg=#ffffdc
-    set background=light
   endif
 else
   " MacOS
