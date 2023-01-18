@@ -96,7 +96,7 @@ else
     highlight Normal ctermbg=230 guibg=#ffffd7
   else
     " Terminal / iTerm2
-    set bg=dark
+    set bg=light
   endif
 endif
 
