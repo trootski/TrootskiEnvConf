@@ -214,5 +214,15 @@ function t_RAMDisk_destroy() {
   fi
 }
 
+jwtd() {
+    if [[ -x $(command -v jq) ]]; then
+         jq -R 'split(".") | .[0],.[1] | @base64d | fromjson' <<< "${1}"
+         echo "Signature: $(echo "${1}" | awk -F'.' '{print $3}')"
+    fi
+}
 
+# get the week number for a particular date
+function t_week_number_for_date() {
+  date  -jf "%Y-%m-%d" "$1" +%V
+}
 

@@ -24,10 +24,10 @@ zsh_pattern="zsh$"
 if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
   local git_info_str='$(git_info)'
   if [[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]]; then
-    PS1="%B%F{238}%n%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{250}"
+    PS1="%B%F{238}%n%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{0}"
     PS2=
   else
-    PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{234}"
+    PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{0}"
     PS2=
   fi
 elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
