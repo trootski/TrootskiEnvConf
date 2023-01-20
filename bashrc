@@ -42,6 +42,20 @@ export PATH="/usr/local/bin:${HOME}/Documents/bin:$(getconf PATH)"
 set show-mode-in-prompt on
 
 ################################################################################
+# Setup NVM home directory
+#
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+
+################################################################################
+# Setup rbenv
+#
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+################################################################################
 # OS specific config files
 #
 linux_pat="^linux"
@@ -57,20 +71,6 @@ fi
 if [[ -r ~/TrootskiEnvConf/bash/$(hostname).sh ]]; then
     source ~/TrootskiEnvConf/bash/$(hostname).sh
 fi
-
-################################################################################
-# Setup NVM home directory
-#
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-################################################################################
-# Setup rbenv
-#
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
+if [[ -r ~/TrootskiEnvConf/bash/local.sh ]]; then
+    source ~/TrootskiEnvConf/bash/local.sh
 fi
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
