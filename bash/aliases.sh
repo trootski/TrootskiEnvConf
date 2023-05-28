@@ -4,6 +4,7 @@
 
 alias cls='clear'
 alias vi='vim'
+alias vim='vimx'
 
 # Get info to use vim key bindings
 alias info='info --vi-keys'
