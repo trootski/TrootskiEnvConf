@@ -12,7 +12,7 @@ case `uname` in
     source $(brew --prefix)/share/antigen/antigen.zsh
   ;;
   Linux)
-    source /usr/share/zsh-antigen/antigen.zsh
+    source /usr/bin/antigen.zsh
  ;;
 esac
 
