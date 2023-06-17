@@ -9,60 +9,84 @@ set shell=/bin/bash
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
+if has('nvim')
+    " NeoVim specific commands
+    let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+    if empty(glob(data_dir . '/autoload/plug.vim'))
+      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
+    call plug#begin('~/.vim/plugged')
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    Plug 'rafi/awesome-vim-colorschemes'
+    Plug 'tpope/vim-fugitive'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'airblade/vim-gitgutter'
+    call plug#end()
+else
+    set term=xterm
+    set t_ut=
+    " Standard Vim specific commands
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/TrootskiEnvConf/.vim/bundle/Vundle.vim
+    
+    call vundle#begin()
+    
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
+    
+    "  INTERFACE STUFF
+    Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'mhinz/vim-signify'
+    
+    "  THEMES
+    Plugin 'rafi/awesome-vim-colorschemes'
+    
+    "  UTILITIES
+    Plugin 'mattn/emmet-vim'
+    Plugin 'honza/vim-snippets'
+    Plugin 'editorconfig/editorconfig-vim'
+    Plugin 'marcweber/vim-addon-mw-utils'
+    Plugin 'tomtom/tlib_vim'
+    Plugin 'tpope/vim-unimpaired'
+    Plugin 'tpope/vim-surround'
+    Plugin 'benmills/vimux'
+    Plugin 'tpope/vim-dispatch'
+    
+    "  SYNTAX/LANGUAGE SUPPORT
+    Plugin 'martinda/Jenkinsfile-vim-syntax'
+    Plugin 'hail2u/vim-css3-syntax'
+    Plugin 'groenewege/vim-less'
+    Plugin 'sophacles/vim-processing'
+    Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'markcornick/vim-vagrant'
+    Plugin 'rodjek/vim-puppet'
+    Plugin 'burnettk/vim-angular'
+    Plugin 'claco/jasmine.vim'
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
+    Plugin 'jparise/vim-graphql'
+    Plugin 'tpope/vim-cucumber'
+    Plugin 'pylint.vim'
+    
+    "  CODE COMPLETION
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
+    
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+endif
 
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-"  INTERFACE STUFF
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mhinz/vim-signify'
-
-"  THEMES
-Plugin 'rafi/awesome-vim-colorschemes'
-
-"  UTILITIES
-Plugin 'mattn/emmet-vim'
-Plugin 'honza/vim-snippets'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'marcweber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'benmills/vimux'
-Plugin 'tpope/vim-dispatch'
-
-"  SYNTAX/LANGUAGE SUPPORT
-Plugin 'martinda/Jenkinsfile-vim-syntax'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-Plugin 'sophacles/vim-processing'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'markcornick/vim-vagrant'
-Plugin 'rodjek/vim-puppet'
-Plugin 'burnettk/vim-angular'
-Plugin 'claco/jasmine.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
-Plugin 'jparise/vim-graphql'
-Plugin 'tpope/vim-cucumber'
-Plugin 'pylint.vim'
-
-"  CODE COMPLETION
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 let s:uname = system("echo -n \"$(uname)\"")
 
@@ -100,8 +124,6 @@ else
   endif
 endif
 
-set term=xterm
-set t_ut=
 
 " let g:gruvbox_contrast_light = 'hard'
 " yank to clipboard
@@ -449,5 +471,6 @@ let g:signify_vcs_list = [ 'git' ]
 " -------------------------------------------------------------------------------
 "  NETRW
 " -------------------------------------------------------------------------------
-let g:netrw_banner = 0
+let g:netrw_banner = 1
+let g:netrw_browse_split = 0
 
