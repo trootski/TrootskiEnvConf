@@ -85,6 +85,13 @@ command -v nvm >/dev/null 2>&1 && curl -o- https://raw.githubusercontent.com/nvm
 ln -sfv ~/TrootskiEnvConf/.vim ~
 
 ############################################
+# Setup the ~/.config/nvim/ directory
+#
+# Remove the ~/.vim folder if it exists and is not a symbolic link
+[[ -d ~/.config/nvim ]] && ! [[ -h ~/.config/nvim ]] && rm -rf ~/.config/nvim
+ln -sfv ~/TrootskiEnvConf/nvim ~/.config
+
+############################################
 # Setup the .tmuxinator directory
 #
 # Remove the ~/.vim folder if it exists and is not a symbolic link

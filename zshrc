@@ -12,7 +12,7 @@ case `uname` in
     source $(brew --prefix)/share/antigen/antigen.zsh
   ;;
   Linux)
-    source /usr/bin/antigen.zsh
+    source /usr/share/zsh-antigen/antigen.zsh
  ;;
 esac
 
@@ -57,7 +57,7 @@ case "$OSTYPE" in
   ;;
 esac
 
-export PATH="/usr/local/bin:/home/troot/go/bin:$PATH"
+export PATH="/usr/local/bin:/home/troot/Documents/go/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"

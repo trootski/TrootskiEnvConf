@@ -298,7 +298,9 @@ endif
 "  NERD TREE STUFF
 " ---------------------------------------------------------------------------
 let NERDTreeIgnore=['\.pyc$', '\~$']
-map <Leader>f :NERDTreeToggle<CR>
+if !has('nvim')
+    map <Leader>f :NERDTreeToggle<CR>
+endif
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
