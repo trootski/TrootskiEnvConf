@@ -20,11 +20,7 @@ if has('nvim')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
     Plug 'rafi/awesome-vim-colorschemes'
-    Plug 'tpope/vim-fugitive'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
@@ -295,29 +291,6 @@ endif
 
 
 " ---------------------------------------------------------------------------
-"  NERD TREE STUFF
-" ---------------------------------------------------------------------------
-let NERDTreeIgnore=['\.pyc$', '\~$']
-if !has('nvim')
-    map <Leader>f :NERDTreeToggle<CR>
-endif
-
-" Resize splits when the window is resized
-au VimResized * :wincmd =
-
-" Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" Easier to type, and I never use the default behavior.
-noremap H ^
-noremap L $
-vnoremap L g_
-
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-autocmd BufRead *.as set filetype=actionscript
-
-" ---------------------------------------------------------------------------
 "  BUFFER RE-MAPPINGS
 " ---------------------------------------------------------------------------
 " Move to the previous buffer with "gp"
@@ -355,38 +328,6 @@ map <D-9> 9gt
 map <D-0> :tablast<CR>
 " ---------------------------------------------------------------------------
 
-" ---------------------------------------------------------------------------
-"  CTRL-P
-" ---------------------------------------------------------------------------
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-
-" Remap clear cache (no F5 with touch bar)
-map <leader>C :CtrlPClearCache<cr>
-
-if exists("g:ctrl_user_command")
-  unlet g:ctrlp_user_command
-endif
-
-set wildignore+=*/bower_components/*,
-set wildignore+=*/node_modules/*,
-set wildignore+=*/vendor/*,
-set wildignore+=*/app_deploy/*,
-set wildignore+=*/dist/*,
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist|app_deploy|bower_components|vendor|components)$',
-  \ 'file': '\v\.(exe|so|dll|so|swp|zip|jpg|jpeg|png|gif)$',
-\ }
-
-" Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-
-map <leader>R :CtrlPClearCache<cr>
 
 " ---------------------------------------------------------------------------
 "  FOLDING
@@ -475,4 +416,5 @@ let g:signify_vcs_list = [ 'git' ]
 " -------------------------------------------------------------------------------
 let g:netrw_banner = 1
 let g:netrw_browse_split = 0
+map <leader>p :Explore<cr>
 
