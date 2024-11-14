@@ -16,7 +16,7 @@ for file in ~/.{bash_profile,bashrc,ideavimrc,inputrc,tmux_theme,tmux.conf,vimrc
 done
 
 
-if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
+if [[ "$OSTYPE" =~ darwin[0-9]{2} ]]; then
   which -s brew
   if [[ $? = 0 ]] ; then
     ############################################
@@ -24,13 +24,11 @@ if [[ "$OSTYPE" =~ darwin1[0-9] ]]; then
     # brew packages
     #
     PACKAGE_LIST=$(brew list -1)
-    for pkg in {antigen,awscli,ffmpeg,figlet,git,jq,python,rbenv,reattach-to-user-namespace,redis,tidy-html5,tig,tmux,tmuxinator,tmuxinator-completion,tree,ttygif,vim,watch}; do
+    for pkg in {antigen,awscli,ffmpeg,figlet,git,jq,python,reattach-to-user-namespace,tidy-html5,tig,tmux,tmuxinator,tmuxinator-completion,tree,ttygif,vim,watch}; do
       brew list "$pkg" || brew install "$pkg"
     done
 
-    brew tap AdoptOpenJDK/openjdk
-
-    for pkg in {adoptopenjdk8,insomnia,intellij-idea-ce,keepassx,mactex,sequel-pro,transmit,visual-studio-code,vlc}; do
+    for pkg in {intellij-idea-ce,keepassx,mactex,vlc}; do
       brew list --cask "$pkg" || brew install --cask "$pkg"
     done
   fi
