@@ -34,23 +34,10 @@ else
     
     call vundle#begin()
     
-    " let Vundle manage Vundle, required
-    Plugin 'gmarik/Vundle.vim'
-    
-    "  INTERFACE STUFF
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'Xuyuanp/nerdtree-git-plugin'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'mhinz/vim-signify'
-    
     "  THEMES
     Plugin 'rafi/awesome-vim-colorschemes'
     
     "  UTILITIES
-    Plugin 'mattn/emmet-vim'
-    Plugin 'honza/vim-snippets'
-    Plugin 'editorconfig/editorconfig-vim'
-    Plugin 'marcweber/vim-addon-mw-utils'
     Plugin 'tomtom/tlib_vim'
     Plugin 'tpope/vim-unimpaired'
     Plugin 'tpope/vim-surround'
@@ -58,26 +45,8 @@ else
     Plugin 'tpope/vim-dispatch'
     
     "  SYNTAX/LANGUAGE SUPPORT
-    Plugin 'martinda/Jenkinsfile-vim-syntax'
-    Plugin 'hail2u/vim-css3-syntax'
-    Plugin 'groenewege/vim-less'
-    Plugin 'sophacles/vim-processing'
     Plugin 'christoomey/vim-tmux-navigator'
-    Plugin 'markcornick/vim-vagrant'
-    Plugin 'rodjek/vim-puppet'
-    Plugin 'burnettk/vim-angular'
-    Plugin 'claco/jasmine.vim'
-    Plugin 'leafgarland/typescript-vim'
-    Plugin 'pangloss/vim-javascript'
-    Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
-    Plugin 'jparise/vim-graphql'
-    Plugin 'tpope/vim-cucumber'
-    Plugin 'pylint.vim'
-    
-    "  CODE COMPLETION
-    Plugin 'roxma/nvim-yarp'
-    Plugin 'roxma/vim-hug-neovim-rpc'
-    
+
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
