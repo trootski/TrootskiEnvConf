@@ -10,12 +10,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 if has('nvim')
-    " NeoVim specific commands
-    let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-    if empty(glob(data_dir . '/autoload/plug.vim'))
-      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-    endif
     call plug#begin('~/.vim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'nvim-lua/plenary.nvim'
@@ -34,19 +28,16 @@ else
     
     call vundle#begin()
     
+    " let Vundle manage Vundle, required
+    Plugin 'gmarik/Vundle.vim'
+    
     "  THEMES
     Plugin 'rafi/awesome-vim-colorschemes'
     
     "  UTILITIES
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'tpope/vim-unimpaired'
-    Plugin 'tpope/vim-surround'
-    Plugin 'benmills/vimux'
-    Plugin 'tpope/vim-dispatch'
-    
-    "  SYNTAX/LANGUAGE SUPPORT
+    Plugin 'editorconfig/editorconfig-vim'
     Plugin 'christoomey/vim-tmux-navigator'
-
+    
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -60,6 +51,9 @@ let s:uname = system("echo -n \"$(uname)\"")
 " Remap jj to be the escape keys
 ino jj <esc>
 cno jj <c-c>
+
+map H ^
+map L $
 
 set pastetoggle=<Leader>o
 

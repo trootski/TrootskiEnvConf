@@ -18,6 +18,8 @@ done
 
 if [[ "$OSTYPE" =~ darwin[0-9]{2} ]]; then
   which -s brew
+  # Enable it so holding down a key in Intellij will move the cursor smoothly
+  defaults write -g ApplePressAndHoldEnabled -bool false
   if [[ $? = 0 ]] ; then
     ############################################
     # On OSX check if we need to install
@@ -28,7 +30,7 @@ if [[ "$OSTYPE" =~ darwin[0-9]{2} ]]; then
       brew list "$pkg" || brew install "$pkg"
     done
 
-    for pkg in {intellij-idea-ce,keepassx,mactex,vlc}; do
+    for pkg in {keepassx,postman}; do
       brew list --cask "$pkg" || brew install --cask "$pkg"
     done
   fi
@@ -80,14 +82,14 @@ command -v nvm >/dev/null 2>&1 && curl -o- https://raw.githubusercontent.com/nvm
 #
 # Remove the ~/.vim folder if it exists and is not a symbolic link
 [[ -d ~/.vim ]] && ! [[ -h ~/.vim ]] && rm -rf ~/.vim
-ln -sfv ~/TrootskiEnvConf/.vim ~
+ln -sfv ~/TrootskiEnvConf/.vim ~/.vim
 
 ############################################
 # Setup the ~/.config/nvim/ directory
 #
 # Remove the ~/.vim folder if it exists and is not a symbolic link
 [[ -d ~/.config/nvim ]] && ! [[ -h ~/.config/nvim ]] && rm -rf ~/.config/nvim
-ln -sfv ~/TrootskiEnvConf/nvim ~/.config
+ln -sfv ~/TrootskiEnvConf/nvim ~/.config/nvim
 
 ############################################
 # Setup the .tmuxinator directory
@@ -100,5 +102,12 @@ ln -sfv ~/TrootskiEnvConf/tmuxinator ~/.tmuxinator
 # Make sure all the submodules are checked
 # out
 #
-git submodule update --remote --rebase --recursive
+SUBMODULE_STATUS=$(git submodule status)
+
+# Check if any of the modules have been checked out, if so just update them
+if [[ "$SUBMODULE_STATUS" ~= (\n|.)*\+ ]]; then
+    git submodule update --remote --rebase --recursive
+else
+    git submodule update --init --remote --recursive
+fi
 

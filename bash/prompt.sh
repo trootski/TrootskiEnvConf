@@ -41,38 +41,6 @@ else
 			export TERM=xterm-256color
 		fi
 
-		if tput setaf 1 &> /dev/null; then
-			tput sgr0
-			if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-				# A nice lookup table of the colours is here:
-				# https://i.stack.imgur.com/a2S4s.png
-				MAGENTA=$(tput setaf 235)
-				ORANGE=$(tput setaf 235)
-				GREEN=$(tput setaf 130)
-				PURPLE=$(tput setaf 25)
-				GRAY=$(tput setaf 238)
-				WHITE=$(tput setaf 245)
-			else
-				MAGENTA=$(tput setaf 5)
-				ORANGE=$(tput setaf 4)
-				GREEN=$(tput setaf 2)
-				PURPLE=$(tput setaf 1)
-				WHITE=$(tput setaf 5)
-			fi
-			BOLD=$(tput bold)
-			RESET=$(tput sgr0)
-		else
-			MAGENTA="\033[1;31m"
-			ORANGE="\033[1;33m"
-			GREEN="\033[1;32m"
-			PURPLE="\033[1;35m"
-			WHITE="\033[1;31m"
-			GRAY="\033[1;90m"
-			BOLD=""
-			RESET="\033[m"
-		fi
-
-
 		# Only show username/host if not default
 		function usernamehost() {
 			echo "${GRAY}$USER${WHITE}@${GRAY}$HOSTNAME $WHITEin "
