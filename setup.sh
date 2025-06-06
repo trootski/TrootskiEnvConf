@@ -106,7 +106,7 @@ ln -sfv ~/TrootskiEnvConf/tmuxinator ~/.tmuxinator
 SUBMODULE_STATUS=$(git submodule status)
 
 # Check if any of the modules have been checked out, if so just update them
-if [[ "$SUBMODULE_STATUS" ~= (\n|.)*\+ ]]; then
+if [[ "$SUBMODULE_STATUS" =~ $'\n'.*\+ || "$SUBMODULE_STATUS" =~ .*\+ ]]; then
     git submodule update --remote --rebase --recursive
 else
     git submodule update --init --remote --recursive
