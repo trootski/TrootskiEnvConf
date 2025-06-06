@@ -89,6 +89,7 @@ ln -sfv ~/TrootskiEnvConf/.vim ~/.vim
 #
 # Remove the ~/.vim folder if it exists and is not a symbolic link
 [[ -d ~/.config/nvim ]] && ! [[ -h ~/.config/nvim ]] && rm -rf ~/.config/nvim
+mkdir -p ~/.config
 ln -sfv ~/TrootskiEnvConf/nvim ~/.config/nvim
 
 ############################################
