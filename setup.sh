@@ -103,12 +103,12 @@ ln -sfv ~/TrootskiEnvConf/nvim ~/.config/nvim
 # Make sure all the submodules are checked
 # out
 #
-SUBMODULE_STATUS=$(git submodule status)
-
-# Check if any of the modules have been checked out, if so just update them
-if [[ "$SUBMODULE_STATUS" =~ $'\n'.*\+ || "$SUBMODULE_STATUS" =~ .*\+ ]]; then
-    git submodule update --remote --rebase --recursive
-else
-    git submodule update --init --remote --recursive
-fi
+# SUBMODULE_STATUS=$(git submodule status)
+# 
+# # Check if any of the modules have been checked out, if so just update them
+# if [[ "$SUBMODULE_STATUS" =~ $'\n'.*\+ || "$SUBMODULE_STATUS" =~ .*\+ ]]; then
+#     git submodule update --remote --rebase --recursive
+# else
+#     git submodule update --init --remote --recursive
+# fi
 
