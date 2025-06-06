@@ -57,7 +57,7 @@ elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:
   ############################################
   # Install some default packages
   #
-  for pkg in {figlet,git,jq,python,python3-pip,rbenv,tig,tmux,tmuxinator,tree,watch}; do
+  for pkg in {figlet,git,jq,python3,rbenv,tig,tmux,tmuxinator,tree,watch}; do
       dpkg-query -W "$pkg" >/dev/null 2>/dev/null || sudo apt install -y "$pkg"
   done
 
