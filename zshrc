@@ -57,7 +57,7 @@ case "$OSTYPE" in
   ;;
 esac
 
-export PATH="/usr/local/bin:/home/troot/Documents/go/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
