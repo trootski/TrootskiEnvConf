@@ -47,7 +47,7 @@ elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:
   # Setup zsh as the default shell and 
   # install zsh antigen
   #
-  command -v zsh >/dev/null 2>&1 || sudo apt install zsh
+  command -v zsh >/dev/null 2>&1 || sudo apt install -y zsh
   if [ ! -f /usr/share/zsh-antigen/antigen.zsh ]; then
       echo "Setting up zsh-antigen"
       sudo mkdir -p /usr/share/zsh-antigen
@@ -58,7 +58,7 @@ elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:
   # Install some default packages
   #
   for pkg in {figlet,git,jq,python,python3-pip,rbenv,tig,tmux,tmuxinator,tree,watch}; do
-      dpkg-query -W "$pkg" >/dev/null 2>/dev/null || sudo apt install "$pkg"
+      dpkg-query -W "$pkg" >/dev/null 2>/dev/null || sudo apt install -y "$pkg"
   done
 
   ############################################
