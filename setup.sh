@@ -96,8 +96,8 @@ ln -sfv ~/TrootskiEnvConf/nvim ~/.config/nvim
 # Setup the .tmuxinator directory
 #
 # Remove the ~/.vim folder if it exists and is not a symbolic link
-[[ -d ~/.tmuxinator ]] && ! [[ -h ~/.tmuxinator ]] && rm -rf ~/.tmuxinator
-ln -sfv ~/TrootskiEnvConf/tmuxinator ~/.tmuxinator
+# [[ -d ~/.tmuxinator ]] && ! [[ -h ~/.tmuxinator ]] && rm -rf ~/.tmuxinator
+# ln -sfv ~/TrootskiEnvConf/tmuxinator ~/.tmuxinator
 
 ############################################
 # Make sure all the submodules are checked
