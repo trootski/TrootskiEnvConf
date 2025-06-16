@@ -16,3 +16,5 @@ backups/*
 !/bash/linux.sh
 !/bash/osx.sh
 !/bash/prompt.sh
+
+.vim/plugged/*
