@@ -55,8 +55,6 @@ cno jj <c-c>
 map H ^
 map L $
 
-set pastetoggle=<Leader>o
-
 syntax enable
 
 let g:airline_solarized_bg='light'
@@ -96,7 +94,6 @@ if has("clipboard")
   endif
 endif
 set nopaste
-set go+=a
 
 set autoindent
 set backspace=indent,eol,start
@@ -380,4 +377,6 @@ let g:signify_vcs_list = [ 'git' ]
 let g:netrw_banner = 1
 let g:netrw_browse_split = 0
 map <leader>p :Explore<cr>
+
+
 

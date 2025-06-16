@@ -1,6 +1,9 @@
 # Load default dotfiles
 source ~/.bashrc
 
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') > ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
 autoload -Uz compinit promptinit
 compinit
 
@@ -57,7 +60,7 @@ case "$OSTYPE" in
   ;;
 esac
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/opt/homebrew/opt/libpq/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"

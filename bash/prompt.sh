@@ -20,16 +20,25 @@ function git_info() {
   fi
 }
 
+function kubectl_env() {
+    CURRENT_K8S_CONTEXT=$(kubectl config view -o jsonpath='{$.current-context}')
+    CURRENT_K8S_NAMESPACE=$(kubectl config view -o jsonpath='{$.contexts[?(@.name=="'$CURRENT_K8S_CONTEXT'")].context.namespace}')
+    KUBECONFIG_STAGING_ENV=$(expr "$KUBECONFIG" : '.*kubeconfig_k8s-tsg-\([a-z]*\)')
+    #echo $CURRENT_K8S_CONTEXT
+    #echo $CURRENT_K8S_NAMESPACE
+    #echo $KUBECONFIG_STAGING_ENV
+    if [[ "$KUBECONFIG_STAGING_ENV" =~ (dev|int|cert|prod) ]]; then
+        echo -n " (k8s:$KUBECONFIG_STAGING_ENV)"
+    fi
+}
+
+NEWLINE=$'\n'
 zsh_pattern="zsh$"
 if [[ "$SHELL" =~ "$zsh_pattern" ]]; then
   local git_info_str='$(git_info)'
-  if [[ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]]; then
-    PS1="%B%F{238}%n%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{0}"
-    PS2=
-  else
-    PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%~%F{238}%F{025}${git_info_str}"$'\n'"# %B%F{0}"
-    PS2=
-  fi
+  local k8s_info_str='$(kubectl_env)'
+  PS1="%B%F{238}%n%F{234}%B@%B%F{238}%M %F{025}%${k8s_info_str} %~%F{238}%F{025}${git_info_str} ${NEWLINE}#%B%F{0} "
+  PS2=
 elif [ -e "$POWERLINE_CONFIG_COMMAND" ]; then
 	PROMPT_COMMAND="$PROMPT_COMMAND"
 else
