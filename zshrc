@@ -9,7 +9,6 @@ compinit
 
 setopt promptsubst
 
-
 case `uname` in
   Darwin)
     source $(brew --prefix)/share/antigen/antigen.zsh
