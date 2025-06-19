@@ -1,8 +1,8 @@
 # Load default dotfiles
 source ~/.bashrc
 
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') > ~/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+(echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') > ~/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
 
 autoload -Uz compinit promptinit
 compinit

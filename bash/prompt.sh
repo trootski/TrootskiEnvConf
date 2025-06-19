@@ -22,6 +22,9 @@ function git_info() {
 
 function kubectl_env() {
     CURRENT_K8S_CONTEXT=$(kubectl config view -o jsonpath='{$.current-context}')
+    if [ -z "$CURRENT_K8S_CONTEXT" ]; then
+        return 1
+    fi
     CURRENT_K8S_NAMESPACE=$(kubectl config view -o jsonpath='{$.contexts[?(@.name=="'$CURRENT_K8S_CONTEXT'")].context.namespace}')
     KUBECONFIG_STAGING_ENV=$(expr "$KUBECONFIG" : '.*kubeconfig_k8s-tsg-\([a-z]*\)')
     #echo $CURRENT_K8S_CONTEXT
