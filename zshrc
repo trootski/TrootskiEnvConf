@@ -1,11 +1,18 @@
 # Load default dotfiles
 source ~/.bashrc
 
+#zmodload zsh/zprof
+
 (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') > ~/.zprofile
     eval "$(/usr/local/bin/brew shellenv)"
 
 autoload -Uz compinit promptinit
-compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
 
 setopt promptsubst
 
@@ -65,6 +72,15 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+lazy_nvm() {
+    unset -f nvm node npm
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+nvm() { lazy_nvm; nvm "$@"; }
+node() { lazy_nvm; node "$@"; }
+npm() { lazy_nvm; npm "$@"; }
+
+#zprof
