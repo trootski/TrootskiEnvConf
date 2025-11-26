@@ -84,3 +84,8 @@ node() { lazy_nvm; node "$@"; }
 npm() { lazy_nvm; npm "$@"; }
 
 #zprof
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
