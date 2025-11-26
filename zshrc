@@ -88,5 +88,3 @@ npm() { lazy_nvm; npm "$@"; }
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-export PATH="/Users/byrnej/.codeium/windsurf/bin:$PATH"
-
