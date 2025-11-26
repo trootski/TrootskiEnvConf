@@ -3,8 +3,8 @@ source ~/.bashrc
 
 #zmodload zsh/zprof
 
-(echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') > ~/.zprofile
-    eval "$(/usr/local/bin/brew shellenv)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') > ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
 autoload -Uz compinit promptinit
 
@@ -88,9 +88,5 @@ npm() { lazy_nvm; npm "$@"; }
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-<<<<<<< Updated upstream
-
-=======
-# Added by Windsurf
 export PATH="/Users/byrnej/.codeium/windsurf/bin:$PATH"
->>>>>>> Stashed changes
+
