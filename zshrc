@@ -1,10 +1,50 @@
-# Load default dotfiles
-source ~/.bashrc
-
 #zmodload zsh/zprof
 
-(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') > ~/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+# Load shared shell configs
+for file in ~/TrootskiEnvConf/shell/{exports,aliases,functions}.sh; do
+    [ -r "$file" ] && source "$file"
+done
+unset file
+
+# Load OS-specific configs
+case "$OSTYPE" in
+  darwin*)
+    [ -r ~/TrootskiEnvConf/shell/darwin.sh ] && source ~/TrootskiEnvConf/shell/darwin.sh
+  ;;
+  linux*)
+    [ -r ~/TrootskiEnvConf/bash/linux.sh ] && source ~/TrootskiEnvConf/bash/linux.sh
+  ;;
+esac
+
+# Load host-specific and local configs
+[ -r ~/TrootskiEnvConf/bash/$(hostname).sh ] && source ~/TrootskiEnvConf/bash/$(hostname).sh
+[ -r ~/TrootskiEnvConf/bash/local.sh ] && source ~/TrootskiEnvConf/bash/local.sh
+
+# History configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=32768
+SAVEHIST=32768
+setopt EXTENDED_HISTORY          # Write timestamps to history
+setopt HIST_IGNORE_SPACE         # Don't record commands starting with space
+setopt HIST_IGNORE_ALL_DUPS      # Remove older duplicate entries from history
+setopt HIST_FIND_NO_DUPS         # Don't display duplicates when searching
+setopt SHARE_HISTORY             # Share history between sessions
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording
+
+# Useful zsh options
+setopt AUTO_CD                   # cd by typing directory name if it's not a command
+setopt AUTO_PUSHD                # Make cd push old directory onto directory stack
+setopt PUSHD_IGNORE_DUPS         # Don't push duplicate directories onto stack
+setopt PUSHD_SILENT              # Don't print directory stack after pushd/popd
+setopt EXTENDED_GLOB             # Use extended globbing syntax
+setopt INTERACTIVE_COMMENTS      # Allow comments in interactive shells
+setopt PROMPT_SUBST              # Enable parameter expansion in prompts
+
+BREW_PATH=$(brew --prefix)
+
+if [[ -n "$BREW_PATH" ]]; then
+  eval "$($BREW_PATH/bin/brew shellenv)"
+fi
 
 autoload -Uz compinit promptinit
 
@@ -14,11 +54,9 @@ done
 
 compinit -C
 
-setopt promptsubst
-
 case `uname` in
   Darwin)
-    source $(brew --prefix)/share/antigen/antigen.zsh
+    source $BREW_PATH/share/antigen/antigen.zsh
   ;;
   Linux)
     source /usr/share/zsh-antigen/antigen.zsh
@@ -26,6 +64,8 @@ case `uname` in
 esac
 
 antigen use oh-my-zsh
+
+# Load plugins
 antigen bundle command-not-found
 antigen bundle git
 antigen bundle mvn
@@ -35,17 +75,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Tell Antigen that you're done.
 antigen apply
-
-plugins=(
-  docker-compose
-  git
-  npm
-  nvm
-  tmuxinator
-  z
-)
-
-source ~/.antigen/bundles/robbyrussell/oh-my-zsh/oh-my-zsh.sh
 
 # fix for navigation keys in JetBrains terminal
 if [[ "$TERMINAL_EMULATOR" == "JetBrains-JediTerm" ]]; then
@@ -88,3 +117,5 @@ npm() { lazy_nvm; npm "$@"; }
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# Load custom zsh prompt
+[ -r ~/TrootskiEnvConf/zsh/prompt.sh ] && source ~/TrootskiEnvConf/zsh/prompt.sh
