@@ -90,13 +90,6 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 ###########################################
-# HISTORY ALIASES
-#
-
-# grep history
-alias gh="history -a; history -n; history | grep"
-
-###########################################
 # DOCKER
 #
 alias dl='docker ps -l -q'
