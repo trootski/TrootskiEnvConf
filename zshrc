@@ -1,5 +1,3 @@
-#zmodload zsh/zprof
-
 # Load shared shell configs
 for file in ~/TrootskiEnvConf/shell/{exports,aliases,functions}.sh; do
     [ -r "$file" ] && source "$file"
@@ -40,9 +38,8 @@ setopt EXTENDED_GLOB             # Use extended globbing syntax
 setopt INTERACTIVE_COMMENTS      # Allow comments in interactive shells
 setopt PROMPT_SUBST              # Enable parameter expansion in prompts
 
-BREW_PATH=$(brew --prefix)
-
-if [[ -n "$BREW_PATH" ]]; then
+if command -v brew &>/dev/null; then
+  BREW_PATH=$(brew --prefix)
   eval "$($BREW_PATH/bin/brew shellenv)"
 fi
 
@@ -115,7 +112,9 @@ npm() { lazy_nvm; npm "$@"; }
 #zprof
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+if command -v fzf &>/dev/null; then
+  source <(fzf --zsh)
+fi
 
 # Load custom zsh prompt
 [ -r ~/TrootskiEnvConf/zsh/prompt.sh ] && source ~/TrootskiEnvConf/zsh/prompt.sh
