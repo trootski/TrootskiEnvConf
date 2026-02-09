@@ -62,6 +62,25 @@ elif [[ $(awk -F= '/^NAME/{print $2}' /etc/os-release | tr '[:upper:]' '[:lower:
   done
 
   ############################################
+  # Map Caps Lock to Control
+  #
+  gsettings set org.gnome.desktop.input-sources xkb-options "['ctrl:nocaps']"
+
+  ############################################
+  # Navigate to workspaces
+  #
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Ctrl><Alt>1']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Ctrl><Alt>2']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Ctrl><Alt>3']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Ctrl><Alt>4']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Ctrl><Alt>5']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Ctrl><Alt>6']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Ctrl><Alt>7']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Ctrl><Alt>8']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Ctrl><Alt>9']"
+  gsettings set org.gnome.desktop.interface enable-animations false
+
+  ############################################
   # Install neovim, this is required for
   # some vim plugins
   #
