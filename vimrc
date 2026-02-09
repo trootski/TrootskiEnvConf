@@ -74,7 +74,7 @@ else
   if $TERMINAL_EMULATOR != "JetBrains-JediTerm"
     " Intellij IDEA
     set background=light
-    highlight Normal ctermbg=230 guibg=#ffffd7
+    highlight Normal ctermbg=NONE guibg=NONE
   else
     " Terminal / iTerm2
     set bg=light
