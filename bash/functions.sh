@@ -116,12 +116,6 @@ del_flas_and_html() {
 	find . -name "*.html" -exec rm {} \;
 }
 
-function lazygit() {
-	git add .
-	git commit -a -m "$1"
-	git push
-}
-
 function t_UpdateTrootskiConf() {
 	CURRENT_DIR=$(pwd)
 	cd ~/TrootskiEnvConf/

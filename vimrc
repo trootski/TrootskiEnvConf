@@ -376,6 +376,7 @@ let g:signify_vcs_list = [ 'git' ]
 " -------------------------------------------------------------------------------
 let g:netrw_banner = 1
 let g:netrw_browse_split = 0
+let g:netrw_liststyle = 3
 map <leader>p :Explore<cr>
 
 

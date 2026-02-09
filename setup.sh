@@ -30,7 +30,7 @@ if [[ "$OSTYPE" =~ darwin[0-9]{2} ]]; then
       brew list "$pkg" || brew install "$pkg"
     done
 
-    for pkg in {keepassx,postman}; do
+    for pkg in {keepassxc,postman}; do
       brew list --cask "$pkg" || brew install --cask "$pkg"
     done
   fi
