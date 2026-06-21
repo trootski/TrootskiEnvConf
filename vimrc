@@ -254,10 +254,10 @@ endif
 "  BUFFER RE-MAPPINGS
 " ---------------------------------------------------------------------------
 " Move to the previous buffer with "gp"
-nnoremap gp :bp<CR>
+nnoremap <leader>m :bp<CR>
 
 " Move to the next buffer with "gn"
-nnoremap gn :bn<CR>
+nnoremap <leader>j :bn<CR>
 
 " List all possible buffers with "gl"
 nnoremap gl :ls<CR>
@@ -270,6 +270,8 @@ nnoremap gj :buffer
 
 " Delete the current buffer but don't close the window
 nnoremap gd :bp\|bd #<CR>
+
+nnoremap <leader>h :bd<CR>
 
 " ---------------------------------------------------------------------------
 "  TAB MAPPINGS
@@ -377,7 +379,11 @@ let g:signify_vcs_list = [ 'git' ]
 let g:netrw_banner = 1
 let g:netrw_browse_split = 0
 let g:netrw_liststyle = 3
+if has('nvim')
+  nnoremap <leader>i <cmd>Telescope find_files<cr>
+endif
 map <leader>p :Explore<cr>
+map <leader>o :bd<cr>
 
 
 
