@@ -1,4 +1,4 @@
 source ~/.vimrc
 
+set mouse=a
 set relativenumber
-bla
