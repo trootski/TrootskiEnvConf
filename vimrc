@@ -1,5 +1,7 @@
 " Define the leader before the plugins are loaded
-let mapleader=","
+let mapleader = "\<Space>"
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
 
 " PLUGINS -------------------------------------------------------------------
 
@@ -18,6 +20,9 @@ if has('nvim')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'airblade/vim-gitgutter'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-tree/nvim-web-devicons'
+    Plug 'folke/snacks.nvim'
     call plug#end()
 else
     set term=xterm
@@ -120,7 +125,6 @@ set modeline
 
 " allow mouse support in console
 set mouse=
-set nocompatible
 
 " backup to ~/.tmp
 set backup
@@ -151,12 +155,8 @@ set showtabline=2
 " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set noshowmode
 
-" Always display the statusline in all windows
-set laststatus=2
-
 set visualbell
 set wildmenu
-set wildmode=list:longest
 set wrap
 
 " Only have to type a semi-colon to get into command mode
@@ -203,8 +203,6 @@ set noincsearch
 "
 " Tabbing
 
-" auto indent on new line"
-set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -253,25 +251,11 @@ endif
 " ---------------------------------------------------------------------------
 "  BUFFER RE-MAPPINGS
 " ---------------------------------------------------------------------------
-" Move to the previous buffer with "gp"
-nnoremap <leader>m :bp<CR>
-
-" Move to the next buffer with "gn"
+" Move to the next buffer
 nnoremap <leader>j :bn<CR>
 
-" List all possible buffers with "gl"
-nnoremap gl :ls<CR>
-
-" List all possible buffers with "gb" and accept a new buffer argument [1]
-nnoremap gb :ls<CR>:b
-
-" Jump to buffer number
-nnoremap gj :buffer
-
-" Delete the current buffer but don't close the window
-nnoremap gd :bp\|bd #<CR>
-
-nnoremap <leader>h :bd<CR>
+" Move to the previous buffer
+nnoremap <leader>k :bp<CR>
 
 " ---------------------------------------------------------------------------
 "  TAB MAPPINGS
@@ -325,15 +309,6 @@ augroup airline_config
 augroup END
 
 " ---------------------------------------------------------------------------
-"  TAGBAR
-" ---------------------------------------------------------------------------
-
-" Disable the mouse on Linux
-if !v:shell_error && s:uname == "Linux"
-  set mouse=
-endif
-
-" ---------------------------------------------------------------------------
 "  VIM-JAVASCRIPT
 " ---------------------------------------------------------------------------
 let g:javascript_plugin_jsdoc = 1
@@ -341,37 +316,12 @@ let g:javascript_plugin_jsdoc = 1
 " ---------------------------------------------------------------------------
 "  FUNCTION: Run NodeJS
 " ---------------------------------------------------------------------------
-" Repeat last command in the next tmux pane.
-" nnoremap <Leader>r :call VimuxRunCommand("clear; node " . expand("%"))<CR>
-autocmd Filetype javascript nnoremap <Leader>t :Make <CR>
-autocmd Filetype javascript nnoremap <Leader>r :Dispatch npm run start<CR>
-autocmd Filetype jasmine.javascript nnoremap <Leader>r :Dispatch npm run test<CR>
 autocmd FileType javascript silent! compiler node | setlocal makeprg=node\ %
-
-"
-" -------------------------------------------------------------------------------
-"  Vimux
-" -------------------------------------------------------------------------------
-let g:VimuxUseNearest = 0
-let g:VimuxRunnerType = 'pane'
-
-" -------------------------------------------------------------------------------
-"  LaTex
-" -------------------------------------------------------------------------------
-imap <C-g> <Plug>IMAP_JumpForward
-nmap <C-g> <Plug>IMAP_JumpForward
 
 let g:gruvbox_bold = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_contrast_dark = 'medium'
-
-let NERDTreeMinimalUI = 1
-
-" -------------------------------------------------------------------------------
-"  VIM-SIGNIFY
-" -------------------------------------------------------------------------------
-let g:signify_vcs_list = [ 'git' ]
 
 " -------------------------------------------------------------------------------
 "  NETRW
@@ -381,9 +331,10 @@ let g:netrw_browse_split = 0
 let g:netrw_liststyle = 3
 if has('nvim')
   nnoremap <leader>i <cmd>Telescope find_files<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <C-p> <cmd>Telescope git_files<cr>
 endif
 map <leader>p :Explore<cr>
-map <leader>o :bd<cr>
 
 
 

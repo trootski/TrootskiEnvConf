@@ -18,3 +18,5 @@ backups/*
 !/bash/prompt.sh
 
 .vim/plugged/*
+
+.DS_Store

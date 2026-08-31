@@ -1,2 +1,2 @@
-vim.g.mapleader = ","
+-- mapleader is set once, in vimrc, before plugins load
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
