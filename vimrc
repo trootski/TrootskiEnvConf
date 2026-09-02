@@ -330,9 +330,16 @@ let g:netrw_banner = 1
 let g:netrw_browse_split = 0
 let g:netrw_liststyle = 3
 if has('nvim')
-  nnoremap <leader>i <cmd>Telescope find_files<cr>
+  " find (LazyVim <leader>f convention)
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
   nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fg <cmd>Telescope git_files<cr>
   nnoremap <C-p> <cmd>Telescope git_files<cr>
+
+  " search (LazyVim <leader>s convention)
+  nnoremap <leader>sg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>sw <cmd>Telescope grep_string<cr>
+  nnoremap <leader>/ <cmd>Telescope live_grep<cr>
 endif
 map <leader>p :Explore<cr>
 
